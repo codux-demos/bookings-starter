@@ -1,0 +1,104 @@
+@import '@styles/theme.module.scss';
+
+.circle {
+    width: 60px;
+    height: 60px;
+    border: 1px solid $black;
+    border-radius: 30px;
+}
+
+.miniTitle {
+    font: $extra-small-text;
+    text-align: start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.white {
+    background-color: $white;
+}
+
+.black {
+    background-color: $black;
+}
+
+.colors {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    gap: 18px;
+}
+
+.charcoalBlack {
+    background-color: $charcoal-black;
+}
+
+.snowWhite {
+    background-color: $snow-white;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.small-text {
+    font: $small-text;
+}
+.extra-large-text {
+    font: $extra-large-text;
+}
+.extra-small-text {
+    font: $extra-small-text;
+}
+.large-paragraph {
+    font: $large-paragraph;
+}
+.medium-paragraph-bold {
+    font: $medium-paragraph-bold;
+}
+.small-text-font-bold {
+    font: $small-text-font-bold;
+}
+
+.extra-large-thin-title {
+    font: $extra-large-thin-title;
+}
+.large-thin-title {
+    font: $large-thin-title;
+}
+.large-title {
+    font: $large-title;
+}
+
+.medium-title {
+    font: $medium-title;
+}
+
+.extra-small-title {
+    font: $extra-small-title;
+}
+
+.fonts-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 100px;
+    margin-bottom: 100px;
+}
+.Title {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+}
+.large-title-mobile {
+    font: $large-title-mobile;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.medium-paragraph {
+    font: $medium-paragraph;
+}

@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    padding: 40px 100px;
+}
+
+.box {
+    width: 400px;
+    height: 80px;
+    display: flex;
+    align-items: baseline;
+    column-gap: 18px;
+    flex-direction: row;
+    justify-items: center;
+}

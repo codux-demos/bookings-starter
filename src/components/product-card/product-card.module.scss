@@ -1,0 +1,40 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    cursor: pointer;
+}
+
+.cardContent {
+    padding: 16px 22px;
+    font-size: 24px;
+}
+
+.image {
+    object-position: 50% 50%;
+    aspect-ratio: 4/3;
+    width: 100%;
+    object-fit: cover;
+}
+
+.description {
+    text-align: left;
+    font: $medium-title;
+}
+
+// --- MEDIA QUERIES ---
+
+@media (430px <=width < 980px) {
+    .cardContent {
+        font-size: 24px;
+    }
+}
+
+@media (width < 430px) {
+    .root {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .cardContent {
+        font-size: 24px;
+    }
+}

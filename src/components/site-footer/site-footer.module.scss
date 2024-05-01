@@ -1,0 +1,33 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 56px;
+    padding-left: 48px;
+    padding-top: 32px;
+    padding-bottom: 20px;
+    box-shadow: 0 -1px rgba(40, 43, 45, 0.3);
+}
+
+.social {
+    display: flex;
+    height: 30px;
+    column-gap: 12px;
+}
+
+.small {
+    margin-top: 18px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+@media (width <= $mobile-width) {
+    .root {
+        flex-direction: column;
+        row-gap: 24px;
+    }
+}

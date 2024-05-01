@@ -1,0 +1,46 @@
+@import '@styles/theme.module.scss';
+
+.background {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: rgba(148, 148, 148, 0.5);
+    z-index: 999;
+}
+.drawer {
+    right: -480px;
+    height: 100%;
+    background-color: $white;
+    transition: right 0.3s ease-in-out;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    &.open {
+        right: 0;
+    }
+}
+.header {
+    background-color: $black;
+    color: $white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: $large-title;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+.arrowIcon {
+    position: absolute;
+    left: 0px;
+    margin: 0 0 0 16px;
+    cursor: pointer;
+}
+
+.body {
+    position: relative;
+    flex-grow: 1;
+    overflow: auto;
+}

@@ -1,0 +1,78 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    position: relative;
+    color: $white;
+}
+
+.overlay {
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-left: 5vw;
+}
+
+.image {
+    object-fit: cover;
+    object-position: 50% 0%;
+    height: 640px;
+    width: 100%;
+}
+
+.small-title {
+    font: $medium-paragraph-bold;
+    margin-top: 80px;
+    font-size: 38px;
+}
+
+.big-title {
+    max-width: 80%;
+    font: $extra-large-thin-title;
+    line-height: 1.2;
+    font-size: 85px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.overlay-button {
+    margin-top: 68px;
+}
+
+// --- MEDIA QUERIES ---
+
+@media (width >= $large-desktop) {
+    .small-title {
+        font-size: 42px;
+    }
+
+    .big-title {
+        max-width: 70%;
+    }
+
+    .overlay-button {
+        height: 47px;
+    }
+}
+
+@media (width <= $mobile-width) {
+    .overlay {
+        padding-left: 8vw;
+    }
+
+    .small-title {
+        font-size: 20px;
+        margin-top: 40px;
+    }
+
+    .big-title {
+        font-size: 50px;
+        margin-top: 11px;
+    }
+
+    .overlay-button {
+        margin-top: 40px;
+    }
+}

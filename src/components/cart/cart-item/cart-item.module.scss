@@ -1,0 +1,43 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 -1px rgba(40, 43, 45, 0.25);
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 4px;
+    flex-grow: 1;
+}
+
+.description {
+    text-align: left;
+    font: $small-text;
+}
+
+.remove {
+    cursor: pointer;
+    margin-left: 6px;
+    margin-top: 4px;
+}
+
+.actionsContainer {
+    display: flex;
+}
+
+.item-line {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4px;
+}

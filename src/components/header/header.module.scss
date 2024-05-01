@@ -1,0 +1,36 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    font: $small-text;
+    padding: 0 20px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menuButton {
+    padding-right: 22px;
+    padding-left: 22px;
+}
+
+.logo {
+    font: 700 18px/1.5 $my-prettyfont;
+    height: fit-content;
+}
+
+@media (width < 455px) {
+    .root {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+    }
+    .logo {
+        display: none;
+    }
+}

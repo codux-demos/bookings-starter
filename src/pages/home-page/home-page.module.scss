@@ -1,0 +1,68 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    padding-bottom: 90px;
+}
+
+.top-label-highlighted {
+    color: $white;
+    padding: 0 5px;
+    display: inline-block;
+    margin-bottom: 5%;
+    text-align: start;
+}
+
+.cardsLayout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 20px;
+    margin: 0 auto;
+}
+
+.productCard {
+    width: 20vw;
+}
+
+.HPprgrp {
+    font: $large-paragraph;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.hero-title {
+    margin-top: 80px;
+    font: $extra-large-thin-title;
+    text-align: center;
+}
+
+// --- MEDIA QUERIES ---
+
+@media (430px < width < 980px) {
+    .cardsLayout {
+        column-gap: 4vw;
+    }
+
+    .productCard {
+        width: 40vw;
+    }
+
+    .HPprgrp {
+        font: $medium-paragraph-bold;
+    }
+}
+
+@media (width <= 430px) {
+    .cardsLayout {
+        column-gap: 20px;
+    }
+
+    .productCard {
+        width: 90vw;
+    }
+
+    .HPprgrp {
+        font: $large-title-mobile;
+        margin-bottom: 40px;
+    }
+}

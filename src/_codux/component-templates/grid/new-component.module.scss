@@ -1,0 +1,14 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-auto-flow: row;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}

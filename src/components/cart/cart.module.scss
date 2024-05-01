@@ -1,0 +1,44 @@
+@import '@styles/theme.module.scss';
+
+.cart {
+    background-color: $white;
+    padding: 15px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.emptyCart {
+    font: $large-thin-title;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.items {
+    overflow: auto;
+}
+
+.subtotal-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: end;
+    direction: ltr;
+    margin: 14px;
+}
+.checkout {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.subtotal-label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+}

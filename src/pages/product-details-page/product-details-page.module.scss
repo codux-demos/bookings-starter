@@ -1,0 +1,47 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    column-gap: 2em;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    padding-top: 20px;
+    flex: 1;
+}
+
+.addToCartBtn {
+    width: 140px;
+    height: 40px;
+}
+
+.productInfo {
+    margin-top: 20px;
+}
+
+.quantity {
+    margin-top: 12px;
+}
+
+.addToCart {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+@media (width <= 450px) {
+    .root {
+        flex-direction: column;
+        align-items: center;
+    }
+}

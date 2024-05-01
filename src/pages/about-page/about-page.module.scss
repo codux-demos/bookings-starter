@@ -1,0 +1,44 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    flex-direction: row;
+    background-color: $snow-white;
+    column-gap: 80px;
+    justify-content: center;
+    align-content: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.paragraph {
+    margin-bottom: 24px;
+    font: $medium-title;
+}
+
+.text {
+    width: 40vw;
+}
+
+.image {
+    width: 20vw;
+}
+
+.title {
+    font: $extra-large-thin-title;
+    letter-spacing: 6px;
+    margin-bottom: 16px;
+}
+
+@media (width <= 430px) {
+    .root {
+        flex-direction: column;
+        align-items: center;
+    }
+    .text {
+        width: 80vw;
+    }
+    .image {
+        width: 80vw;
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "bookings-starter",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "@types/node": "^20.10.6",
+    "@wix/ecom": "^1.0.444",
+    "@wix/redirects": "^1.0.34",
+    "@wix/sdk": "^1.7.2",
+    "@wix/stores": "^1.0.121",
+    "classnames": "^2.3.2",
+    "js-cookie": "^3.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@types/js-cookie": "^3.0.6",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@wixc3/react-board": "^2.5.0",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.3",
+    "vite": "^4.5.2",
+    "vite-plugin-svgr": "^3.3.0"
+  }
+}
