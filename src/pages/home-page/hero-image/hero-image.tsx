@@ -1,4 +1,4 @@
-import CommonStyles_module from '../../../styles/common-styles.module.scss';
+import CommonStyles_module from '../../../styles/common/common-styles.module.scss';
 import smallHeroImage from '../../../assets/img/[430_340]_heroImage04.jpg';
 import mediumHeroImage from '../../../assets/img/[760_460]_heroImage04.jpg';
 import largeHeroImage from '../../../assets/img/[1024_640]_heroImage04.jpg';

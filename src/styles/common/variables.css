@@ -1,0 +1,58 @@
+:root {
+  --h1Normal: normal 400 42px / normal DM Sans, sans-serif;
+  --h1Light: normal 300 42px / normal DM Sans, sans-serif;
+  --h1Bold: normal 700 42px / normal DM Sans, sans-serif;
+
+  --h2Normal: normal 400 28px / normal DM Sans, sans-serif;
+  --h2Light: normal 300 28px / normal DM Sans, sans-serif;
+  --h2Bold: normal 700 28px / normal DM Sans, sans-serif;
+
+  --pNormal: normal 400 12px / normal DM Sans, sans-serif;
+  --pLight: normal 300 12px / normal DM Sans, sans-serif;
+  --pBold: normal 700 12px / normal DM Sans, sans-serif;
+
+  --smallNormal: normal 400 11px / normal DM Sans, sans-serif;
+  --smallLight: normal 300 11px / normal DM Sans, sans-serif;
+  --smallBold: normal 700 11px / normal DM Sans, sans-serif;
+
+  --b10: #f0f5ff;
+  --b20: #2f6fed;
+  --b30: #1d5bd6;
+  --b40: #1e4eae;
+
+  --d10: #e0e0e8;
+  --d20: #afafb6;
+  --d30: #808087;
+  --d40: #54545a;
+  --d50: #2b2b31;
+
+  --w10: #fef4e9;
+  --w20: #fcd0a0;
+  --w30: #fabf7a;
+  --w40: #f7a446;
+  --w50: #aa661e;
+
+  --e10: #feecec;
+  --e20: #fab2af;
+  --e30: #f26561;
+  --e40: #ec6d69;
+  --e50: #a5302c;
+  --e60: #932927;
+
+  --s10: #e8f8f1;
+  --s20: #9fe1c2;
+  --s30: #76d6ab;
+  --s40: #76d6ab;
+  --s50: #0f804e;
+  --s60: #932927;
+
+  --size2: 2px;
+  --size4: 4px;
+  --size6: 6px;
+  --size8: 8px;
+  --size12: 12px;
+  --size16: 16px;
+  --size24: 24px;
+  --size32: 32px;
+  --size40: 40px;
+}

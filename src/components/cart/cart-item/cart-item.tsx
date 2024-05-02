@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './cart-item.module.scss';
 import { cart } from '@wix/ecom';
 import { ChangeEvent } from 'react';
-import commonStyles from '../../../styles/common-styles.module.scss';
+import commonStyles from '../../../styles/common/common-styles.module.scss';
 import { getImageHttpUrl } from '../../../api/wix-image';
 import { useRemoveItemFromCart, useUpdateCartItemQuantity } from '../../../api/api-hooks';
 import { Cross2Icon } from '@radix-ui/react-icons';

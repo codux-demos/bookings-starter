@@ -5,7 +5,7 @@ import { ROUTES } from '../../router/config';
 import { ProductCard } from '../../components/product-card/product-card';
 import { useProducts } from '../../api/api-hooks';
 import { getImageHttpUrl } from '../../api/wix-image';
-import commonStyles from '../../styles/common-styles.module.scss';
+import commonStyles from '../../styles/common/common-styles.module.scss';
 
 export interface ProductsPageProps {
     className?: string;

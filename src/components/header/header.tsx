@@ -1,9 +1,10 @@
+import '../../styles/common/style-guide.css';
 import classNames from 'classnames';
 import styles from './header.module.scss';
 import { ROUTES } from '../../router/config';
 import { Cart } from '../cart/cart';
 import { Link } from 'react-router-dom';
-import CommonStyles_module from '../../styles/common-styles.module.scss';
+import CommonStyles_module from '../../styles/common/common-styles.module.scss';
 
 export interface HeaderProps {
     className?: string;

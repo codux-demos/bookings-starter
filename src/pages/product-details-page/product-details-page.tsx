@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './product-details-page.module.scss';
 import { useParams } from 'react-router-dom';
 import { RouteParams } from '../../router/config';
-import commonStyles from '../../styles/common-styles.module.scss';
+import commonStyles from '../../styles/common/common-styles.module.scss';
 import { ProductImages } from './product-images/product-images';
 import { ProductInfo } from './product-info/product-info';
 import { useAddToCart, useProduct } from '../../api/api-hooks';

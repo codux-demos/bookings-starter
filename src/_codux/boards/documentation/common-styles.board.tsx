@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import commonStyles from '../../../styles/common-styles.module.scss';
+import commonStyles from '../../../styles/common/common-styles.module.scss';
 import boardStyle from './documentation.module.scss';
 
 export default createBoard({

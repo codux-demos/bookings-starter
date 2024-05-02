@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './thank-you-page.module.scss';
-import CommonStyles_module from '../../styles/common-styles.module.scss';
+import CommonStyles_module from '../../styles/common/common-styles.module.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ROUTES } from '../../router/config';
 
