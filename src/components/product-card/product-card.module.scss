@@ -1,7 +1,9 @@
 @import '@styles/theme.module.scss';
 
 .root {
-    cursor: pointer;
+        cursor: pointer;
+    height: auto;
+    display: grid;
 }
 
 .cardContent {

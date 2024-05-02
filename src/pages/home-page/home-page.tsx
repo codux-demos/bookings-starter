@@ -1,3 +1,4 @@
+import '../../styles/common/style-guide.css';
 import classNames from 'classnames';
 import styles from './home-page.module.scss';
 import { HeroImage } from './hero-image/hero-image';
@@ -35,10 +36,10 @@ export const HomePage = ({ className }: HomePageProps) => {
                                 imageUrl={product.media?.items?.at(0)?.image?.url}
                                 name={product.name}
                                 price={product.price ?? undefined}
-                                className={styles.productCard}
+                                className={classNames(styles.productCard, 'border')}
                             />
                         </Link>
-                    ) : null
+                    ) : null,
                 )}
             </div>
         </div>

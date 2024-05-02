@@ -13,15 +13,13 @@
 }
 
 .cardsLayout {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 20px;
-    margin: 0 auto;
+   display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: $white;
 }
 
 .productCard {
-    width: 20vw;
+  width: 100%;
 }
 
 .HPprgrp {
