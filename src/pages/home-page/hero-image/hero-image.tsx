@@ -1,3 +1,4 @@
+import '../../../styles/common/style-guide.css';
 import CommonStyles_module from '../../../styles/common/common-styles.module.scss';
 import smallHeroImage from '../../../assets/img/[430_340]_heroImage04.jpg';
 import mediumHeroImage from '../../../assets/img/[760_460]_heroImage04.jpg';
@@ -24,7 +25,7 @@ export const HeroImage = ({
     className,
 }: HeroImageProps) => {
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={classNames(styles.root, className, 'b20')}>
             <picture>
                 <source media="(1400px <= width)" srcSet={xLargeHeroImage} />
                 <source media="(1024px <= width)" srcSet={largeHeroImage} />
@@ -39,7 +40,7 @@ export const HeroImage = ({
                         onClick={onButtonClick}
                         className={classNames(
                             CommonStyles_module.primaryButton,
-                            styles['overlay-button']
+                            styles['overlay-button'],
                         )}
                     >
                         {buttonLabel}

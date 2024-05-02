@@ -3,10 +3,12 @@
 .root {
     position: relative;
     color: $white;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    display: grid;
 }
 
 .overlay {
-    position: absolute;
     background-color: transparent;
     top: 0;
     bottom: 0;
