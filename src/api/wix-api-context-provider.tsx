@@ -1,6 +1,7 @@
 import { currentCart } from '@wix/ecom';
 import { OAuthStrategy, createClient } from '@wix/sdk';
-import { products } from '@wix/stores';
+import { services } from '@wix/bookings'
+import { tickets } from '@wix/events'
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import Cookies from 'js-cookie';
@@ -17,9 +18,10 @@ function getTokens() {
 function getWixClient() {
     return createClient({
         modules: {
-            products,
+            tickets,
             currentCart,
             redirects,
+            services
         },
         auth: OAuthStrategy({
             clientId: import.meta.env.VITE_WIX_CLIENT_ID || process.env.VITE_WIX_CLIENT_ID || '',
@@ -30,17 +32,18 @@ function getWixClient() {
 
 function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
     return {
-        getAllProducts: async () => {
-            return (await wixClient.products.queryProducts().find()).items;
+        getAllLessons: async () => {
+            return (await wixClient.services.queryServices().find()).items;
         },
-        getPromotedProducts: async () => {
-            return (await wixClient.products.queryProducts().limit(4).find()).items;
+        getPromotedLessons: async () => {
+            return (await wixClient.services.queryServices().limit(4).find()).items;
         },
-        getProduct: async (slug: string | undefined) => {
-            return slug
-                ? (await wixClient.products.queryProducts().eq('slug', slug).limit(1).find())
-                      .items[0]
-                : undefined;
+        getLessonBySlug: async (slug?: string) => {
+            if (!slug) return
+            return (await wixClient!.services.queryServices()
+                .eq('mainSlug.name', decodeURIComponent(slug))
+                .limit(1)
+                .find()).items[0];
         },
         getCart: () => {
             return wixClient.currentCart.getCurrentCart();

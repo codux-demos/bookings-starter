@@ -4,34 +4,33 @@ import useSWRMutation from 'swr/mutation';
 import { WixAPIContext } from './wix-api-context-provider';
 import { findItemIdInCart } from './cart-helpers';
 
-const getProductKey = (slug: string) => `product/${slug}`;
+const getLessonKey = (slug: string) => `lesson/${slug}`;
 
-export function useProducts() {
+export function useLessons() {
     const wixApi = useContext(WixAPIContext);
     const { mutate } = useSWRConfig();
 
-    return useSwr('products', wixApi.getAllProducts, {
+    return useSwr('lessons', wixApi.getAllLessons, {
         //here we add a map of items to the cache so we can read a single item from it later
-        onSuccess: (products) => {
-            products.forEach((product) => {
+        onSuccess: (lessons) => {
+            lessons.forEach((lesson) => {
                 //there has to be a slug
-                const key = getProductKey(product.slug!);
-                mutate(key, product).catch((e) => {
+                const key = getLessonKey(lesson.mainSlug?.name!);
+                mutate(key, lesson).catch((e) => {
                     console.error('mutate failed', e);
                 });
             });
         },
     });
 }
-
-export function useProduct(slug?: string) {
+export function useLessonBySlug(slug?: string) {
     const wixApi = useContext(WixAPIContext);
-    return useSwr(slug ? getProductKey(slug) : null, () => wixApi.getProduct(slug));
+    return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLessonBySlug(slug));
 }
 
-export const usePromotedProducts = () => {
+export const usePromotedLessons = () => {
     const wixApi = useContext(WixAPIContext);
-    return useSwr('promoted-products', wixApi.getPromotedProducts);
+    return useSwr('promoted-lessons', wixApi.getPromotedLessons);
 };
 
 export const useCart = () => {
@@ -66,9 +65,9 @@ export const useAddToCart = () => {
             const itemInCart = findItemIdInCart(cart, arg.id, arg.options);
             return itemInCart
                 ? wixApi.updateCartItemQuantity(
-                      itemInCart._id,
-                      (itemInCart.quantity || 0) + arg.quantity
-                  )
+                    itemInCart._id,
+                    (itemInCart.quantity || 0) + arg.quantity
+                )
                 : wixApi.addToCart(arg.id, arg.quantity, arg.options);
         },
         {
