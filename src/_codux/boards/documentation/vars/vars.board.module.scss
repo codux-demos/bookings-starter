@@ -1,0 +1,17 @@
+.sectionContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-direction: column;
+    padding-right: 60px;
+    padding-left: 60px;
+    background-color: #ebeef5;
+    margin-top: 20px;
+}
+
+.sectionTitle {
+    display: flex;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 0;
+  column-gap: 12px
+}

@@ -2,12 +2,17 @@ import { createBoard } from '@wixc3/react-board';
 import styles from './vars.module.scss';
 import cx from 'classnames';
 import documentationStyles from '/src/_codux/boards/documentation/documentation.module.scss';
+import Vars_board_module from './vars.board.module.scss';
 
 export default createBoard({
     name: 'Theme Variables',
     Board: () => (
         <div className={documentationStyles.root}>
-            <p className={styles.Title}>Fonts</p>
+            <div className={Vars_board_module.sectionContainer}>
+                <div className={Vars_board_module.sectionTitle}>
+                    <p>Fonts</p>
+                </div>
+            </div>
             <div className={styles['fonts-layout']}>
                 <div className={styles.flex}>
                     <p className={styles.miniTitle}>------ Title styles -----</p>
@@ -59,6 +64,6 @@ export default createBoard({
             left: 0,
         },
         windowWidth: 1400,
-        windowHeight: 768,
+        windowHeight: 1162,
     },
 });
