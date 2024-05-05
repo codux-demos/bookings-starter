@@ -3,7 +3,7 @@ import { generatePath } from 'react-router-dom';
 const HOME = '/';
 const ABOUT = '/about';
 const PRODUCTS = '/products';
-const PRODUCT = `/product/:slug`;
+const PRODUCT = `/lesson/:slug`;
 const THANK_YOU = '/thank-you';
 
 export const ROUTES = {

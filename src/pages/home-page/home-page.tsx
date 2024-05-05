@@ -4,7 +4,7 @@ import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/product-card/product-card';
-import { usePromotedProducts } from '../../api/api-hooks';
+import { usePromotedLessons } from '../../api/api-hooks';
 
 export interface HomePageProps {
     className?: string;
@@ -13,7 +13,7 @@ export interface HomePageProps {
 export const HomePage = ({ className }: HomePageProps) => {
     const navigate = useNavigate();
 
-    const { data: products } = usePromotedProducts();
+    const { data: lessons } = usePromotedLessons();
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -27,7 +27,7 @@ export const HomePage = ({ className }: HomePageProps) => {
             />
             <h1 className={styles['hero-title']}>Best Sellers</h1>
             <p className={styles.HPprgrp}>Shop our best seller items</p>
-            <div className={styles.cardsLayout}>
+            {/* <div className={styles.cardsLayout}>
                 {products?.map((product) =>
                     product.slug && product.name ? (
                         <Link to={ROUTES.product.to(product.slug)} key={product.slug}>
@@ -40,7 +40,7 @@ export const HomePage = ({ className }: HomePageProps) => {
                         </Link>
                     ) : null
                 )}
-            </div>
+            </div> */}
         </div>
     );
 };
