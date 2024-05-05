@@ -4,16 +4,28 @@ import useSWRMutation from 'swr/mutation';
 import { WixAPIContext } from './wix-api-context-provider';
 import { findItemIdInCart } from './cart-helpers';
 
-const getProductKey = (slug: string) => `lesson/${slug}`;
+const getLessonKey = (slug: string) => `lesson/${slug}`;
 
-
-export const useLessons = () => {
+export function useLessons() {
     const wixApi = useContext(WixAPIContext);
-    return useSwr('lessons', wixApi.getAllLessons);
-};
+    const { mutate } = useSWRConfig();
+
+    return useSwr('lessons', wixApi.getAllLessons, {
+        //here we add a map of items to the cache so we can read a single item from it later
+        onSuccess: (lessons) => {
+            lessons.forEach((lesson) => {
+                //there has to be a slug
+                const key = getLessonKey(lesson.mainSlug?.name!);
+                mutate(key, lesson).catch((e) => {
+                    console.error('mutate failed', e);
+                });
+            });
+        },
+    });
+}
 export function useLessonBySlug(slug?: string) {
     const wixApi = useContext(WixAPIContext);
-    return useSwr(slug ? getProductKey(slug) : null, () => wixApi.getClassBySlug(slug));
+    return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLessonBySlug(slug));
 }
 
 export const usePromotedLessons = () => {

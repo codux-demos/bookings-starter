@@ -38,7 +38,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getPromotedLessons: async () => {
             return (await wixClient.services.queryServices().limit(4).find()).items;
         },
-        getClassBySlug: async (slug?: string) => {
+        getLessonBySlug: async (slug?: string) => {
             if (!slug) return
             return (await wixClient!.services.queryServices()
                 .eq('mainSlug.name', decodeURIComponent(slug))
