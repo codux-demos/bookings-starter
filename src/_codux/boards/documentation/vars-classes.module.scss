@@ -1,0 +1,201 @@
+@import '../../../styles/theme.module.scss';
+
+.checkVar {
+    background-color: var(--dana-var);
+}
+
+.h1Normal {
+    font: var(--h1Normal);
+}
+
+.h1Light {
+    font: var(--h1Light);
+}
+.h1Bold {
+    font: $large-thin-title;
+}
+
+.h2Normal {
+    font: var(--h2Normal);
+}
+
+.h2Light {
+    font: var(--h2Light);
+}
+.h2Bold {
+    font: var(--h2Bold);
+}
+
+.pNormal {
+    font: var(--pNormal);
+}
+
+.pLight {
+    font: var(--pLight);
+}
+.pBold {
+    font: var(--pBold);
+}
+
+.smallNormal {
+    font: var(--smallNormal);
+}
+
+.smallLight {
+    font: var(--smallLight);
+}
+.smallBold {
+    font: var(--smallBold);
+}
+
+.b10 {
+    background-color: var(--b10);
+}
+
+.b20 {
+    background-color: var(--b20);
+}
+
+.b30 {
+    background-color: var(--b30);
+}
+.b40 {
+    background-color: var(--b40);
+}
+
+.d10 {
+    background: var(--d10);
+}
+.d12 {
+    background-color: var(--d20);
+}
+.d30 {
+    background-color: var(--d30);
+}
+.d40 {
+    background-color: var(--d40);
+}
+.w10 {
+    background-color: var(--w10);
+}
+.w20 {
+    background-color: var(--w20);
+}
+.w30 {
+    background-color: var(--w30);
+}
+.w40 {
+    background-color: var(--w40);
+}
+.w50 {
+    background-color: var(--w50);
+}
+.e10 {
+    background-color: var(--e10);
+}
+.e20 {
+    background-color: var(--e20);
+}
+.e30 {
+    background-color: var(--e30);
+}
+.e40 {
+    background-color: var(--e40);
+}
+.e50 {
+    background-color: var(--e50);
+}
+.s10 {
+    background-color: var(--s10);
+}
+.s20 {
+    background-color: var(--s20);
+}
+.s30 {
+    background-color: var(--s30);
+}
+.s40 {
+    background-color: var(--s40);
+}
+.s50 {
+    background-color: var(--s50);
+}
+
+.shadow100 {
+    box-shadow:
+        0px 4px 12px -4px rgba(22, 34, 51, 0.12),
+        0px 16px 32px 0px rgba(22, 34, 51, 0.16);
+}
+
+.shadow200 {
+    box-shadow:
+        0px 4px 8px -4px rgba(22, 34, 51, 0.08),
+        0px 16px 24px 0px rgba(22, 34, 51, 0.08);
+}
+
+.shadow300 {
+    box-shadow: 0 3px 16px -4px rgba(22, 34, 51, 0.2);
+}
+.padding2 {
+    padding: var(--size2);
+}
+
+.padding4 {
+    padding: var(--size4);
+}
+.padding6 {
+    padding: var(--size6);
+}
+
+.padding8 {
+    padding: var(--size8);
+}
+
+.padding12 {
+    padding: var(--size12);
+}
+.padding16 {
+    padding: var(--size16);
+}
+
+.padding24 {
+    padding: var(--size24);
+}
+.padding32 {
+    padding: var(--size32);
+}
+.padding40 {
+    padding: var(--size40);
+}
+
+.margin2 {
+    margin: var(--size2);
+}
+
+.margin4 {
+    margin: var(--size4);
+}
+.margin6 {
+    margin: var(--size6);
+}
+
+.margin8 {
+    margin: var(--size8);
+}
+
+.margin12 {
+    margin: var(--size12);
+}
+.margin16 {
+    margin: var(--size16);
+}
+
+.margin24 {
+    margin: var(--size24);
+}
+.margin32 {
+    margin: var(--size32);
+}
+.margin40 {
+    margin: var(--size40);
+}

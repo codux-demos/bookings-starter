@@ -1,0 +1,157 @@
+.root {
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 60px;
+  padding-left: 60px;
+  margin-top: 20px;
+}
+.TitleHeader {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+.logo {
+  text-transform: uppercase;
+  color: #3f6ff3;
+  font-size: 30px;
+  font-weight: 700;
+}
+.SectionContainer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  padding-right: 60px;
+  padding-left: 60px;
+  background-color: #ebeef5;
+  margin-top: 20px;
+}
+
+.SectionTitle {
+  display: flex;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 0;
+  column-gap: 12px;
+}
+.SectionSubtitle {
+  padding-left: 47px;
+  color: #898989;
+  font-size: 15px;
+}
+.subsectionContainer {
+  padding-right: 60px;
+  padding-left: 60px;
+  padding-bottom: 20px;
+}
+.subSectionTitle {
+  font-size: 13px;
+  font-weight: 300;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 2.5;
+  margin-top: 30px;
+}
+.FontFamilyContainer {
+  font-family: DM Sans;
+  width: 86px;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  justify-content: center;
+}
+.FontFamilyAa {
+  font-size: 28px;
+  font-weight: 700;
+}
+.FlexContainer {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.grid {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.subtitleValue {
+  color: #898989;
+  font-size: 11px;
+}
+.margin {
+  margin: 0;
+}
+
+.subColor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #e5e5e5;
+  justify-content: center;
+  height: 100%;
+}
+
+.coloContainer {
+  display: flex;
+  flex-direction: column;
+}
+.grid1 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(6, 100px);
+  grid-template-rows: repeat(6, 125px);
+}
+.colorContainer {
+  width: 88px;
+  height: 68px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.shadowContainer {
+  width: 88px;
+  height: 68px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+.spacingContainer {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 6px;
+  display: flex;
+  background-color: #efcca2;
+}
+
+.marginContainer {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 6px;
+  display: flex;
+  background-color: #efcca2;
+}
+
+.paddingContainer {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  display: flex;
+  background-color: #c9ddbb;
+}
+
+.spacingBox {
+  background-color: #ebeef5;
+  width: 100%;
+}
