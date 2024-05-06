@@ -29,7 +29,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
                             <Link to={ROUTES.product.to(item.mainSlug.name)} key={item.mainSlug?.name}>
                                 <ProductCard
                                     imageUrl={getImageHttpUrl(
-                                        item.media?.items?.at(0)?.image,
+                                        item.media?.mainMedia?.image,
                                         240
                                     )}
                                     name={item.name}

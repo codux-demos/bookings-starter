@@ -1,7 +1,7 @@
 import React, { FC, useMemo, useState } from 'react';
 import {
-    createProducts,
-    createProduct,
+    createLessons,
+    createLesson,
     createCart,
     getCartTotals,
     FakeDataSettings as Settings,
@@ -14,26 +14,26 @@ export type FakeDataSettings = Settings;
 
 function getWixApi(settings?: Settings): WixAPI {
     faker.seed(123);
-    const products = createProducts(settings);
+    const lessons = createLessons(settings);
 
     const api: WixAPI = {
-        getAllProducts: async () => {
-            return Promise.resolve(products);
+        getAllLessons: async () => {
+            return Promise.resolve(lessons);
         },
-        getProduct: async (id: string | undefined) => {
+        getLesson: async (id: string | undefined) => {
             faker.seed(123);
-            return Promise.resolve(createProduct(id, settings));
+            return Promise.resolve(createLesson(id, settings));
         },
-        getPromotedProducts: async () => {
-            return Promise.resolve(products.slice(0, 4));
+        getPromotedLessons: async () => {
+            return Promise.resolve(lessons.slice(0, 4));
         },
         getCart: () => {
             faker.seed(123);
-            const productsInCart =
+            const lessonsInCart =
                 settings?.numberOfCartItems === 0
                     ? []
-                    : products.slice(0, settings?.numberOfCartItems || 2);
-            return Promise.resolve(createCart(productsInCart));
+                    : lessons.slice(0, settings?.numberOfCartItems || 2);
+            return Promise.resolve(createCart(lessonsInCart));
         },
         getCartTotals: () => {
             faker.seed(123);
