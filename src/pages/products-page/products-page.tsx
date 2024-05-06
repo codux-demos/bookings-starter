@@ -26,17 +26,14 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
                     (item) =>
                         item.mainSlug?.name &&
                         item.name && (
-                            <Link to={ROUTES.product.to(item.mainSlug.name)} key={item.mainSlug?.name}>
-                                <ProductCard
-                                    imageUrl={getImageHttpUrl(
-                                        item.media?.mainMedia?.image,
-                                        240
-                                    )}
-                                    name={item.name}
-                                    price={undefined}
-                                    className={styles.productCard}
-                                />
-                            </Link>
+                            // <Link to={ROUTES.product.to(item.mainSlug.name)} key={item.mainSlug?.name}>
+                            <ProductCard
+                                imageUrl={getImageHttpUrl(item.media?.mainMedia?.image, 240)}
+                                name={item.name}
+                                price={undefined}
+                                className={styles.productCard}
+                            />
+                            // </Link>
                         )
                 )}
             </div>

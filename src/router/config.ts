@@ -11,14 +11,14 @@ export const ROUTES = {
     about: { route: ABOUT, to: () => ABOUT },
     products: { route: PRODUCTS, to: () => PRODUCTS },
     thankYou: { route: THANK_YOU, to: () => THANK_YOU },
-    product: {
-        route: PRODUCT,
-        to: (productSlug: string) => generatePath(PRODUCT, { slug: productSlug }),
-    },
+    // product: {
+    //     route: PRODUCT,
+    //     to: (productSlug: string) => generatePath(PRODUCT, { slug: productSlug }),
+    // },
 };
 
 export type ROUTE_KEYS = keyof typeof ROUTES;
 
-export type RouteParams = {
-    [PRODUCT]: { slug: string };
-};
+// export type RouteParams = {
+//     [PRODUCT]: { slug: string };
+// };

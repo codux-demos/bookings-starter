@@ -1,7 +1,6 @@
 import { currentCart } from '@wix/ecom';
 import { OAuthStrategy, createClient } from '@wix/sdk';
-import { services } from '@wix/bookings'
-import { tickets } from '@wix/events'
+import { services } from '@wix/bookings';
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import Cookies from 'js-cookie';
@@ -18,14 +17,13 @@ function getTokens() {
 function getWixClient() {
     return createClient({
         modules: {
-            tickets,
             currentCart,
             redirects,
-            services
+            services,
         },
         auth: OAuthStrategy({
             clientId: import.meta.env.VITE_WIX_CLIENT_ID || process.env.VITE_WIX_CLIENT_ID || '',
-            tokens: getTokens(),
+            // tokens: getTokens(),
         }),
     });
 }
@@ -39,11 +37,14 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             return (await wixClient.services.queryServices().limit(4).find()).items;
         },
         getLesson: async (slug?: string) => {
-            if (!slug) return
-            return (await wixClient!.services.queryServices()
+            if (!slug) return;
+            return (
+                await wixClient!.services
+                    .queryServices()
                     .eq('mainSlug.name', decodeURIComponent(slug))
                     .limit(1)
-                    .find()).items[0];
+                    .find()
+            ).items[0];
         },
         getCart: () => {
             return wixClient.currentCart.getCurrentCart();
