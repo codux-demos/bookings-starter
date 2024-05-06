@@ -1,14 +1,13 @@
 import classNames from 'classnames';
 import styles from './product-card.module.scss';
-import { products } from '@wix/stores';
-import CommonStyles_module from '../../styles/common-styles.module.scss';
+import { services } from '@wix/bookings';
 import noImage from '../../assets/img/noImage/[160_200]_noImage.svg';
 
 export type GalleryCardProps = {
     name: string;
     imageUrl?: string;
     className?: string;
-    price?: products.PriceData;
+    price?: services.Price;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const ProductCard = ({
@@ -27,9 +26,7 @@ export const ProductCard = ({
             )}
             <div className={styles.cardContent}>
                 <p className={styles.description}>{name}</p>
-                {price?.formatted && (
-                    <p className={CommonStyles_module.price}>{price.formatted.price}</p>
-                )}
+                {/* price */}
             </div>
         </div>
     );

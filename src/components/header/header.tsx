@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from './header.module.scss';
 import { ROUTES } from '../../router/config';
-import { Cart } from '../cart/cart';
 import { Link } from 'react-router-dom';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 
@@ -34,7 +33,6 @@ export const Header = ({ className }: HeaderProps) => {
                 >
                     About
                 </Link>
-                <Cart className={styles.menuButton} />
             </div>
         </div>
     );

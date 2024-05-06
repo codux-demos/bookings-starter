@@ -1,11 +1,5 @@
 import React, { FC, useMemo, useState } from 'react';
-import {
-    createProducts,
-    createProduct,
-    createCart,
-    getCartTotals,
-    FakeDataSettings as Settings,
-} from './fake-data';
+import { createLessons, createLesson, FakeDataSettings as Settings } from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
 import { SWRConfig } from 'swr';
@@ -14,42 +8,18 @@ export type FakeDataSettings = Settings;
 
 function getWixApi(settings?: Settings): WixAPI {
     faker.seed(123);
-    const products = createProducts(settings);
+    const lessons = createLessons(settings);
 
     const api: WixAPI = {
-        getAllProducts: async () => {
-            return Promise.resolve(products);
+        getAllLessons: async () => {
+            return Promise.resolve(lessons);
         },
-        getProduct: async (id: string | undefined) => {
+        getLesson: async (id: string | undefined) => {
             faker.seed(123);
-            return Promise.resolve(createProduct(id, settings));
+            return Promise.resolve(createLesson(id, settings));
         },
-        getPromotedProducts: async () => {
-            return Promise.resolve(products.slice(0, 4));
-        },
-        getCart: () => {
-            faker.seed(123);
-            const productsInCart =
-                settings?.numberOfCartItems === 0
-                    ? []
-                    : products.slice(0, settings?.numberOfCartItems || 2);
-            return Promise.resolve(createCart(productsInCart));
-        },
-        getCartTotals: () => {
-            faker.seed(123);
-            return Promise.resolve(getCartTotals());
-        },
-        addToCart: (id: string, quantity: number) => {
-            alert(`Add item ${id} to cart with quantity ${quantity}`);
-            return api.getCart();
-        },
-        updateCartItemQuantity: (id: string | undefined | null, quantity: number) => {
-            alert(`Update item ${id} to quantity ${quantity}`);
-            return api.getCart();
-        },
-        removeItemFromCart: (id: string) => {
-            alert(`Remove item ${id}`);
-            return api.getCart();
+        getPromotedLessons: async () => {
+            return Promise.resolve(lessons.slice(0, 4));
         },
         checkout: () => {
             alert('Checkout');
