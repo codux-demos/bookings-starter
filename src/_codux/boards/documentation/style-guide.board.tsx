@@ -54,6 +54,7 @@ export default createBoard({
                             className={Classnames(
                                 VarsClasses.h1Normal,
                                 StyleGuide_board_module.margin,
+                                VarsClasses['large-thin-title'],
                             )}
                         >
                             Best Sellers
@@ -85,8 +86,8 @@ export default createBoard({
                     <div>
                         <h2
                             className={Classnames(
-                                VarsClasses.h2Bold,
                                 StyleGuide_board_module.margin,
+                                VarsClasses['large-title'],
                             )}
                         >
                             Large Subtitle
@@ -100,8 +101,8 @@ export default createBoard({
                     <div>
                         <h2
                             className={Classnames(
-                                VarsClasses.h2Normal,
                                 StyleGuide_board_module.margin,
+                                VarsClasses['large-title-mobile'],
                             )}
                         >
                             Large Subtitle Mobile{' '}
@@ -237,46 +238,60 @@ export default createBoard({
                 </p>
             </div>
             <div className={StyleGuide_board_module.subsectionContainer}>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Primary / Blue</h2>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>
+                    Primary / Black and White
+                </h2>
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.white,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b10
+                            white
                             <br />
-                            #F0F5FF
+                            #FFFFFF
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b20')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.snowWhite,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b20
+                            snow-white
                             <br />
-                            #2F6FED
+                            #f5f5f5
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b30')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.black,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b30
+                            balck
                             <br />
-                            #1D5BD6
+                            #000000
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b40')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.charcoalBlack,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b40
+                            charcoalBlack
                             <br />
-                            #1E4EAE{' '}
+                            #282b2d{' '}
                         </div>
                     </div>
                 </div>

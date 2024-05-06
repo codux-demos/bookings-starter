@@ -4,7 +4,7 @@
     background-color: var(--dana-var);
 }
 
-.h1Normal {
+.large-thin-title {
     font: $large-thin-title;
 }
 
@@ -15,7 +15,7 @@
     font: $extra-large-thin-title;
 }
 
-.h2Normal {
+.large-title-mobile {
     font: $large-title-mobile;
 }
 
@@ -26,7 +26,7 @@
 .h2Light {
     font: var(--h2Light);
 }
-.h2Bold {
+.large-title {
     font: $large-title;
 }
 
@@ -57,6 +57,22 @@
 }
 .small-text-font-bold {
     font: $small-text-font-bold;
+}
+
+.white {
+    background-color: $white;
+}
+
+.snowWhite {
+    background-color: $snow-white;
+}
+
+.black {
+    background-color: $black;
+}
+
+.charcoalBlack {
+    background-color: $charcoal-black;
 }
 
 .b10 {
