@@ -1,9 +1,8 @@
 import { OAuthStrategy, createClient } from '@wix/sdk';
-import { services } from '@wix/bookings';
+import { services, extendedBookings, bookings } from '@wix/bookings';
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import { SWRConfig } from 'swr';
-import { ROUTES } from '../router/config';
 
 export const WIX_SESSION_TOKEN = 'wix_refreshToken';
 
@@ -12,6 +11,8 @@ function getWixClient() {
         modules: {
             redirects,
             services,
+            bookings: extendedBookings,
+            bookingsActions: bookings,
         },
         auth: OAuthStrategy({
             clientId: import.meta.env.VITE_WIX_CLIENT_ID || process.env.VITE_WIX_CLIENT_ID || '',
@@ -37,6 +38,39 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                     .find()
             ).items[0];
         },
+        getMyUpcomingBookings: async () =>
+            await wixClient!.bookings.queryExtendedBookings(
+                {
+                    filter: { startDate: { $gte: new Date().toISOString() } },
+                    sort: [
+                        {
+                            fieldName: 'startDate',
+                            order: extendedBookings.SortOrder.ASC,
+                        },
+                    ],
+                },
+                { withBookingAllowedActions: true }
+            ),
+        getMyBookingHistory: async () =>
+            await wixClient!.bookings.queryExtendedBookings(
+                {
+                    filter: { startDate: { $lt: new Date().toISOString() } },
+                    sort: [
+                        {
+                            fieldName: 'startDate',
+                            order: extendedBookings.SortOrder.DESC,
+                        },
+                    ],
+                },
+                { withBookingAllowedActions: true }
+            ),
+        cancelBooking: async ({
+            _id,
+            revision,
+        }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
+            await wixClient!.bookingsActions.cancelBooking(_id!, {
+                revision: revision!,
+            }),
 
         checkout: async () => {
             let checkoutId;
