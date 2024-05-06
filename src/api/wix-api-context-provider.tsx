@@ -61,7 +61,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         ),
         getMyBookingHistory: async () => await wixClient!.bookings.queryExtendedBookings(
             {
-                filter: { startDate: { $gte: new Date().toISOString() } },
+                filter: { startDate: { $lt: new Date().toISOString() } },
                 sort: [
                     {
                         fieldName: 'startDate',
