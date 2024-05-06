@@ -1,7 +1,6 @@
 import { currentCart } from '@wix/ecom';
 import { OAuthStrategy, createClient } from '@wix/sdk';
 import { services, extendedBookings, bookings } from '@wix/bookings'
-import { } from '@wix/stores'
 import { tickets } from '@wix/events'
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
