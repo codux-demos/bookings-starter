@@ -38,12 +38,12 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getPromotedLessons: async () => {
             return (await wixClient.services.queryServices().limit(4).find()).items;
         },
-        getLessonBySlug: async (slug?: string) => {
+        getLesson: async (slug?: string) => {
             if (!slug) return
             return (await wixClient!.services.queryServices()
-                .eq('mainSlug.name', decodeURIComponent(slug))
-                .limit(1)
-                .find()).items[0];
+                    .eq('mainSlug.name', decodeURIComponent(slug))
+                    .limit(1)
+                    .find()).items[0];
         },
         getCart: () => {
             return wixClient.currentCart.getCurrentCart();

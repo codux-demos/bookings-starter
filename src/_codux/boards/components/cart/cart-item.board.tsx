@@ -1,7 +1,7 @@
 import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { CartItem } from '../../../../components/cart/cart-item/cart-item';
 import { ReactNode, useEffect, useState } from 'react';
-import { FakeDataSettings, createCartItem, createProduct } from '../../../fake-data/fake-data';
+import { FakeDataSettings, createCartItem, createLesson } from '../../../fake-data/fake-data';
 
 function ImageSetting({
     children,
@@ -24,7 +24,7 @@ export default createBoard({
     Board: () => {
         const [image, setImage] = useState<FakeDataSettings['imageToUse']>();
 
-        const product = createProduct('1', { imageToUse: image });
+        const product = createLesson('1', { imageToUse: image });
         const cartItem = createCartItem(product);
 
         return (

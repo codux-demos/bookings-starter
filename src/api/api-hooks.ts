@@ -25,7 +25,7 @@ export function useLessons() {
 }
 export function useLessonBySlug(slug?: string) {
     const wixApi = useContext(WixAPIContext);
-    return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLessonBySlug(slug));
+    return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLesson(slug));
 }
 
 export const usePromotedLessons = () => {
@@ -65,9 +65,9 @@ export const useAddToCart = () => {
             const itemInCart = findItemIdInCart(cart, arg.id, arg.options);
             return itemInCart
                 ? wixApi.updateCartItemQuantity(
-                    itemInCart._id,
-                    (itemInCart.quantity || 0) + arg.quantity
-                )
+                      itemInCart._id,
+                      (itemInCart.quantity || 0) + arg.quantity
+                  )
                 : wixApi.addToCart(arg.id, arg.quantity, arg.options);
         },
         {
