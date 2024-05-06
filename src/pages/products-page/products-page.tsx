@@ -28,6 +28,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
                         item.name && (
                             // <Link to={ROUTES.product.to(item.mainSlug.name)} key={item.mainSlug?.name}>
                             <ProductCard
+                                key={item.mainSlug?.name}
                                 imageUrl={getImageHttpUrl(item.media?.mainMedia?.image, 240)}
                                 name={item.name}
                                 price={undefined}

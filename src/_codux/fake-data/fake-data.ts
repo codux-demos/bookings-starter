@@ -49,6 +49,9 @@ export function createLesson(id?: string, settings?: FakeDataSettings): Lesson {
         _id: id ?? faker.string.uuid(),
         tagLine: faker.lorem.word(),
         name: faker.lorem.words(settings?.numberOfWordsInTitle || 2),
+        mainSlug: {
+            name: faker.lorem.slug(),
+        },
         description: faker.commerce.productDescription(),
         media: {
             items: images,
@@ -91,8 +94,6 @@ function createImage(settings?: FakeDataSettings): Media {
         const imgIndex = faker.number.int({ min: 0, max: length - 1 });
         image = images[imgIndex];
     }
-    const match = image.match(/\[(\d+)_(\d+)]/);
-
     return {
         image: `${FAKE_IMAGES_FOLDER}${image}`,
     };
