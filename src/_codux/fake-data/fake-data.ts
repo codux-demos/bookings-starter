@@ -52,7 +52,7 @@ export function createLesson(id?: string, settings?: FakeDataSettings): Lesson {
     });
     return {
         _id: id ?? faker.string.uuid(),
-        tagLine: faker.lorem.text(),
+        tagLine: faker.lorem.word(),
         name: faker.lorem.words(settings?.numberOfWordsInTitle || 2),
         description: faker.commerce.productDescription(),
         media: {
