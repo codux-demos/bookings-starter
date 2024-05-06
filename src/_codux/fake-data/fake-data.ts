@@ -1,8 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { services } from '@wix/bookings';
-import { PaymentOptionType } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.public';
-import { Cart, WixAPI } from '../../api/wix-api-context-provider';
-import { WeightUnit } from '@wix/ecom/build/cjs/src/ecom-v1-cart-current-cart.universal';
+import { WixAPI } from '../../api/wix-api-context-provider';
 import {
     FAKE_IMAGES,
     FAKE_IMAGES_FOLDER,
@@ -13,11 +11,8 @@ import {
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
-type CartTotals = Exclude<Awaited<ReturnType<WixAPI['getCartTotals']>>, undefined>;
 
 export type FakeDataSettings = {
-    /** @important */
-    numberOfCartItems?: number;
     /** @important */
     numberOfLessons?: number;
     /** @important */
@@ -97,63 +92,8 @@ function createImage(settings?: FakeDataSettings): Media {
         image = images[imgIndex];
     }
     const match = image.match(/\[(\d+)_(\d+)]/);
-    const width = match ? parseInt(match[1]) : 640;
-    const height = match ? parseInt(match[2]) : 480;
 
     return {
         image: `${FAKE_IMAGES_FOLDER}${image}`,
-    };
-}
-
-export function createCart(lessons: Lesson[]): Cart {
-    return {
-        _id: faker.string.uuid(),
-        currency: '$',
-        lineItems: lessons.map(createCartItem),
-        appliedDiscounts: [],
-        conversionCurrency: 'USD',
-        weightUnit: WeightUnit.KG,
-    };
-}
-
-export function getCartTotals(): CartTotals {
-    return {
-        currency: '$',
-        additionalFees: [],
-        appliedDiscounts: [],
-        calculatedLineItems: [],
-        violations: [],
-        weightUnit: WeightUnit.KG,
-        priceSummary: {
-            subtotal: createPrice(),
-        },
-    };
-}
-
-export function createCartItem(lesson: Lesson): Cart['lineItems'][0] {
-    return {
-        _id: faker.string.uuid(),
-        productName: {
-            original: lesson.name!,
-            translated: lesson.name,
-        },
-        quantity: faker.number.int({ min: 1, max: 10 }),
-        image: lesson.media!.mainMedia!.image!,
-        paymentOption: PaymentOptionType.FULL_PAYMENT_ONLINE,
-        price: createPrice(),
-        descriptionLines: [],
-        url: '',
-    };
-}
-
-function createPrice() {
-    const priceStr = faker.commerce.price({ symbol: '$' });
-    const price = parseFloat(priceStr.replace('$', ''));
-
-    return {
-        amount: price.toString(),
-        convertedAmount: price.toString(),
-        formattedConvertedAmount: priceStr,
-        formattedAmount: priceStr,
     };
 }

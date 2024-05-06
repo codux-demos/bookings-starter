@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { getRoutes } from './router/routes';
 import { WixAPIContextProvider } from './api/wix-api-context-provider';
-import { CartOpenContextProvider } from './components/cart/cart-open-context';
 
 const routes = getRoutes();
 function App() {
@@ -10,9 +9,7 @@ function App() {
 
     return (
         <WixAPIContextProvider>
-            <CartOpenContextProvider>
-                <RouterProvider router={router} />
-            </CartOpenContextProvider>
+            <RouterProvider router={router} />
         </WixAPIContextProvider>
     );
 }

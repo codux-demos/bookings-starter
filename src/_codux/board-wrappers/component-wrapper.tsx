@@ -3,7 +3,6 @@ import {
     FakeWixAPIContextProvider,
     FakeDataSettings,
 } from '../fake-data/fake-wix-api-context-provider';
-import { CartOpenContextProvider } from '../../components/cart/cart-open-context';
 
 type Props = {
     children: React.ReactNode;
@@ -20,9 +19,7 @@ export function ComponentWrapper(props: Props) {
     ]);
     return (
         <FakeWixAPIContextProvider settings={props.settings}>
-            <CartOpenContextProvider>
-                <RouterProvider router={router} />
-            </CartOpenContextProvider>
+            <RouterProvider router={router} />
         </FakeWixAPIContextProvider>
     );
 }
