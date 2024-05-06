@@ -5,47 +5,58 @@
 }
 
 .h1Normal {
-    font: var(--h1Normal);
+    font: $large-thin-title;
 }
 
 .h1Light {
     font: var(--h1Light);
 }
-.h1Bold {
-    font: $large-thin-title;
+.extra-large-thin-title {
+    font: $extra-large-thin-title;
 }
 
 .h2Normal {
-    font: var(--h2Normal);
+    font: $large-title-mobile;
+}
+
+.large-paragraph {
+    font: $large-paragraph;
 }
 
 .h2Light {
     font: var(--h2Light);
 }
 .h2Bold {
-    font: var(--h2Bold);
+    font: $large-title;
 }
 
-.pNormal {
-    font: var(--pNormal);
+.medium-paragraph {
+    font: $medium-paragraph;
 }
 
-.pLight {
-    font: var(--pLight);
+.medium-paragraph-bold {
+    font: $medium-paragraph-bold;
 }
-.pBold {
-    font: var(--pBold);
-}
-
-.smallNormal {
-    font: var(--smallNormal);
+.extra-large-text {
+    font: $extra-large-text;
 }
 
-.smallLight {
-    font: var(--smallLight);
+.extra-large-text {
+    font: $extra-large-text;
 }
-.smallBold {
-    font: var(--smallBold);
+
+.extra-small-title {
+    font: $extra-small-title;
+}
+.small-text {
+    font: $small-text;
+}
+
+.extra-small-text {
+    font: $extra-small-text;
+}
+.small-text-font-bold {
+    font: $small-text-font-bold;
 }
 
 .b10 {

@@ -1,5 +1,3 @@
-
-
 import VarsClasses from './vars-classes.module.scss';
 import { createBoard } from '@wixc3/react-board';
 import StyleGuide_board_module from './style-guide.board.module.scss';
@@ -12,7 +10,7 @@ export default createBoard({
         <div className={Classnames(StyleGuide_board_module.root)}>
             <div className={StyleGuide_board_module.pageHeader}>
                 <h1 className={StyleGuide_board_module.TitleHeader}>Style Guide</h1>
-                <span className={StyleGuide_board_module.logo}>LOGO</span>
+                <span className={StyleGuide_board_module.logo}>Booking - Yoga</span>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
@@ -37,120 +35,192 @@ export default createBoard({
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <h1 className={Classnames(VarsClasses.h1Bold, StyleGuide_board_module.margin)}>
-                            Heading 42
+                        <h1
+                            className={Classnames(
+                                VarsClasses['extra-large-thin-title'],
+                                StyleGuide_board_module.margin,
+                            )}
+                        >
+                            Cover thin
                         </h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Bold <br /> DM Sans, 700
+                            extra-large-thin-title
+                            <br />
+                            100 65px/1.2
                         </div>
                     </div>
                     <div>
-                        <h1 className={Classnames(VarsClasses.h1Normal, StyleGuide_board_module.margin)}>
-                            Heading 42
+                        <h1
+                            className={Classnames(
+                                VarsClasses.h1Normal,
+                                StyleGuide_board_module.margin,
+                            )}
+                        >
+                            Best Sellers
                         </h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Normal <br /> DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <h1 className={Classnames(VarsClasses.h1Light, StyleGuide_board_module.margin)}>
-                            Heading 42
-                        </h1>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Light <br /> DM Sans, 300
+                            large-thin-title
+                            <br />
+                            100 45px/1.4
                         </div>
                     </div>
                 </div>
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Subheading / h2</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <h2 className={Classnames(VarsClasses.h2Bold, StyleGuide_board_module.margin)}>
-                            Heading 28
-                        </h2>
+                        <p
+                            className={Classnames(
+                                VarsClasses['extra-large-text'],
+                                StyleGuide_board_module.margin,
+                            )}
+                        >
+                            Extra large
+                        </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            h2Bold <br /> DM Sans, 700
+                            extra-large-text
+                            <br />
+                            400 60px/1.4
                         </div>
                     </div>
                     <div>
-                        <h2 className={Classnames(VarsClasses.h2Normal, StyleGuide_board_module.margin)}>
-                            Heading 28
+                        <h2
+                            className={Classnames(
+                                VarsClasses.h2Bold,
+                                StyleGuide_board_module.margin,
+                            )}
+                        >
+                            Large Subtitle
+                        </h2>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            large-title
+                            <br />
+                            400 45px/1.4
+                        </div>
+                    </div>
+                    <div>
+                        <h2
+                            className={Classnames(
+                                VarsClasses.h2Normal,
+                                StyleGuide_board_module.margin,
+                            )}
+                        >
+                            Large Subtitle Mobile{' '}
                         </h2>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             h2Normal
                             <br />
-                            DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className={Classnames(VarsClasses.h2Light, StyleGuide_board_module.margin)}>
-                            Heading 28
-                        </h2>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h2Light <br /> DM Sans, 300
+                            400 30px/1.4
                         </div>
                     </div>
                 </div>
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Body / p</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <p className={Classnames(VarsClasses.pBold, StyleGuide_board_module.margin)}>
-                            Paragraph 12
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['large-paragraph'],
+                            )}
+                        >
+                            Large
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            pBold <br /> DM Sans, 700
+                            large-paragraph
+                            <br />
+                            400 52px/1.6
                         </div>
                     </div>
                     <div>
-                        <p className={Classnames(VarsClasses.pNormal, StyleGuide_board_module.margin)}>
-                            Paragraph 12
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['medium-paragraph'],
+                            )}
+                        >
+                            Medium
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            pNormal
+                            medium-paragraph
                             <br />
-                            DM Sans, 400
+                            400 34px/1.4
                         </div>
                     </div>
                     <div>
-                        <p className={Classnames(VarsClasses.pLight, StyleGuide_board_module.margin)}>
-                            Paragraph 12
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['medium-paragraph-bold'],
+                            )}
+                        >
+                            Medium bold
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            pLight
+                            medium-paragraph-bold
                             <br />
-                            DM Sans, 300
+                            1000 42px/1.4
                         </div>
                     </div>
                 </div>
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Smaller Text</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <p className={Classnames(VarsClasses.smallBold, StyleGuide_board_module.margin)}>
-                            Detail Text 11
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['extra-small-title'],
+                            )}
+                        >
+                            Extra small title
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            smallBold
+                            extra small title
                             <br />
-                            DM Sans, 700
+                            700 11px/1.4
                         </div>
                     </div>
                     <div>
-                        <p className={Classnames(VarsClasses.smallNormal, StyleGuide_board_module.margin)}>
-                            Detail Text 11
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['small-text-font-bold'],
+                            )}
+                        >
+                            Small bold
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            smallNormal
+                            small-text-font-bold
                             <br />
-                            DM Sans, 400
+                            1000 24px/1.4
                         </div>
                     </div>
                     <div>
-                        <p className={Classnames(VarsClasses.smallLight, StyleGuide_board_module.margin)}>
-                            Detail Text 11
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['small-text'],
+                            )}
+                        >
+                            Small text
                         </p>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            smallLight
+                            small-text
                             <br />
-                            DM Sans, 300
+                            400 16px/1.4
+                        </div>
+                    </div>
+                    <div>
+                        <p
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['extra-small-text'],
+                            )}
+                        >
+                            Etra small
+                        </p>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            extra-small-text
+                            <br />
+                            400 12px/1.45
                         </div>
                     </div>
                 </div>
