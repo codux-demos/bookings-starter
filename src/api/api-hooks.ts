@@ -33,6 +33,16 @@ export const usePromotedLessons = () => {
     return useSwr('promoted-lessons', wixApi.getPromotedLessons);
 };
 
+export const useUpcomingBookings = () => {
+    const wixApi = useContext(WixAPIContext);
+    return useSwr('my-upcoming-bookings', wixApi.getMyUpcomingBookings);
+};
+
+export const useBookingHistory = () => {
+    const wixApi = useContext(WixAPIContext);
+    return useSwr('booking-history', wixApi.getMyBookingHistory);
+};
+
 export const useCart = () => {
     const wixApi = useContext(WixAPIContext);
     return useSwr('cart', wixApi.getCart);
