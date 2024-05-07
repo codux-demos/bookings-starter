@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../router/config';
 import styles from './lesson-item.module.scss';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 
@@ -14,12 +16,11 @@ export const LessonItem = ({ title, price, link, className }: LessonItemProps) =
         <div className={classNames(styles.root, className)}>
             <h1 className={styles.title}>{title}</h1>
             <span className={CommonStyles_module.price}>{price}</span>
-            <button
-                className={classNames(CommonStyles_module.primaryButton, styles.bookNow)}
-                onClick={() => link}
-            >
-                Book Now
-            </button>
+            <Link className={styles.bookNow} to={ROUTES.product.to(link)}>
+                <button className={CommonStyles_module.primaryButton}>
+                    Book Now
+                </button>
+            </Link>
         </div>
     );
 };

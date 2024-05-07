@@ -23,12 +23,12 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
                 {myLessons?.map(
                     (item) =>
                         item.mainSlug?.name &&
+                        item.payment?.fixed?.price?.value &&
                         item.name && (
-                            <div className={styles.lesson}>
+                            <div key={item.mainSlug.name} className={styles.lesson}>
                                 <LessonItem
-                                    key={item.mainSlug.name}
                                     title={item.name}
-                                    price={item.payment!.fixed!.price!.value!}
+                                    price={item.payment.fixed.price.value}
                                     link={ROUTES.product.to(item.mainSlug.name)}
                                 />
                             </div>
