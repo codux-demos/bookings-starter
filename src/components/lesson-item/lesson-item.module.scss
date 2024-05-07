@@ -2,8 +2,8 @@
 
 .root {
     display: grid;
-    justify-content: space-between;
     padding: 10px;
+    padding-bottom: 10px;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
@@ -11,6 +11,11 @@
 
 .title {
     font: $medium-paragraph;
+    justify-self: start;
+}
+
+.bookNow {
+    justify-self: end;
 }
 
 @media (width <= 768px) {
@@ -25,5 +30,10 @@
 
     .title {
         font: $medium-title;
+        justify-self: center;
+    }
+
+    .bookNow {
+        justify-self: center;
     }
 }

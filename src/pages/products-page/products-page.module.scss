@@ -1,7 +1,8 @@
 @import '@styles/theme.module.scss';
 
 .root {
-    padding-top: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 .title {
@@ -16,7 +17,23 @@
     height: 100%;
 }
 
-@media (width < 430px) {
+.lesson {
+    border-bottom: 1px solid #d2d2d2;
+
+    &:first-child {
+        border-top: 1px solid #d2d2d2;
+    }
+}
+
+@media (width <= 768px) {
+    .lesson {
+        border: 0;
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
     .title {
         margin-top: 20px;
         margin-bottom: 10px;

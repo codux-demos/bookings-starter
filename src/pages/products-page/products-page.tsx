@@ -19,18 +19,22 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <h1 className={styles.title}>All Products</h1>
-            {myLessons?.map(
-                (item) =>
-                    item.mainSlug?.name &&
-                    item.name && (
-                        <LessonItem
-                            key={item.mainSlug.name}
-                            title={item.name}
-                            price={item.payment!.fixed!.price!.value!}
-                            link={ROUTES.product.to(item.mainSlug.name)}
-                        />
-                    ),
-            )}
+            <div className={styles.lessons}>
+                {myLessons?.map(
+                    (item) =>
+                        item.mainSlug?.name &&
+                        item.name && (
+                            <div className={styles.lesson}>
+                                <LessonItem
+                                    key={item.mainSlug.name}
+                                    title={item.name}
+                                    price={item.payment!.fixed!.price!.value!}
+                                    link={ROUTES.product.to(item.mainSlug.name)}
+                                />
+                            </div>
+                        ),
+                )}
+            </div>
         </div>
     );
 };

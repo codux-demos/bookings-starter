@@ -14,7 +14,12 @@ export const LessonItem = ({ title, price, link, className }: LessonItemProps) =
         <div className={classNames(styles.root, className)}>
             <h1 className={styles.title}>{title}</h1>
             <span className={CommonStyles_module.price}>{price}</span>
-            <button className={CommonStyles_module.primaryButton} onClick={() => link}>Book Now</button>
+            <button
+                className={classNames(CommonStyles_module.primaryButton, styles.bookNow)}
+                onClick={() => link}
+            >
+                Book Now
+            </button>
         </div>
     );
 };
