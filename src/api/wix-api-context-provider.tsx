@@ -48,6 +48,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                             order: extendedBookings.SortOrder.ASC,
                         },
                     ],
+                    cursorPaging: { limit: 20 },
                 },
                 { withBookingAllowedActions: true }
             ),
@@ -61,15 +62,13 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                             order: extendedBookings.SortOrder.DESC,
                         },
                     ],
+                    cursorPaging: { limit: 20 },
                 },
                 { withBookingAllowedActions: true }
             ),
-        cancelBooking: async ({
-            _id,
-            revision,
-        }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
-            await wixClient!.bookingsActions.cancelBooking(_id!, {
-                revision: revision!,
+        cancelBooking: async (booking: extendedBookings.Booking) =>
+            await wixClient!.bookingsActions.cancelBooking(booking._id!, {
+                revision: booking.revision!,
             }),
 
         checkout: async () => {

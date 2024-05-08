@@ -1,57 +1,85 @@
-import { useState } from 'react';
 import classNames from 'classnames';
-import styles from './products-page.module.scss';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../router/config';
-import { ProductCard } from '../../components/product-card/product-card';
-import { useUpcomingBookings } from '../../api/api-hooks';
-import { getImageHttpUrl } from '../../api/wix-image';
+import styles from './my-bookings-page.module.scss';
+import { useBookingHistory, useUpcomingBookings, useWixApi } from '../../api/api-hooks';
 import commonStyles from '../../styles/common-styles.module.scss';
 import { TabItem, Tabs } from '/src/components/tabs/tabs';
+import { format, getDate } from 'date-fns';
+import { extendedBookings } from '@wix/bookings';
 
-export interface ProductsPageProps {
+export type MyBookingsPageProps = {
     className?: string;
 }
 
-
-const Booking = ({ booking }: { booking: any }) => {
-    return (
-        <div>
-            <div className={styles.date}>
-                <div className={styles.day}>
-
-                </div>
-                <div className={styles.dayInfo}>
-
-                </div>
-            </div>
-            <div className={styles.description}>
-                <div className={styles.label}>
-
-                </div>
-                <div className={styles.fullDate}>
-
-                </div>
-            </div>
-        </div>
-    )
+export type BookingProps = {
+    booking: extendedBookings.Booking;
+    onCancel?: (booking: extendedBookings.Booking) => void;
 }
 
-export const MyBookingsPage = ({ className }: ProductsPageProps) => {
-    const [activeTab, setActiveTab] = useState('myBookings');
-    const { data: myUpcomingBookings, isLoading } = useUpcomingBookings();
-    console.log('!', myUpcomingBookings);
-    if (!myUpcomingBookings && isLoading) {
+enum SelectedView {
+    UPCOMING = 'UPCOMING',
+    HISTORY = 'HISTORY',
+}
+
+
+
+const Booking = ({ booking, onCancel }: BookingProps) => {
+    const date = booking.startDate!;
+    return (
+        <div className={styles['booking-root']}>
+            <div className={styles.content}>
+                <div className={styles.date}>
+                    <h3 className={styles.day}>{getDate(date)}</h3>
+                    <div className={styles['date-short']}>
+                        <span className={styles.dayInfo}>{format(date, 'EEE')}</span>
+                        <span className={styles['date-month-short']}>{format(date, 'MMM')}</span>
+                    </div>
+                </div>
+                <div className={styles.description}>
+                    <span className={styles.label}>{booking.bookedEntity!.title}</span>
+                    <span className={styles['full-date']}>
+                        {format(date, `MMM d '·' EEE, h:mm a`)}
+                    </span>
+                </div>
+            </div>
+            {onCancel && (
+                <button className={classNames(commonStyles.primaryButton, styles['cancel-button'])} onClick={() => onCancel(booking)}>
+                    Cancel
+                </button>
+            )}
+        </div>
+    );
+};
+
+export const MyBookingsPage = ({ className }: MyBookingsPageProps) => {
+    const { data: myUpcomingBookings, isLoading: isUpcomingBookingsLoading } = useUpcomingBookings();
+    const { data: bookingHistory, isLoading: isBookingHistoryLoading } = useBookingHistory();
+    const wixApi = useWixApi();
+
+    if (!myUpcomingBookings && isUpcomingBookingsLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
+    const handleCancel = (booking: extendedBookings.Booking) => {
+        if (!booking) return;
+        wixApi.cancelBooking(booking);
+    };
 
     return (
         <div className={classNames(styles.root, className)}>
-            <h1 className={styles.title}>All Products</h1>
-            <Tabs items={[{ label: 'My Bookings', id: 'myBookings' }, { label: 'Booking history', id: 'bookingHistory' }]}>
-                <TabItem id="myBookings">
-                    {myUpcomingBookings?.map((booking) => (
-                        <Booking booking={booking} />
+            <h1 className={styles.title}>My bookings</h1>
+            <Tabs
+                items={[
+                    { label: 'Upcoming', id: SelectedView.UPCOMING },
+                    { label: 'History', id: SelectedView.HISTORY },
+                ]}
+            >
+                <TabItem id={SelectedView.UPCOMING}>
+                    {myUpcomingBookings?.extendedBookings.map(({ booking }) => (
+                        booking && <Booking booking={booking} key={booking?._id} onCancel={handleCancel} />
+                    ))}
+                </TabItem>
+                <TabItem id={SelectedView.HISTORY}>
+                    {bookingHistory?.extendedBookings.map(({ booking }) => (
+                        booking && <Booking booking={booking} key={booking._id} />
                     ))}
                 </TabItem>
             </Tabs>

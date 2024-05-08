@@ -5,6 +5,7 @@ import { AboutPage } from '../pages/about-page/about-page';
 import { ROUTES } from './config';
 import { ProductsPage } from '../pages/products-page/products-page';
 import { ThankYouPage } from '../components/thank-you-page/thank-you-page';
+import { MyBookingsPage } from '../pages/my-bookings-page/my-bookings-page';
 
 export const getRoutes: () => RouteObject[] = () => [
     {
@@ -15,6 +16,7 @@ export const getRoutes: () => RouteObject[] = () => [
             { path: ROUTES.products.route, element: <ProductsPage /> },
             { path: ROUTES.about.route, element: <AboutPage /> },
             { path: ROUTES.thankYou.route, element: <ThankYouPage /> },
+            { path: ROUTES.myBookings.route, element: <MyBookingsPage /> },
         ],
     },
 ];

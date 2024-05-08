@@ -1,5 +1,5 @@
 import React, { FC, useMemo, useState } from 'react';
-import { createLessons, createLesson, FakeDataSettings as Settings } from './fake-data';
+import { createLessons, createLesson, FakeDataSettings as Settings, createUpcomingBookings, createBookingHistory } from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
 import { SWRConfig } from 'swr';
@@ -20,6 +20,16 @@ function getWixApi(settings?: Settings): WixAPI {
         },
         getPromotedLessons: async () => {
             return Promise.resolve(lessons.slice(0, 4));
+        },
+        getMyUpcomingBookings: async () => {
+            return Promise.resolve(createUpcomingBookings(settings));
+        },
+        getMyBookingHistory: async () => {
+            return Promise.resolve(createBookingHistory(settings));
+        },
+        cancelBooking: async (booking: any): Promise<any> => {
+            alert('Cancel booking');
+            return Promise.resolve({ success: true });
         },
         checkout: () => {
             alert('Checkout');

@@ -11,6 +11,7 @@ import {
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
+type Bookings = Exclude<Awaited<ReturnType<WixAPI['getMyUpcomingBookings']>>, undefined>;
 
 export type FakeDataSettings = {
     /** @important */
@@ -25,6 +26,8 @@ export type FakeDataSettings = {
     priceMinValue?: number;
     /** @important */
     priceMaxValue?: number;
+    /** @important */
+    numberOfBookings?: number;
 };
 
 export function createLessons(
@@ -97,4 +100,100 @@ function createImage(settings?: FakeDataSettings): Media {
     return {
         image: `${FAKE_IMAGES_FOLDER}${image}`,
     };
+}
+
+export function createBookingData({ isHistory = false }) {
+    const startDate = isHistory ? faker.date.past().toISOString() : faker.date.future().toISOString();
+    const endDate = isHistory ? faker.date.past().toISOString() : faker.date.future().toISOString();
+
+    return {
+        booking: {
+            id: faker.string.uuid(),
+            _id: faker.string.uuid(),
+            bookedEntity: {
+                slot: {
+                    sessionId: faker.string.uuid(),
+                    serviceId: faker.string.uuid(),
+                    scheduleId: faker.string.uuid(),
+                    startDate,
+                    endDate,
+                    timezone: 'Europe/Dublin',
+                    resource: {
+                        id: faker.string.uuid(),
+                        name: faker.person.fullName(),
+                        email: faker.internet.email(),
+                        scheduleId: faker.string.uuid()
+                    },
+                    location: {
+                        id: faker.string.uuid(),
+                        name: 'HOME',
+                        locationType: 'OWNER_BUSINESS'
+                    }
+                },
+                title: 'Example Service',
+                tags: ['INDIVIDUAL']
+            },
+            contactDetails: {
+                contactId: faker.string.uuid(),
+                firstName: faker.person.firstName(),
+                email: faker.internet.email(),
+                timeZone: 'Europe/Dublin',
+                countryCode: 'US'
+            },
+            additionalFields: [
+                {
+                    id: faker.string.uuid(),
+                    label: 'Example Message',
+                    valueType: 'LONG_TEXT',
+                    value: faker.lorem.paragraph()
+                },
+                {
+                    id: faker.string.uuid(),
+                    value: 'true',
+                    label: 'Example Checkbox',
+                    valueType: 'CHECK_BOX'
+                }
+            ],
+            numberOfParticipants: 1,
+            status: 'CONFIRMED',
+            paymentStatus: 'PAID',
+            selectedPaymentOption: 'ONLINE',
+            createdDate: faker.date.past().toISOString(),
+            bookingSource: {
+                platform: 'WEB',
+                actor: 'CUSTOMER',
+                appDefId: faker.string.uuid(),
+                appName: 'Wix Bookings'
+            },
+            revision: '3',
+            startDate,
+            endDate,
+            updatedDate: faker.date.recent().toISOString(),
+            totalParticipants: 1
+        }
+    };
+}
+
+export function createUpcomingBookings(settings?: FakeDataSettings): Bookings {
+    const result: any = {
+        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() => createBookingData({ isHistory: false })),
+        pagingMetaData: {
+            count: 0,
+            hasNext: false,
+            cursors: {}
+        }
+    };
+    return result
+}
+
+export function createBookingHistory(settings?: FakeDataSettings): Bookings {
+    const result: any = {
+        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() => createBookingData({ isHistory: true })),
+        pagingMetaData: {
+            count: 0,
+            hasNext: false,
+            cursors: {}
+        }
+    };
+    return result
 }
