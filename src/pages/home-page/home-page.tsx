@@ -4,6 +4,7 @@ import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { useNavigate } from 'react-router-dom';
 import { usePromotedLessons } from '../../api/api-hooks';
+import { LessonsPage } from '../lessons-page/lessons-page';
 
 export interface HomePageProps {
     className?: string;
@@ -26,6 +27,7 @@ export const HomePage = ({ className }: HomePageProps) => {
             />
             <h1 className={styles['hero-title']}>Best Sellers</h1>
             <p className={styles.HPprgrp}>Shop our best seller items</p>
+            <LessonsPage />
             {/* <div className={styles.cardsLayout}>
                 {lessons?.map((lesson) =>
                     lesson.slug && lesson.name ? (
