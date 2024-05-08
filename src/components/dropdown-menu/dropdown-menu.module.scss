@@ -10,18 +10,18 @@
     display: flex;
     gap: 5px;
     cursor: pointer;
-}
 
-.menu-button:hover {
-    background-color: #d2d2d2;
+    &:hover {
+        background-color: #d2d2d2;
+    }
 }
 
 .menu-item {
     padding: 10px 20px;
-}
 
-.menu-item:hover {
-    background-color: #d2d2d2;
+    &:hover {
+        background-color: #d2d2d2;
+    }
 }
 
 .menu-divider {

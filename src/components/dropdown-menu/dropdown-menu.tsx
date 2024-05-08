@@ -8,12 +8,18 @@ function login() {
     // TODO: once login is implemented, use it instead of this function.
 }
 
+interface DropdownMenuItem {
+    title: string;
+    redirectTo: string;
+}
+
 export interface DropdownMenuProps {
+    dropdownMenuItems: DropdownMenuItem[]
     username?: string;
     className?: string;
 }
 
-export const DropdownMenu = ({ username, className }: DropdownMenuProps) => {
+export const DropdownMenu = ({ dropdownMenuItems, username, className }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -27,11 +33,11 @@ export const DropdownMenu = ({ username, className }: DropdownMenuProps) => {
             </button>
             {isOpen && username && (
                 <ul>
-                    <li className={styles['menu-item']}>My Account</li>
-                    <li className={styles['menu-item']}>My Bookings</li>
-                    <li className={styles['menu-item']}>My Wallet</li>
-                    <li className={styles['menu-item']}>My Orders</li>
-                    <li className={styles['menu-item']}>My Addresses</li>
+                    {dropdownMenuItems.map((item) => (
+                        <li key={item.title} className={styles['menu-item']}>
+                            {item.title}
+                        </li>
+                    ))}
                     <li className={styles['menu-divider']}></li>
                     <li className={styles['menu-item']}>Log Out</li>
                 </ul>
