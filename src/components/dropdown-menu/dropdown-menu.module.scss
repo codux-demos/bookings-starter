@@ -1,30 +1,36 @@
 @import '@styles/theme.module.scss';
 
 .root {
-    width: 150px;
     cursor: pointer;
+    z-index: 1;
 }
 
 .menu-button {
-    padding: 10px 20px;
     display: flex;
-    gap: 5px;
-    cursor: pointer;
+    gap: 14px;
+}
 
-    &:hover {
-        background-color: #d2d2d2;
-    }
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
 }
 
 .menu-item {
     padding: 10px 20px;
 
     &:hover {
-        background-color: #d2d2d2;
+        color: #d2d2d2;
     }
-}
-
-.menu-divider {
-    border-top: 1px solid #d2d2d2;
-    margin: 0 20px;
 }
