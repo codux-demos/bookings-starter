@@ -16,6 +16,7 @@
     "@wix/sdk": "^1.7.2",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
+    "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "swr": "^2.2.5"
@@ -24,6 +25,7 @@
     "@faker-js/faker": "^8.3.1",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.45",
+    "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "@wixc3/react-board": "^2.5.0",
