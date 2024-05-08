@@ -1,5 +1,4 @@
 import CommonStyles_module from '../../../styles/common-styles.module.scss';
-import smallHeroImage from '../../../assets/img/[430_340]_heroImage04.jpg';
 import mediumHeroImage from '../../../assets/img/[760_460]_heroImage04.jpg';
 import largeHeroImage from '../../../assets/img/[1024_640]_heroImage04.jpg';
 import xLargeHeroImage from '../../../assets/img/[1400_640]_heroImage04.jpg';
@@ -29,7 +28,11 @@ export const HeroImage = ({
                 <source media="(1400px <= width)" srcSet={xLargeHeroImage} />
                 <source media="(1024px <= width)" srcSet={largeHeroImage} />
                 <source media="(760px <= width)" srcSet={mediumHeroImage} />
-                <img src={smallHeroImage} className={styles.image} alt="Hero background" />
+                <img
+                    src="https://static.wixstatic.com/media/11062b_fc6c9d326ba54e2db885119cd9354d78~mv2.jpg/v1/fill/w_1576,h_1392,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Yoga%20Pose.jpg"
+                    className={styles.image}
+                    alt="Hero background"
+                />
             </picture>
             <div className={styles.overlay}>
                 <p className={styles['small-title']}>{title}</p>
@@ -39,7 +42,7 @@ export const HeroImage = ({
                         onClick={onButtonClick}
                         className={classNames(
                             CommonStyles_module.primaryButton,
-                            styles['overlay-button']
+                            styles['overlay-button'],
                         )}
                     >
                         {buttonLabel}
