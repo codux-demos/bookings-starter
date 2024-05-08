@@ -20,7 +20,7 @@ export const ThankYouPage = ({ className }: ThankYouPageProps) => {
                     You will receive a confirmation email soon. Your order number: {orderId}
                 </p>
             </div>
-            <Link to={ROUTES.products.to()}>
+            <Link to={ROUTES.lessons.to()}>
                 <button className={CommonStyles_module.primaryButton} type="button">
                     Continue Shopping
                 </button>
