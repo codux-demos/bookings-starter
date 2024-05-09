@@ -69,30 +69,39 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             wixClient!.bookingsActions.cancelBooking(_id!, {
                 revision: revision!,
             }),
-        getServiceAvailability: (serviceId: string) =>
-            wixClient.availabilityCalendar.queryAvailability({
-                filter: { serviceId, startDate: '', endDate: '' },
-            }),
-        checkout: async () => {
-            let checkoutId;
-            // try {
-            //     const result = await wixClient.currentCart.createCheckoutFromCurrentCart({
-            //         channelType: currentCart.ChannelType.WEB,
-            //     });
-            //     checkoutId = result.checkoutId;
-            // } catch (e) {
-            //     return { success: false, url: '' };
-            // }
-            // const { redirectSession } = await wixClient.redirects.createRedirectSession({
-            //     ecomCheckout: { checkoutId },
-            //     callbacks: {
-            //         postFlowUrl: window.location.origin,
-            //         thankYouPageUrl: `${window.location.origin}${ROUTES.thankYou.to()}`,
-            //     },
-            // });
-            // return { success: true, url: redirectSession?.fullUrl };
-            return { success: true, url: '' };
+        getServiceAvailability: (serviceId: string) => {
+            const startDate = new Date().toISOString();
+            const endDate = new Date(
+                new Date(startDate).setMonth(new Date(startDate).getMonth() + 2)
+            ).toISOString();
+            return wixClient.availabilityCalendar.queryAvailability({
+                filter: {
+                    serviceId,
+                    startDate,
+                    endDate,
+                },
+            });
         },
+        // checkout: async () => {
+        //     let checkoutId;
+        //     // try {
+        //     //     const result = await wixClient.currentCart.createCheckoutFromCurrentCart({
+        //     //         channelType: currentCart.ChannelType.WEB,
+        //     //     });
+        //     //     checkoutId = result.checkoutId;
+        //     // } catch (e) {
+        //     //     return { success: false, url: '' };
+        //     // }
+        //     // const { redirectSession } = await wixClient.redirects.createRedirectSession({
+        //     //     ecomCheckout: { checkoutId },
+        //     //     callbacks: {
+        //     //         postFlowUrl: window.location.origin,
+        //     //         thankYouPageUrl: `${window.location.origin}${ROUTES.thankYou.to()}`,
+        //     //     },
+        //     // });
+        //     // return { success: true, url: redirectSession?.fullUrl };
+        //     return { success: true, url: '' };
+        // },
     };
 }
 
