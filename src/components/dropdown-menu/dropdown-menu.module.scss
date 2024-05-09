@@ -21,7 +21,7 @@
     flex-direction: column;
     align-items: end;
     position: absolute;
-    background-color: $snow-white;
+    background-color: $charcoal-black;
     margin-top: 5px;
     border-radius: 3px;
     border: 1px solid $light-gray;
@@ -31,6 +31,6 @@
     padding: 10px 20px;
 
     &:hover {
-        color: $p1;
+        color: $o1;
     }
 }
