@@ -1,0 +1,36 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu-button {
+    display: flex;
+    gap: 14px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    background-color: $snow-white;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid $light-gray;
+}
+
+.menu-item {
+    padding: 10px 20px;
+
+    &:hover {
+        color: $p1;
+    }
+}
