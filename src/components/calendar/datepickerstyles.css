@@ -2,10 +2,11 @@
   height: 35px;
   width: 35px;
   position: relative; /* Add this line */
+  border-radius: 50%;
 }
 
 .selected {
-  /* background-color: red; */
+  background-color: rgb(144, 178, 240);
 }
 
 .dayStyle:hover {

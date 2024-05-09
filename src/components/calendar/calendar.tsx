@@ -29,19 +29,27 @@ export const Calendar: React.FC<CalendarDataProps> = ({ availableDates }) => {
         const dayInWeek = date.getDay();
         const dayInMonth = date.getDate();
 
+
         return classNames('dayStyle', {
-            weekend: dayInWeek === 6,
+            // weekend: dayInWeek === 6,
             available: isAvailable(dayInMonth),
             selected: dayInMonth === selectedDate.getDate(),
         });
     };
 
+
+
     return (
         <DatePicker
             selected={startDate}
-            onChange={(date: Date | null) => setStartDate(date ? date : new Date())}
+            onChange={(date: Date | null) => {
+                const newDate = date ? date : new Date();
+                setStartDate(newDate);
+                setSelectedDate(newDate);
+            }}
             inline
-            calendarClassName="calendar"
+            filterDate={(date) => date.getDay() != 6}
+
             // renderDayContents={renderDayContents}
             dayClassName={getDayClassName}
         />

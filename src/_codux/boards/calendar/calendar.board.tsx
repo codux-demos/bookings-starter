@@ -6,7 +6,7 @@ import { CalendarDateProps } from '/src/components/calendar-date/calendar-date';
 
 const data = {
     month: 'may',
-    avalableDates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    avalableDates: [1, 2, 7, 8],
     availableHours: {
         1: ['10:00', '11:00', '12:00'],
         2: ['10:20', '11:40', '12:00'],
@@ -33,7 +33,7 @@ export default createBoard({
 
     isSnippet: true,
     environmentProps: {
-        canvasMargin: { right: 0, bottom: 1, left: 0, top: 0 },
+        canvasMargin: { right: 0, bottom: 0, left: 0, top: 0 },
         windowWidth: 546,
         windowHeight: 552,
     },
