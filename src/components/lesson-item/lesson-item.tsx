@@ -11,10 +11,6 @@ export interface LessonItemProps {
     className?: string;
 }
 
-function logger() {
-    
-}
-
 export const LessonItem = ({ title, price, link, className }: LessonItemProps) => {
     return (
         <div className={classNames(styles.root, className)}>
