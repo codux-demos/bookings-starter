@@ -25,6 +25,7 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
+        getServiceAvailability: (serviceId: string) => {},
     };
 
     return api;

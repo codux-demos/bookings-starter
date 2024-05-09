@@ -11,6 +11,7 @@ import {
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
+type LessonAvailability = Exclude<Awaited<ReturnType<WixAPI['getServiceAvailability']>>, undefined>;
 
 export type FakeDataSettings = {
     /** @important */

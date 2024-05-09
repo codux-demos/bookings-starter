@@ -18,3 +18,7 @@ export const ROUTES = {
 };
 
 export type ROUTE_KEYS = keyof typeof ROUTES;
+
+export type RouteParams = {
+    [LESSON]: { slug: string };
+};

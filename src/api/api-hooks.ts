@@ -26,6 +26,11 @@ export function useLessonBySlug(slug?: string) {
     return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLesson(slug));
 }
 
+export const useAvailability = (serviceId: string) => {
+    const wixApi = useContext(WixAPIContext);
+    return useSwr(`availability/${serviceId}`, () => wixApi.getServiceAvailability(serviceId));
+};
+
 export const usePromotedLessons = () => {
     const wixApi = useContext(WixAPIContext);
     return useSwr('promoted-lessons', wixApi.getPromotedLessons);

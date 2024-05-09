@@ -11,15 +11,17 @@ export interface LessonItemProps {
     className?: string;
 }
 
+function logger() {
+    
+}
+
 export const LessonItem = ({ title, price, link, className }: LessonItemProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <h1 className={styles.title}>{title}</h1>
             <span className={CommonStyles_module.price}>{price}</span>
             <Link className={styles.bookNow} to={ROUTES.lesson.to(link)}>
-                <button className={CommonStyles_module.primaryButton}>
-                    Book Now
-                </button>
+                <button className={CommonStyles_module.primaryButton}>Book Now</button>
             </Link>
         </div>
     );
