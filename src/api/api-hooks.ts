@@ -4,6 +4,10 @@ import { WixAPIContext } from './wix-api-context-provider';
 
 const getLessonKey = (slug: string) => `lesson/${slug}`;
 
+export const useWixApi = () => {
+    return useContext(WixAPIContext);
+}
+
 export function useLessons() {
     const wixApi = useContext(WixAPIContext);
     const { mutate } = useSWRConfig();
@@ -22,11 +26,21 @@ export function useLessons() {
     });
 }
 export function useLessonBySlug(slug?: string) {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLesson(slug));
 }
 
 export const usePromotedLessons = () => {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr('promoted-lessons', wixApi.getPromotedLessons);
+};
+
+export const useUpcomingBookings = () => {
+    const wixApi = useWixApi();
+    return useSwr('my-upcoming-bookings', wixApi.getMyUpcomingBookings);
+};
+
+export const useBookingHistory = () => {
+    const wixApi = useWixApi();
+    return useSwr('booking-history', wixApi.getMyBookingHistory);
 };

@@ -1,0 +1,64 @@
+@import '../../styles/theme.module.scss';
+
+.root {
+    padding: 40px;
+    flex-grow: 1;
+}
+
+.booking-root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid $light-gray;
+}
+
+.date {
+    display: flex;
+    margin-right: 24px;
+}
+
+.day {
+    font-size: 3rem;
+    margin: 8px;
+}
+
+.date-short {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    align-content: end;
+    justify-content: center;
+}
+
+.date-month-short {
+    color: $gray;
+}
+
+.full-date {
+    color: $gray;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+@media (width <=768px) {
+    .root {
+        padding: 16px;
+    }
+
+    .booking-root {
+        padding: 6px;
+    }
+}

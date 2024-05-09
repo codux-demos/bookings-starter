@@ -29,6 +29,12 @@ export const Header = ({ className }: HeaderProps) => {
                     Lessons
                 </Link>
                 <Link
+                    to={ROUTES.myBookings.to()}
+                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                >
+                    My bookings
+                </Link>
+                <Link
                     to={ROUTES.about.to()}
                     className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
                 >
