@@ -1,0 +1,20 @@
+.container {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.container:hover {
+    background-color: lightblue;
+    border-radius: 50%;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: blue;
+}

@@ -1,0 +1,30 @@
+.dayStyle {
+  height: 35px;
+  width: 35px;
+  position: relative; /* Add this line */
+}
+
+.selected {
+  /* background-color: red; */
+}
+
+.dayStyle:hover {
+  background-color: rgb(144, 216, 240);
+  border-radius: 50%;
+}
+
+.available:after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.weekend {
+  color: red;
+}
