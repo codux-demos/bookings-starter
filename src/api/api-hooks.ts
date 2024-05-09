@@ -26,21 +26,21 @@ export function useLessons() {
     });
 }
 export function useLessonBySlug(slug?: string) {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr(slug ? getLessonKey(slug) : null, () => wixApi.getLesson(slug));
 }
 
 export const usePromotedLessons = () => {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr('promoted-lessons', wixApi.getPromotedLessons);
 };
 
 export const useUpcomingBookings = () => {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr('my-upcoming-bookings', wixApi.getMyUpcomingBookings);
 };
 
 export const useBookingHistory = () => {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr('booking-history', wixApi.getMyBookingHistory);
 };

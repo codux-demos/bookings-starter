@@ -1,16 +1,12 @@
 @import '../../styles/theme.module.scss';
 
-.tabs {
-    display: flex;
-    flex-direction: column;
-}
-
 .tabs-root {
     display: flex;
     flex-direction: column;
 }
 
 .tabs {
+    display: flex;
     flex-direction: row;
 }
 

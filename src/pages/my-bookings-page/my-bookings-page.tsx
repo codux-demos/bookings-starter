@@ -20,8 +20,6 @@ enum SelectedView {
     HISTORY = 'HISTORY',
 }
 
-
-
 const Booking = ({ booking, onCancel }: BookingProps) => {
     const date = booking.startDate!;
     return (
@@ -42,7 +40,7 @@ const Booking = ({ booking, onCancel }: BookingProps) => {
                 </div>
             </div>
             {onCancel && (
-                <button className={classNames(commonStyles.primaryButton, styles['cancel-button'])} onClick={() => onCancel(booking)}>
+                <button className={commonStyles.primaryButton} onClick={() => onCancel(booking)}>
                     Cancel
                 </button>
             )}
@@ -55,13 +53,14 @@ export const MyBookingsPage = ({ className }: MyBookingsPageProps) => {
     const { data: bookingHistory, isLoading: isBookingHistoryLoading } = useBookingHistory();
     const wixApi = useWixApi();
 
+    const handleCancel = (booking: extendedBookings.Booking) => {
+        if (!booking) return;
+        wixApi.cancelBooking({ _id: booking._id, revision: booking.revision });
+    };
+
     if (!myUpcomingBookings && isUpcomingBookingsLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
-    const handleCancel = (booking: extendedBookings.Booking) => {
-        if (!booking) return;
-        wixApi.cancelBooking(booking);
-    };
 
     return (
         <div className={classNames(styles.root, className)}>
@@ -74,7 +73,7 @@ export const MyBookingsPage = ({ className }: MyBookingsPageProps) => {
             >
                 <TabItem id={SelectedView.UPCOMING}>
                     {myUpcomingBookings?.extendedBookings.map(({ booking }) => (
-                        booking && <Booking booking={booking} key={booking?._id} onCancel={handleCancel} />
+                        booking && <Booking booking={booking} key={booking._id} onCancel={handleCancel} />
                     ))}
                 </TabItem>
                 <TabItem id={SelectedView.HISTORY}>

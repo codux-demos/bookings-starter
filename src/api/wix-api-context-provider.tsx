@@ -66,9 +66,12 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 },
                 { withBookingAllowedActions: true }
             ),
-        cancelBooking: async (booking: extendedBookings.Booking) =>
-            await wixClient!.bookingsActions.cancelBooking(booking._id!, {
-                revision: booking.revision!,
+        cancelBooking: async ({
+            _id,
+            revision,
+        }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
+            await wixClient!.bookingsActions.cancelBooking(_id!, {
+                revision: revision!,
             }),
 
         checkout: async () => {

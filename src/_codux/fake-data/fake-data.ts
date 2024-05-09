@@ -108,7 +108,6 @@ export function createBookingData({ isHistory = false }) {
 
     return {
         booking: {
-            id: faker.string.uuid(),
             _id: faker.string.uuid(),
             bookedEntity: {
                 slot: {
@@ -127,7 +126,7 @@ export function createBookingData({ isHistory = false }) {
                     location: {
                         id: faker.string.uuid(),
                         name: 'HOME',
-                        locationType: 'OWNER_BUSINESS'
+                        locationType: services.LocationType.OWNER_BUSINESS
                     }
                 },
                 title: 'Example Service',
@@ -156,7 +155,7 @@ export function createBookingData({ isHistory = false }) {
             ],
             numberOfParticipants: 1,
             status: 'CONFIRMED',
-            paymentStatus: 'PAID',
+            paymentStatus: services.Status.CONFIRMED,
             selectedPaymentOption: 'ONLINE',
             createdDate: faker.date.past().toISOString(),
             bookingSource: {

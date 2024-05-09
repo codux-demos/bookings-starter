@@ -3,7 +3,7 @@ import { PageWrapper } from '/src/_codux/board-wrappers/page-wrapper';
 import { MyBookingsPage } from '../../../../pages/my-bookings-page/my-bookings-page';
 
 export default createBoard({
-    name: '7 - My bookings',
+    name: '7 - My Bookings',
     Board: () => (
         <PageWrapper path="/my-bookings">
             <ContentSlot>
@@ -13,8 +13,6 @@ export default createBoard({
     ),
     isSnippet: false,
     environmentProps: {
-        canvasMargin: { right: 0, bottom: 0, left: 0 },
-        windowHeight: 845,
-        windowWidth: 818,
+        canvasMargin: { right: 0, bottom: 0, left: 0 }
     },
 });
