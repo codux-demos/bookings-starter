@@ -1,0 +1,18 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    margin: 10px;
+}
+.button {
+    background-color: #131212;
+    color: $snow-white;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 15px;
+    height: 40px;
+}
+.title {
+    font-weight: 800;
+}

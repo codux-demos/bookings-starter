@@ -1,0 +1,12 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0px;
+}
+.input {
+    border: 1px solid #b3b3b3;
+    padding-left: 8px;
+    height: 30px;
+}
