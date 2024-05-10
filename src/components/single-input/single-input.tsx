@@ -12,6 +12,7 @@ export const SingleInput = ({ className, inputTitle }: SingleInputProps) => {
         <div className={classNames(styles.root, className)}>
             {inputTitle}
             <input className={styles.input} />
+            
         </div>
     );
 };
