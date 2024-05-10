@@ -7,7 +7,7 @@ export default createBoard({
     Board: () => (
         <ComponentWrapper settings={{}}>
             <ContentSlot>
-                <SingleInput inputTitle="First name" />
+                <SingleInput inputTitle="First name" hasError={true} isMandatory={true} />
             </ContentSlot>
         </ComponentWrapper>
     ),
