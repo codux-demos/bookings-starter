@@ -3,7 +3,7 @@ import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
 
 export default createBoard({
-    name: 'SingleInput Basic',
+    name: 'SingleInput Mandatory ',
     Board: () => (
         <ComponentWrapper settings={{}}>
             <ContentSlot>

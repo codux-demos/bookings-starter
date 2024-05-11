@@ -10,23 +10,17 @@ export interface SingleInputProps {
 }
 
 export const SingleInput = ({ className, inputTitle, hasError, isMandatory }: SingleInputProps) => {
+    const styleToApply = hasError ? styles.inputError : styles.input;
+    const styleToApply1 = styles.input;
+
     return (
         <div className={classNames(styles.root, className)}>
             {inputTitle}
-            {isMandatory ? (
-                " *"
-            ) : (
-                true
-            )}   
-            <input className={styles.input} />
-            <div>
-            {hasError ? (
-                <p>Please fill this field. </p>
-            ) : (
-                true
-            )}
+            {isMandatory ? ' *' : true}
+            <input className={classNames(styleToApply)} />
+            <div className={styles.errormessage}>
+                {hasError ? <p>Please fill this field. </p> : true}
             </div>
-            
         </div>
     );
 };

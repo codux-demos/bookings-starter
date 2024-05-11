@@ -3,11 +3,11 @@ import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
 
 export default createBoard({
-    name: 'SingleInput Basic',
+    name: 'SingleInput Error',
     Board: () => (
         <ComponentWrapper settings={{}}>
             <ContentSlot>
-                <SingleInput inputTitle="First name" hasError={false} isMandatory={true} />
+                <SingleInput inputTitle="First name" hasError={true} isMandatory={false} />
             </ContentSlot>
         </ComponentWrapper>
     ),
