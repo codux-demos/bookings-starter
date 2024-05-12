@@ -99,3 +99,48 @@ function createImage(settings?: FakeDataSettings): Media {
         image: `${FAKE_IMAGES_FOLDER}${image}`,
     };
 }
+
+const createAvailability = (
+    id: string,
+    lessonAvailabilityEntry?: {
+        startDate?: Date;
+        endDate?: Date;
+        bookingDisabled?: boolean;
+    }
+): LessonAvailability['availabilityEntries'][number] => {
+    const defaultDate = new Date();
+    return {
+        slot: {
+            sessionId: faker.string.uuid(),
+            serviceId: id,
+            scheduleId: faker.string.uuid(),
+            startDate:
+                lessonAvailabilityEntry?.startDate?.toISOString() ?? defaultDate.toISOString(),
+            endDate:
+                lessonAvailabilityEntry?.endDate?.toISOString() ??
+                new Date(new Date(defaultDate).setHours(defaultDate.getHours() + 1)).toISOString(),
+        },
+        bookable: !lessonAvailabilityEntry?.bookingDisabled ?? true,
+        isFromV2: false,
+        locked: false,
+        openSpots: 15,
+        totalSpots: 15,
+        waitingList: {},
+    };
+};
+
+export const createLessonAvailability = (): LessonAvailability => {
+    const fakeDates = faker.date.betweens({
+        from: new Date(),
+        to: faker.date.soon({ days: 7 }),
+    });
+    const defaultEntries = fakeDates.map((date) => ({
+        startDate: date,
+        endDate: new Date(new Date(date).setHours(date.getHours() + 1)),
+        bookingDisabled: false,
+    }));
+    const lessonId = faker.string.uuid();
+    return {
+        availabilityEntries: defaultEntries.map((entry) => createAvailability(lessonId, entry)),
+    };
+};

@@ -1,5 +1,10 @@
 import React, { FC, useMemo, useState } from 'react';
-import { createLessons, createLesson, FakeDataSettings as Settings } from './fake-data';
+import {
+    createLessons,
+    createLesson,
+    FakeDataSettings as Settings,
+    createLessonAvailability,
+} from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
 import { SWRConfig } from 'swr';
@@ -25,7 +30,9 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
-        getServiceAvailability: (serviceId: string) => {},
+        getServiceAvailability: () => {
+            return Promise.resolve(createLessonAvailability());
+        },
     };
 
     return api;
