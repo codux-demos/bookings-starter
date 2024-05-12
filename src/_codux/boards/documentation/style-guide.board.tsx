@@ -320,13 +320,13 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
-                                CommonStyles_module.p1,
+                                CommonStyles_module.orange,
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            p1
+                            orange
                             <br />
-                            #874CCC
+                            #FF5E1A
                         </div>
                     </div>
                     <div>
