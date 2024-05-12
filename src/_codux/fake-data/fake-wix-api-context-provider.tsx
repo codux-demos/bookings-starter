@@ -1,5 +1,5 @@
 import React, { FC, useMemo, useState } from 'react';
-import { createLessons, createLesson, FakeDataSettings as Settings, createUpcomingBookings, createBookingHistory } from './fake-data';
+import { createLessons, createLesson, FakeDataSettings as Settings, createUpcomingBookings, createBookingHistory, createUserData } from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
 import { SWRConfig } from 'swr';
@@ -35,6 +35,9 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
+        getMyProfile: async () => {
+            return Promise.resolve(createUserData());
+        }
     };
 
     return api;

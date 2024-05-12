@@ -8,10 +8,13 @@ import {
     FakeImage,
     FakeImagesListKey,
 } from './fake-images';
+import { members } from '@wix/members';
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
 type Bookings = Exclude<Awaited<ReturnType<WixAPI['getMyUpcomingBookings']>>, undefined>;
+type Member = Exclude<Awaited<ReturnType<WixAPI['getMyProfile']>>, undefined>;
+
 
 export type FakeDataSettings = {
     /** @important */
@@ -196,3 +199,20 @@ export function createBookingHistory(settings?: FakeDataSettings): Bookings {
     };
     return result
 }
+
+
+export const createUserData = (): Member => ({
+    member: {
+        _id: faker.string.uuid(),
+        status: members.Status.APPROVED,
+        profile: {
+            nickname: faker.person.fullName(),
+            slug: faker.internet.userName().toLowerCase(),
+            title: faker.person.jobTitle()
+        },
+        privacyStatus: members.PrivacyStatusStatus.PUBLIC,
+        activityStatus: members.ActivityStatusStatus.ACTIVE,
+        _createdDate: new Date(faker.date.past()),
+        _updatedDate: new Date(faker.date.recent())
+    }
+})

@@ -1,5 +1,6 @@
 import { OAuthStrategy, createClient } from '@wix/sdk';
 import { services, extendedBookings, bookings } from '@wix/bookings';
+import { members } from '@wix/members';
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import { SWRConfig } from 'swr';
@@ -13,6 +14,7 @@ function getWixClient() {
             services,
             bookings: extendedBookings,
             bookingsActions: bookings,
+            members,
         },
         auth: OAuthStrategy({
             clientId: import.meta.env.VITE_WIX_CLIENT_ID || process.env.VITE_WIX_CLIENT_ID || '',
@@ -94,6 +96,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             // return { success: true, url: redirectSession?.fullUrl };
             return { success: true, url: '' };
         },
+        getMyProfile: async () => await wixClient.members.getCurrentMember(),
     };
 }
 
