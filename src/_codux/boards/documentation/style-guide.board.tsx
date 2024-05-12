@@ -299,12 +299,15 @@ export default createBoard({
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.orange,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d10
+                            orange
                             <br />
-                            #E0E0E8
+                            #FF5E1A
                         </div>
                     </div>
                     <div>
