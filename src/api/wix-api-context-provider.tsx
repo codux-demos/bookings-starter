@@ -48,6 +48,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                             order: extendedBookings.SortOrder.ASC,
                         },
                     ],
+                    cursorPaging: { limit: 20 },
                 },
                 { withBookingAllowedActions: true }
             ),
@@ -61,6 +62,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                             order: extendedBookings.SortOrder.DESC,
                         },
                     ],
+                    cursorPaging: { limit: 20 },
                 },
                 { withBookingAllowedActions: true }
             ),

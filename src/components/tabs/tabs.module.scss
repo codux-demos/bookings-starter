@@ -1,0 +1,26 @@
+@import '../../styles/theme.module.scss';
+
+.tabs-root {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab {
+    padding: 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: $light-gray;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.active {
+    color: $white;
+}
