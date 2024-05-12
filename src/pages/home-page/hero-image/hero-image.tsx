@@ -25,30 +25,29 @@ export const HeroImage = ({
     return (
         <div className={classNames(styles.root, className)}>
             <picture>
+                <div className={styles.overlay}>
+                    <h1 className={styles['small-title']}>PULSEFIT STUDIO</h1>
+                    {buttonLabel && (
+                        <button
+                            onClick={onButtonClick}
+                            className={classNames(
+                                CommonStyles_module.primaryButton,
+                                styles['overlay-button'],
+                            )}
+                        >
+                            {buttonLabel}
+                        </button>
+                    )}
+                </div>
                 <source media="(1400px <= width)" srcSet={xLargeHeroImage} />
                 <source media="(1024px <= width)" srcSet={largeHeroImage} />
                 <source media="(760px <= width)" srcSet={mediumHeroImage} />
                 <img
-                    src="https://static.wixstatic.com/media/11062b_fc6c9d326ba54e2db885119cd9354d78~mv2.jpg/v1/fill/w_1576,h_1392,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Yoga%20Pose.jpg"
+                    src="https://static.wixstatic.com/media/5e4fbc4a92024e92b259b53b0f9c9b9b.jpg/v1/fill/w_1576,h_1392,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Rooftop%20Yoga.jpg"
                     className={styles.image}
                     alt="Hero background"
                 />
             </picture>
-            <div className={styles.overlay}>
-                <p className={styles['small-title']}>{title}</p>
-                <h1 className={styles['big-title']}>{bottomLabel} </h1>
-                {buttonLabel && (
-                    <button
-                        onClick={onButtonClick}
-                        className={classNames(
-                            CommonStyles_module.primaryButton,
-                            styles['overlay-button'],
-                        )}
-                    >
-                        {buttonLabel}
-                    </button>
-                )}
-            </div>
         </div>
     );
 };

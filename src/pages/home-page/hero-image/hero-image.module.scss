@@ -2,17 +2,22 @@
 
 .root {
     color: $white;
-    display: flex;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    margin-left: 60px;
 }
 
 .overlay {
+    position: absolute;
     background-color: transparent;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     padding-left: 5vw;
-    background: $black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .image {
@@ -23,9 +28,10 @@
 }
 
 .small-title {
-    font: $medium-paragraph-bold;
+    font: $large-paragraph;
     margin-top: 80px;
-    font-size: 38px;
+    font-size: 120px;
+    text-align: center;
 }
 
 .big-title {
@@ -38,14 +44,15 @@
 }
 
 .overlay-button {
-    margin-top: 68px;
+    width: 130px;
+    justify-content: center;
 }
 
 // --- MEDIA QUERIES ---
 
 @media (width >= $large-desktop) {
     .small-title {
-        font-size: 42px;
+        font-size: 142px;
     }
 
     .big-title {

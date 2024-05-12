@@ -2,6 +2,7 @@
 
 .root {
     padding-bottom: 90px;
+    background-color: $black;
 }
 
 .top-label-highlighted {
@@ -25,15 +26,17 @@
 }
 
 .HPprgrp {
-    font: $large-paragraph;
+    font: $medium-paragraph;
     margin-bottom: 40px;
     text-align: center;
+    color: $white;
 }
 
 .hero-title {
     margin-top: 80px;
-    font: $extra-large-thin-title;
+    font: $extra-large-text;
     text-align: center;
+    color: $white;
 }
 
 // --- MEDIA QUERIES ---

@@ -18,15 +18,19 @@ export const HomePage = ({ className }: HomePageProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <HeroImage
-                title="Incredible Prices on All Your Favorite Items"
+                title="PULSEFIT STUDIO"
                 topLabel="Best Prices"
-                bottomLabel="Get more for less on selected brands"
                 buttonLabel="Shop Now"
                 topLabelClassName={styles['top-label-highlighted']}
                 onButtonClick={() => navigate(ROUTES.lessons.to())}
             />
-            <h1 className={styles['hero-title']}>Best Sellers</h1>
-            <p className={styles.HPprgrp}>Shop our best seller items</p>
+            <h1 className={styles['hero-title']}>YOU WANT IT? WE GOT IT</h1>
+            <p className={styles.HPprgrp}>
+                Use this space to promote the business, its products or its services. Help people
+                become familiar with the business and its offerings, creating a sense of connection
+                and trust. Focus on what makes the business unique and how users can benefit from
+                choosing it.{' '}
+            </p>
             <LessonsPage />
             {/* <div className={styles.cardsLayout}>
                 {lessons?.map((lesson) =>
