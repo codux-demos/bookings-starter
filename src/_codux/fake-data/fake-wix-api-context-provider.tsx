@@ -3,6 +3,8 @@ import {
     createLessons,
     createLesson,
     FakeDataSettings as Settings,
+    createUpcomingBookings,
+    createBookingHistory,
     createLessonAvailability,
 } from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
@@ -25,6 +27,16 @@ function getWixApi(settings?: Settings): WixAPI {
         },
         getPromotedLessons: async () => {
             return Promise.resolve(lessons.slice(0, 4));
+        },
+        getMyUpcomingBookings: async () => {
+            return Promise.resolve(createUpcomingBookings(settings));
+        },
+        getMyBookingHistory: async () => {
+            return Promise.resolve(createBookingHistory(settings));
+        },
+        cancelBooking: async (booking: any): Promise<any> => {
+            alert('Cancel booking');
+            return Promise.resolve({ success: true });
         },
         checkout: () => {
             alert('Checkout');
