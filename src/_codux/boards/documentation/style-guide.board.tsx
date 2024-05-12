@@ -34,6 +34,24 @@ export default createBoard({
             </div>
             <div className={StyleGuide_board_module.subsectionContainer}>
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
+                <div className={StyleGuide_board_module.FlexContainer}>
+                    <div>
+                        <h1
+                            className={Classnames(
+                                StyleGuide_board_module.margin,
+                                VarsClasses['extra-large-bold-title'],
+                            )}
+                        >
+                            Cover Title{' '}
+                        </h1>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            extra-large-bold-title
+                            <br />
+                            400 120px/1.6
+                        </div>
+                    </div>
+                </div>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
                         <h1
