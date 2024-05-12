@@ -1,56 +1,45 @@
-import classNames from 'classnames';
-import styles from './calendar.module.scss';
-import 'react-datepicker/dist/react-datepicker.css';
-import { getDate } from 'date-fns';
-import DatePicker from 'react-datepicker';
 import { useState } from 'react';
-import { CalendarDate } from '../calendar-date/calendar-date';
+import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css';
 import './datepickerstyles.css';
 
-interface CalendarDataProps {
-    month?: string;
-    availableDates: number[];
-    availableHours: { [key: number]: string[] };
+interface CalendarProps {
+    data: { [date: string]: string[] }; // Dates are in 'DD/MM/YYYY' format
 }
 
-export const Calendar: React.FC<CalendarDataProps> = ({ availableDates }) => {
+export const Calendar: React.FC<CalendarProps> = ({ data }) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [startDate, setStartDate] = useState(new Date());
-    const weekend = 6;
+    const currentMonthStart = startOfMonth(new Date());
+    const currentMonthEnd = endOfMonth(new Date());
 
-    const isAvailable = (dayInMonth: number) => availableDates.includes(dayInMonth);
-
-    // const renderDayContents = (day: number, date: Date) => {
-    //     const dateNumber = getDate(date);
-    //     return <CalendarDate isAvailable={true} date={dateNumber} />;
-    // };
-
-    const getDayClassName = (date: Date) => {
-        const dayInWeek = date.getDay();
-        const dayInMonth = date.getDate();
-
-
-        return classNames('dayStyle', {
-            // weekend: dayInWeek === 6,
-            available: isAvailable(dayInMonth),
-            selected: dayInMonth === selectedDate.getDate(),
-        });
+    const isAvailable = (date: Date) => {
+        const dateString = format(date, 'dd/MM/yyyy');
+        console.log(dateString);
+        return dateString in data;
     };
 
-
+    const getDayClassName = (date: Date) => {
+        return classNames('dayStyle', {
+            available: isAvailable(date),
+            selected: format(date, 'dd/MM/yyyy') === format(selectedDate, 'dd/MM/yyyy'),
+        });
+    };
 
     return (
         <DatePicker
             selected={startDate}
+            minDate={currentMonthStart}
+            maxDate={currentMonthEnd}
             onChange={(date: Date | null) => {
                 const newDate = date ? date : new Date();
                 setStartDate(newDate);
                 setSelectedDate(newDate);
             }}
             inline
-            filterDate={(date) => date.getDay() != 6}
-
-            // renderDayContents={renderDayContents}
+            filterDate={(date) => date.getDay() !== 6} 
             dayClassName={getDayClassName}
         />
     );

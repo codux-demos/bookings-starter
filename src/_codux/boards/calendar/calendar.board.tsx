@@ -5,14 +5,11 @@ import Calendar_board_module from './calendar.board.module.scss';
 import { CalendarDateProps } from '/src/components/calendar-date/calendar-date';
 
 const data = {
-    month: 'may',
-    avalableDates: [1, 2, 7, 8],
-    availableHours: {
-        1: ['10:00', '11:00', '12:00'],
-        2: ['10:20', '11:40', '12:00'],
-        7: ['13:00', '14:40'],
-        8: ['10:00', '11:00', '12:00'],
-    },
+    '01/05/2024': ['10:00', '11:00', '12:00'],
+    '02/05/2024': ['10:20', '11:40', '12:00'],
+    '07/05/2024': ['13:00', '14:40'],
+    '08/05/2024': ['10:00', '11:00', '12:00'],
+    'asd': ["11"]
 };
 
 export default createBoard({
@@ -22,10 +19,7 @@ export default createBoard({
         <ComponentWrapper settings={{}}>
             <ContentSlot>
                 <div className={Calendar_board_module.container}>
-                    <Calendar
-                        availableDates={data.avalableDates}
-                        availableHours={data.availableHours}
-                    />
+                    <Calendar data={data} />
                 </div>
             </ContentSlot>
         </ComponentWrapper>
@@ -34,7 +28,7 @@ export default createBoard({
     isSnippet: true,
     environmentProps: {
         canvasMargin: { right: 0, bottom: 0, left: 0, top: 0 },
-        windowWidth: 546,
-        windowHeight: 552,
+        windowWidth: 1920,
+        windowHeight: 1368,
     },
 });
