@@ -1,0 +1,28 @@
+@import '@styles/theme.module.scss';
+
+.root {
+}
+
+.lesson {
+    border-bottom: 1px solid $light-gray;
+
+    &:first-child {
+        border-top: 1px solid $light-gray;
+    }
+}
+
+.all-lessons-button-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (width <= 768px) {
+    .lesson {
+        border: 0;
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+}

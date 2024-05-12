@@ -3,7 +3,6 @@ import styles from './home-page.module.scss';
 import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { useNavigate } from 'react-router-dom';
-import { usePromotedLessons } from '../../api/api-hooks';
 
 export interface HomePageProps {
     className?: string;
@@ -11,8 +10,6 @@ export interface HomePageProps {
 
 export const HomePage = ({ className }: HomePageProps) => {
     const navigate = useNavigate();
-
-    const { data: lessons } = usePromotedLessons();
 
     return (
         <div className={classNames(styles.root, className)}>
