@@ -5,7 +5,7 @@ import { ComponentWrapper } from '../../board-wrappers/component-wrapper';
 export default createBoard({
     name: 'Lesson Item',
     Board: () => (
-        <ComponentWrapper settings={{}}>
+        <ComponentWrapper>
             <ContentSlot>
                 <LessonItem price="$15" title="Pump It Up" link="" />
             </ContentSlot>

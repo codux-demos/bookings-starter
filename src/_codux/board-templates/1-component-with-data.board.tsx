@@ -4,7 +4,7 @@ import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
 export default createBoard({
     name: 'New Board',
     Board: () => (
-        <ComponentWrapper settings={{}}>
+        <ComponentWrapper>
             <ContentSlot />
         </ComponentWrapper>
     ),
