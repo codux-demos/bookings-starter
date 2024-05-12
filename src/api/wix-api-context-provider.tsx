@@ -84,26 +84,26 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 },
             });
         },
-        // checkout: async () => {
-        //     let checkoutId;
-        //     // try {
-        //     //     const result = await wixClient.currentCart.createCheckoutFromCurrentCart({
-        //     //         channelType: currentCart.ChannelType.WEB,
-        //     //     });
-        //     //     checkoutId = result.checkoutId;
-        //     // } catch (e) {
-        //     //     return { success: false, url: '' };
-        //     // }
-        //     // const { redirectSession } = await wixClient.redirects.createRedirectSession({
-        //     //     ecomCheckout: { checkoutId },
-        //     //     callbacks: {
-        //     //         postFlowUrl: window.location.origin,
-        //     //         thankYouPageUrl: `${window.location.origin}${ROUTES.thankYou.to()}`,
-        //     //     },
-        //     // });
-        //     // return { success: true, url: redirectSession?.fullUrl };
-        //     return { success: true, url: '' };
-        // },
+        checkout: async () => {
+            let checkoutId;
+            //     // try {
+            //     //     const result = await wixClient.currentCart.createCheckoutFromCurrentCart({
+            //     //         channelType: currentCart.ChannelType.WEB,
+            //     //     });
+            //     //     checkoutId = result.checkoutId;
+            //     // } catch (e) {
+            //     //     return { success: false, url: '' };
+            //     // }
+            //     // const { redirectSession } = await wixClient.redirects.createRedirectSession({
+            //     //     ecomCheckout: { checkoutId },
+            //     //     callbacks: {
+            //     //         postFlowUrl: window.location.origin,
+            //     //         thankYouPageUrl: `${window.location.origin}${ROUTES.thankYou.to()}`,
+            //     //     },
+            //     // });
+            //     // return { success: true, url: redirectSession?.fullUrl };
+            return { success: true, url: '' };
+        },
     };
 }
 
