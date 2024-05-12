@@ -11,6 +11,12 @@
     }
 }
 
+.all-lessons-button-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 @media (width <= 768px) {
     .lesson {
         border: 0;
