@@ -12,10 +12,11 @@ export const Checkout = ({ className }: CheckoutProps) => {
         <div className={classNames(styles.root, className)}>
             <h6 className={styles.title}>Customer details </h6>
             <SingleInput inputTitle="Email" />
-            <SingleInput inputTitle="First name" />
-            <SingleInput inputTitle="Last name" />
+            <SingleInput inputTitle="First name" isMandatory />
+            <SingleInput inputTitle="Last name" isMandatory hasError={false} />
+            <SingleInput inputTitle="Email" isMandatory={true} />
             <SingleInput inputTitle="Phone number" />
-            <SingleInput inputTitle="Phone" />
+            <SingleInput inputTitle="Add your message" />
             <button className={styles.button}>Continue</button>
         </div>
     );
