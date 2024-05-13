@@ -33,37 +33,21 @@ export default createBoard({
                 </div>
             </div>
             <div className={StyleGuide_board_module.subsectionContainer}>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
-                <div className={StyleGuide_board_module.grid}>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>Cover Hero Title</h2>
+                <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <h1
                             className={Classnames(
-                                VarsClasses['extra-large-thin-title'],
+                                VarsClasses['extra-large-bold-title'],
                                 StyleGuide_board_module.margin,
                             )}
                         >
-                            Cover thin
+                            Cover Title{' '}
                         </h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            extra-large-thin-title
+                            extra-large-bold-title
                             <br />
-                            100 65px/1.2
-                        </div>
-                    </div>
-                    <div>
-                        <h1
-                            className={Classnames(
-                                VarsClasses.h1Normal,
-                                StyleGuide_board_module.margin,
-                                VarsClasses['large-thin-title'],
-                            )}
-                        >
-                            Best Sellers
-                        </h1>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            large-thin-title
-                            <br />
-                            100 45px/1.4
+                            1000 120px/1.4
                         </div>
                     </div>
                 </div>
