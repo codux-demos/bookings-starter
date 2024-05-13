@@ -11,7 +11,7 @@ export default createBoard({
         <div className={Classnames(StyleGuide_board_module.root)}>
             <div className={StyleGuide_board_module.pageHeader}>
                 <h1 className={StyleGuide_board_module.TitleHeader}>Style Guide</h1>
-                <span className={StyleGuide_board_module.logo}>Booking - Yoga</span>
+                <span className={StyleGuide_board_module.logo}>Booking - Boxing</span>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
