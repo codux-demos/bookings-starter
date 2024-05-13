@@ -32,14 +32,13 @@ export const HeroImage = ({
                 <img src={smallHeroImage} className={styles.image} alt="Hero background" />
             </picture>
             <div className={styles.overlay}>
-                <p className={styles['small-title']}>{title}</p>
                 <h1 className={styles['big-title']}>{bottomLabel} </h1>
                 {buttonLabel && (
                     <button
                         onClick={onButtonClick}
                         className={classNames(
                             CommonStyles_module.primaryButton,
-                            styles['overlay-button']
+                            styles['overlay-button'],
                         )}
                     >
                         {buttonLabel}
