@@ -14,7 +14,8 @@
     }
 }
 
-.primaryButton, .secondaryButton {
+.primaryButton,
+.secondaryButton {
     display: flex;
     align-items: center;
     font: $small-text;
@@ -66,5 +67,5 @@
 }
 
 .p1 {
-    background-color: $p1;
+    background-color: $o1;
 }
