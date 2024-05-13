@@ -286,7 +286,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
-                                CommonStyles_module.p1,
+                                CommonStyles_module.o1,
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
