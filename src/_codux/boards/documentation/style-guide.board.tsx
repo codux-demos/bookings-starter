@@ -308,7 +308,7 @@ export default createBoard({
                         <div className={StyleGuide_board_module.subtitleValue}>
                             o1
                             <br />
-                            #FF5E1A
+                            #FF5B2B
                         </div>
                     </div>
                     <div>
