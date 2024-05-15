@@ -10,6 +10,7 @@
     border-radius: 30px;
     margin-top: 20px;
     cursor: pointer;
+
     &:hover {
         background-color: #b6c1f0;
         color: $black;
@@ -78,4 +79,16 @@
 
 .p1 {
     background-color: $p1;
+}
+
+.input-label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+}
+
+.input-label input {
+    border: 1px solid black;
+    padding: 4px;
 }
