@@ -132,7 +132,9 @@ const createAvailability = (
     };
 };
 
-export const createLessonAvailability = (): LessonAvailability => {
+export const createLessonAvailability = (
+    lessonId: string = faker.string.uuid()
+): LessonAvailability => {
     const fakeDates = faker.date.betweens({
         from: new Date(),
         to: faker.date.soon({ days: 7 }),
@@ -142,7 +144,6 @@ export const createLessonAvailability = (): LessonAvailability => {
         endDate: new Date(new Date(date).setHours(date.getHours() + 1)),
         bookingDisabled: false,
     }));
-    const lessonId = faker.string.uuid();
     return {
         availabilityEntries: defaultEntries.map((entry) => createAvailability(lessonId, entry)),
     };

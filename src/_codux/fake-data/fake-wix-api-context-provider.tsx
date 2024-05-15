@@ -42,8 +42,8 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
-        getServiceAvailability: () => {
-            return Promise.resolve(createLessonAvailability());
+        getServiceAvailability: (lessonId: string) => {
+            return Promise.resolve(createLessonAvailability(lessonId));
         },
     };
 

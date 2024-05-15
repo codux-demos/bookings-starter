@@ -13,7 +13,6 @@ export const LessonPage = ({ className }: LessonPageProps) => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
-    console.log(availability);
 
     if (!availability && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
