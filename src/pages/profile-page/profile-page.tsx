@@ -22,6 +22,8 @@ export const ProfilePage = () => {
                                 aria-required
                                 defaultValue={myProfileData?.member?.contact?.firstName ?? ''}
                                 required
+                                name="name"
+                                maxLength={100}
                             />
                         </label>
                         <label className={commonStyles['input-label']} htmlFor="last-name">
@@ -30,6 +32,8 @@ export const ProfilePage = () => {
                                 id="last-name"
                                 defaultValue={myProfileData?.member?.contact?.lastName ?? ''}
                                 type="text"
+                                name="lastName"
+                                maxLength={150}
                             />
                         </label>
                     </div>
@@ -40,6 +44,8 @@ export const ProfilePage = () => {
                                 id="phone"
                                 type="phone"
                                 defaultValue={myProfileData?.member?.contact?.phones?.[0] ?? ''}
+                                name="phone"
+                                maxLength={100}
                             />
                         </label>
                         <label className={commonStyles['input-label']} htmlFor="email">
@@ -51,6 +57,8 @@ export const ProfilePage = () => {
                                 required
                                 aria-required
                                 pattern="^.+@.+\.[a-zA-Z]{2,63}$"
+                                name="email"
+                                maxLength={150}
                             />
                         </label>
                     </div>
