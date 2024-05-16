@@ -157,3 +157,26 @@
     background-color: #ebeef5;
     width: 100%;
 }
+.hot-red {
+    background: $hot-red;
+}
+.orange-red {
+    background: $orange-red;
+}
+.orange-red-40 {
+    background: $orange-red-40;
+    border: 1px solid $orange-red;
+}
+.orange-red-10 {
+    background: $orange-red-10;
+    border: 1px solid $orange-red;
+}
+.snow-white-10 {
+    background: $snow-white-10;
+}
+.snow-white-40 {
+    background: $snow-white-40;
+}
+.box {
+    width: 122px;
+}

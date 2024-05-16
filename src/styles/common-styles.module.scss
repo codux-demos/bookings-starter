@@ -10,7 +10,7 @@
     cursor: pointer;
 
     &:hover {
-        color: $o1;
+        color: $orange-red;
     }
 }
 
@@ -32,7 +32,7 @@
     border: 1px solid $snow-white;
 
     &:hover {
-        background-color: $o1;
+        background-color: $orange-red;
         border: 1px solid transparent;
         color: $charcoal-black;
     }
@@ -42,7 +42,7 @@
     border: 1px solid transparent;
 
     &:hover {
-        color: $o1;
+        color: $orange-red;
     }
 }
 
@@ -64,10 +64,6 @@
 .loading {
     padding: 30px;
     font: $extra-large-text;
-}
-
-.o1 {
-    background-color: $o1;
 }
 
 .input-label {
