@@ -257,7 +257,7 @@ export const createUserData = (): Member => ({
         status: members.Status.APPROVED,
         profile: {
             nickname: faker.person.fullName(),
-            slug: faker.internet.userName().toLowerCase(),
+            slug: faker.lorem.slug(),
             title: faker.person.jobTitle(),
         },
         contact: {
