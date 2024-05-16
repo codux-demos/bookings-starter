@@ -295,7 +295,7 @@ export default createBoard({
                 </div>
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Secondary / Dark</h2>
                 <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
                             className={Classnames(
                                 StyleGuide_board_module['orange-red-40'],
@@ -308,7 +308,7 @@ export default createBoard({
                             rgba(255,93,43,0.4)
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
@@ -321,7 +321,7 @@ export default createBoard({
                             rgba(255, 91, 43, 0.1){' '}
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
@@ -334,7 +334,7 @@ export default createBoard({
                             rgba(245, 245, 245, 0.4)
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,

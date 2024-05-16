@@ -165,13 +165,18 @@
 }
 .orange-red-40 {
     background: $orange-red-40;
+    border: 1px solid $orange-red;
 }
 .orange-red-10 {
     background: rgba(255, 91, 43, 0.1);
+    border: 1px solid $orange-red;
 }
 .snow-white-10 {
     background: $snow-white-10;
 }
 .snow-white-40 {
     background: rgba(245, 245, 245, 0.4);
+}
+.box {
+    width: 122px;
 }
