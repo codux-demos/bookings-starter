@@ -318,7 +318,7 @@ export default createBoard({
                         <div className={StyleGuide_board_module.subtitleValue}>
                             orange-red-10
                             <br />
-                            rgba(255, 91, 43, 0.1){' '}
+                            rgba(255, 91, 43, 0.1)
                         </div>
                     </div>
                     <div className={StyleGuide_board_module.box}>
