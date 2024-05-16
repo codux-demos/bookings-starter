@@ -3,6 +3,7 @@ import { createBoard } from '@wixc3/react-board';
 import StyleGuide_board_module from './style-guide.board.module.scss';
 import Classnames from 'classnames';
 import SectionSvg from '../../../assets/svg/section.svg';
+import CommonStyles_module from '../../../styles/common-styles.module.scss';
 
 export default createBoard({
     name: 'StyleGuide',
@@ -299,12 +300,15 @@ export default createBoard({
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                CommonStyles_module.p1,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d10
+                            p1
                             <br />
-                            #E0E0E8
+                            #874CCC
                         </div>
                     </div>
                     <div>
