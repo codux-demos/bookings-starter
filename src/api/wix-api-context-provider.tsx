@@ -1,5 +1,5 @@
 import { OAuthStrategy, createClient } from '@wix/sdk';
-import { services, extendedBookings, bookings } from '@wix/bookings';
+import { availabilityCalendar, bookings, extendedBookings, services } from '@wix/bookings';
 import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import { SWRConfig } from 'swr';
@@ -9,10 +9,11 @@ export const WIX_SESSION_TOKEN = 'wix_refreshToken';
 function getWixClient() {
     return createClient({
         modules: {
-            redirects,
-            services,
+            availabilityCalendar,
             bookings: extendedBookings,
             bookingsActions: bookings,
+            redirects,
+            services,
         },
         auth: OAuthStrategy({
             clientId: import.meta.env.VITE_WIX_CLIENT_ID || process.env.VITE_WIX_CLIENT_ID || '',
@@ -66,14 +67,23 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 },
                 { withBookingAllowedActions: true }
             ),
-        cancelBooking: async ({
-            _id,
-            revision,
-        }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
-            await wixClient!.bookingsActions.cancelBooking(_id!, {
+        cancelBooking: ({ _id, revision }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
+            wixClient!.bookingsActions.cancelBooking(_id!, {
                 revision: revision!,
             }),
-
+        getServiceAvailability: (serviceId: string) => {
+            const startDate = new Date().toISOString();
+            const endDate = new Date(
+                new Date(startDate).setMonth(new Date(startDate).getMonth() + 2)
+            ).toISOString();
+            return wixClient.availabilityCalendar.queryAvailability({
+                filter: {
+                    serviceId,
+                    startDate,
+                    endDate,
+                },
+            });
+        },
         checkout: async () => {
             let checkoutId;
             // try {
