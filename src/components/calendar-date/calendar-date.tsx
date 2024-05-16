@@ -3,17 +3,26 @@ import styles from './calendar-date.module.scss';
 import commonStyles from '@styles/common-styles.module.scss';
 import CalendarDate_board_module from '../../_codux/boards/calendar-date/calendar-date.board.module.scss';
 
-export interface CalendarDateProps {
+interface CalendarDateProps {
     isAvailable: boolean;
+    isSelected: boolean;
     date: number;
 }
 
-export const CalendarDate = ({ isAvailable, date }: CalendarDateProps) => {
+export const CalendarDate = ({ isAvailable, isSelected, date }: CalendarDateProps) => {
     return (
-        <div className={styles.container}>
+        <div
+            className={classNames(styles.container, {
+                [styles.available]: isAvailable,
+                [styles.selected]: isSelected,
+            })}>
             <div className={styles.date}>{date}</div>
             {isAvailable && (
-                <div className={styles.dot}></div>
+                <div
+                    className={classNames(styles.dot, styles.isAvailable, {
+                        [styles.selectedDot]: isSelected,
+                    })}
+                ></div>
             )}
         </div>
     );

@@ -1,15 +1,17 @@
 import { CalendarDate } from '../../../components/calendar-date/calendar-date';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
-import CalendarDate_board_module from './calendar-date.board.module.scss';
+import styles from './calendar-date.board.module.scss';
 
 export default createBoard({
     name: 'CalendarDate',
     Board: () => (
         <ComponentWrapper settings={{}}>
             <ContentSlot>
-                <div className={CalendarDate_board_module.container}>
-                    <CalendarDate isAvailable={true} date={9} />
+                <div className={styles.container}>
+                    <CalendarDate isAvailable={true} date={9} isSelected={false} />
+                    <CalendarDate isAvailable={false} date={9} isSelected={false} />
+                    <CalendarDate isAvailable={true} date={9} isSelected={true} />
                 </div>
             </ContentSlot>
         </ComponentWrapper>

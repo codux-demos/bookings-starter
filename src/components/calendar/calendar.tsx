@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { format, startOfDay, isSameMonth } from 'date-fns';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import classNames from 'classnames';
-import { format, startOfMonth, endOfMonth } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
+import { CalendarDate } from '../calendar-date/calendar-date';
 import './datepickerstyles.css';
 
 interface CalendarProps {
@@ -11,36 +11,28 @@ interface CalendarProps {
 
 export const Calendar: React.FC<CalendarProps> = ({ data }) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [startDate, setStartDate] = useState(new Date());
-    const currentMonthStart = startOfMonth(new Date());
-    const currentMonthEnd = endOfMonth(new Date());
+    const today = startOfDay(new Date());
 
-    const isAvailable = (date: Date) => {
+    const renderDayContents = (day: number, date: Date) => {
         const dateString = format(date, 'dd/MM/yyyy');
-        console.log(dateString);
-        return dateString in data;
-    };
+        const isAvailable = dateString in data && date >= today;
+        const isSelected = format(date, 'dd/MM/yyyy') === format(selectedDate, 'dd/MM/yyyy');
 
-    const getDayClassName = (date: Date) => {
-        return classNames('dayStyle', {
-            available: isAvailable(date),
-            selected: format(date, 'dd/MM/yyyy') === format(selectedDate, 'dd/MM/yyyy'),
-        });
+        return <CalendarDate isAvailable={isAvailable} date={day} isSelected={isSelected} />;
     };
 
     return (
         <DatePicker
-            selected={startDate}
-            minDate={currentMonthStart}
-            maxDate={currentMonthEnd}
+            selected={selectedDate}
             onChange={(date: Date | null) => {
-                const newDate = date ? date : new Date();
-                setStartDate(newDate);
-                setSelectedDate(newDate);
+                if (date) setSelectedDate(date);
             }}
             inline
-            filterDate={(date) => date.getDay() !== 6} 
-            dayClassName={getDayClassName}
+            calendarClassName="calendar"
+            renderDayContents={renderDayContents}
+            minDate={today}
+            filterDate={(date) => date.getDay() !== 6}
+            formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
         />
     );
 };

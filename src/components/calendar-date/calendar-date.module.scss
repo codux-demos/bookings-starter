@@ -5,16 +5,42 @@
     align-items: center;
     flex-direction: column;
     cursor: pointer;
+    border-radius: 50%;
+
+}
+
+.date {
+    color: white;
+}
+
+.available .date {
+    color: #ff5b2b;
 }
 
 .container:hover {
-    background-color: lightblue;
-    border-radius: 50%;
+    background-color: rgba(255, 91, 43, 0.2); // Subtle orange background on hover
+}
+
+.container.selected:hover {
+    background-color: rgba(255, 91, 43, 0.8); // More opaque orange for selected date on hover
 }
 
 .dot {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: blue;
+    background-color: #ff5b2b;
+}
+
+.selectedDot {
+    background-color: black;
+}
+
+.selected {
+    background-color: #ff5b2b;
+    color: black;
+    .date {
+        color: black;
+    }
+    font-family: DM Sans;
 }
