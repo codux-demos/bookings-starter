@@ -14,8 +14,6 @@ export default createBoard({
         </PageWrapperRealData>
     ),
     isSnippet: false,
-    environmentProps: {
-        canvasMargin: { right: 0, bottom: 0, left: 0 },
-    },
+    environmentProps: { windowWidth: 1920, windowHeight: 1080 },
     readyToSnapshot: waitForProductImage,
 });
