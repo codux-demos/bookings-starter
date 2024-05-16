@@ -3,6 +3,7 @@ import styles from './home-page.module.scss';
 import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { useNavigate } from 'react-router-dom';
+import { LessonsList } from '../../components/lessons-list/lessons-list';
 
 export interface HomePageProps {
     className?: string;
@@ -14,15 +15,16 @@ export const HomePage = ({ className }: HomePageProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <HeroImage
-                title="Incredible Prices on All Your Favorite Items"
                 topLabel="Best Prices"
-                bottomLabel="Get more for less on selected brands"
+                bottomLabel="PULSEFIT STUDIO"
                 buttonLabel="Shop Now"
                 topLabelClassName={styles['top-label-highlighted']}
                 onButtonClick={() => navigate(ROUTES.lessons.to())}
+                title="Incredible Prices on All Your Favorite Items"
             />
-            <h1 className={styles['hero-title']}>Best Sellers</h1>
+            <h1 className={styles['hero-title']}>YOU WANT IT? WE GOT IT</h1>
             <p className={styles.HPprgrp}>Shop our best seller items</p>
+            <LessonsList limit={5} />
             {/* <div className={styles.cardsLayout}>
                 {lessons?.map((lesson) =>
                     lesson.slug && lesson.name ? (
