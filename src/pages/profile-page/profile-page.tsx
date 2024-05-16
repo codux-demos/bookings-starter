@@ -39,7 +39,6 @@ export const ProfilePage = () => {
                             <input
                                 id="phone"
                                 type="phone"
-                                pattern="^.+@.+\\.[a-zA-Z]{2,63}$"
                                 defaultValue={myProfileData?.member?.contact?.phones?.[0] ?? ''}
                             />
                         </label>
@@ -51,6 +50,7 @@ export const ProfilePage = () => {
                                 type="email"
                                 required
                                 aria-required
+                                pattern="^.+@.+\.[a-zA-Z]{2,63}$"
                             />
                         </label>
                     </div>
@@ -61,7 +61,7 @@ export const ProfilePage = () => {
                             ProfilePage_module['profile-submit'],
                         )}
                     >
-                        Update info
+                        Update Info
                     </button>
                 </form>
             </div>
