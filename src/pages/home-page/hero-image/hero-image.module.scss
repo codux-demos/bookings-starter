@@ -2,6 +2,7 @@
 
 .root {
     position: relative;
+    border-radius: 20px;
 }
 
 .overlay {
@@ -18,8 +19,9 @@
 .image {
     object-fit: cover;
     object-position: 50% 0%;
-    height: 640px;
+    height: 900px;
     width: 100%;
+    border-radius: 16px;
 }
 
 .small-title {

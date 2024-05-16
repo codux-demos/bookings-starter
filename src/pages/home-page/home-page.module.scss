@@ -24,15 +24,22 @@
 }
 
 .HPprgrp {
-    font: $large-paragraph;
+    font: $small-text;
     margin-bottom: 40px;
     text-align: center;
+    width: 50dvw;
 }
 
 .hero-title {
-    margin-top: 80px;
+    margin-top: 40px;
     font: $large-paragraph;
     text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 // --- MEDIA QUERIES ---

@@ -22,8 +22,15 @@ export const HomePage = ({ className }: HomePageProps) => {
                 onButtonClick={() => navigate(ROUTES.lessons.to())}
                 title="Incredible Prices on All Your Favorite Items"
             />
-            <h1 className={styles['hero-title']}>YOU WANT IT? WE GOT IT</h1>
-            <p className={styles.HPprgrp}>Shop our best seller items</p>
+            <div className={styles.content}>
+                <h1 className={styles['hero-title']}>YOU WANT IT? WE GOT IT</h1>
+                <p className={styles.HPprgrp}>
+                    Use this space to promote the business, its products or its services. Help
+                    people become familiar with the business and its offerings, creating a sense of
+                    connection and trust. Focus on what makes the business unique and how users can
+                    benefit from choosing it.
+                </p>
+            </div>
             <LessonsList limit={5} />
             {/* <div className={styles.cardsLayout}>
                 {lessons?.map((lesson) =>
