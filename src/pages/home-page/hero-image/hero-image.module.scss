@@ -30,6 +30,8 @@
 
 .big-title {
     font: $extra-large-bold-title;
+    font-size: 11dvw;
+    text-align: center;
 }
 
 .overlay-button {
@@ -41,10 +43,6 @@
 @media (width >= $large-desktop) {
     .small-title {
         font-size: 42px;
-    }
-
-    .big-title {
-        font-size: 170px;
     }
 
     .overlay-button {
@@ -63,7 +61,7 @@
     }
 
     .big-title {
-        font-size:42px;
+        font-size: 42px;
     }
 
     .overlay-button {
