@@ -69,3 +69,15 @@
 .o1 {
     background-color: $o1;
 }
+
+.input-label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+}
+
+.input-label input {
+    border: 1px solid $white;
+    padding: 8px;
+}

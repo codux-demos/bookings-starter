@@ -6,6 +6,7 @@ const LESSONS = '/lessons';
 const LESSON = `/lesson/:slug`;
 const THANK_YOU = '/thank-you';
 const MY_BOOKINGS = '/my-bookings';
+const MY_PROFILE = '/my-profile';
 
 export const ROUTES = {
     home: { route: HOME, to: () => HOME },
@@ -17,6 +18,7 @@ export const ROUTES = {
         route: LESSON,
         to: (lessonSlug: string) => generatePath(LESSON, { slug: lessonSlug }),
     },
+    myProfile: { route: MY_PROFILE, to: () => MY_PROFILE },
 };
 
 export type ROUTE_KEYS = keyof typeof ROUTES;

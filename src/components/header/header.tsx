@@ -4,12 +4,14 @@ import { ROUTES } from '../../router/config';
 import { Link } from 'react-router-dom';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 import { DropdownMenu } from '../dropdown-menu/dropdown-menu';
+import { useMyProfile } from '/src/api/api-hooks';
 
 export interface HeaderProps {
     className?: string;
 }
 
 export const Header = ({ className }: HeaderProps) => {
+    const { data: myProfile } = useMyProfile()
     return (
         <div className={classNames(styles.root, className)}>
             <Link to="/" className={styles.logo}>
@@ -43,11 +45,11 @@ export const Header = ({ className }: HeaderProps) => {
                 <DropdownMenu
                     dropdownMenuItems={[
                         {
-                            title: 'My Account',
-                            redirectTo: '',
+                            title: 'My Profile',
+                            redirectTo: ROUTES.myProfile.to(),
                         },
                     ]}
-                    username="John Joe"
+                    username={myProfile?.member?.contact?.firstName ?? undefined}
                 />
             </div>
         </div>
