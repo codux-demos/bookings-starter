@@ -12,6 +12,7 @@ import { members } from '@wix/members';
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
+type LessonAvailability = Exclude<Awaited<ReturnType<WixAPI['getServiceAvailability']>>, undefined>;
 type Bookings = Exclude<Awaited<ReturnType<WixAPI['getMyUpcomingBookings']>>, undefined>;
 type Member = Exclude<Awaited<ReturnType<WixAPI['getMyProfile']>>, undefined>;
 
@@ -105,8 +106,55 @@ function createImage(settings?: FakeDataSettings): Media {
     };
 }
 
+const createAvailability = (
+    id: string,
+    lessonAvailabilityEntry?: {
+        startDate?: Date;
+        endDate?: Date;
+        bookingDisabled?: boolean;
+    }
+): LessonAvailability['availabilityEntries'][number] => {
+    const defaultDate = new Date();
+    return {
+        slot: {
+            sessionId: faker.string.uuid(),
+            serviceId: id,
+            scheduleId: faker.string.uuid(),
+            startDate:
+                lessonAvailabilityEntry?.startDate?.toISOString() ?? defaultDate.toISOString(),
+            endDate:
+                lessonAvailabilityEntry?.endDate?.toISOString() ??
+                new Date(new Date(defaultDate).setHours(defaultDate.getHours() + 1)).toISOString(),
+        },
+        bookable: !lessonAvailabilityEntry?.bookingDisabled ?? true,
+        isFromV2: false,
+        locked: false,
+        openSpots: 15,
+        totalSpots: 15,
+        waitingList: {},
+    };
+};
+
+export const createLessonAvailability = (
+    lessonId: string = faker.string.uuid()
+): LessonAvailability => {
+    const fakeDates = faker.date.betweens({
+        from: new Date(),
+        to: faker.date.soon({ days: 7 }),
+    });
+    const defaultEntries = fakeDates.map((date) => ({
+        startDate: date,
+        endDate: new Date(new Date(date).setHours(date.getHours() + 1)),
+        bookingDisabled: false,
+    }));
+    return {
+        availabilityEntries: defaultEntries.map((entry) => createAvailability(lessonId, entry)),
+    };
+};
 export function createBookingData({ isHistory = false }) {
-    const startDate = isHistory ? faker.date.past().toISOString() : faker.date.future().toISOString();
+    const startDate = isHistory
+        ? faker.date.past().toISOString()
+        : faker.date.future().toISOString();
     const endDate = isHistory ? faker.date.past().toISOString() : faker.date.future().toISOString();
 
     return {
@@ -124,37 +172,37 @@ export function createBookingData({ isHistory = false }) {
                         id: faker.string.uuid(),
                         name: faker.person.fullName(),
                         email: faker.internet.email(),
-                        scheduleId: faker.string.uuid()
+                        scheduleId: faker.string.uuid(),
                     },
                     location: {
                         id: faker.string.uuid(),
                         name: 'HOME',
-                        locationType: services.LocationType.OWNER_BUSINESS
-                    }
+                        locationType: services.LocationType.OWNER_BUSINESS,
+                    },
                 },
                 title: 'Example Service',
-                tags: ['INDIVIDUAL']
+                tags: ['INDIVIDUAL'],
             },
             contactDetails: {
                 contactId: faker.string.uuid(),
                 firstName: faker.person.firstName(),
                 email: faker.internet.email(),
                 timeZone: 'Europe/Dublin',
-                countryCode: 'US'
+                countryCode: 'US',
             },
             additionalFields: [
                 {
                     id: faker.string.uuid(),
                     label: 'Example Message',
                     valueType: 'LONG_TEXT',
-                    value: faker.lorem.paragraph()
+                    value: faker.lorem.paragraph(),
                 },
                 {
                     id: faker.string.uuid(),
                     value: 'true',
                     label: 'Example Checkbox',
-                    valueType: 'CHECK_BOX'
-                }
+                    valueType: 'CHECK_BOX',
+                },
             ],
             numberOfParticipants: 1,
             status: 'CONFIRMED',
@@ -165,39 +213,43 @@ export function createBookingData({ isHistory = false }) {
                 platform: 'WEB',
                 actor: 'CUSTOMER',
                 appDefId: faker.string.uuid(),
-                appName: 'Wix Bookings'
+                appName: 'Wix Bookings',
             },
             revision: '3',
             startDate,
             endDate,
             updatedDate: faker.date.recent().toISOString(),
-            totalParticipants: 1
-        }
+            totalParticipants: 1,
+        },
     };
 }
 
 export function createUpcomingBookings(settings?: FakeDataSettings): Bookings {
     const result: any = {
-        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() => createBookingData({ isHistory: false })),
+        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() =>
+            createBookingData({ isHistory: false })
+        ),
         pagingMetaData: {
             count: 0,
             hasNext: false,
-            cursors: {}
-        }
+            cursors: {},
+        },
     };
-    return result
+    return result;
 }
 
 export function createBookingHistory(settings?: FakeDataSettings): Bookings {
     const result: any = {
-        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() => createBookingData({ isHistory: true })),
+        extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() =>
+            createBookingData({ isHistory: true })
+        ),
         pagingMetaData: {
             count: 0,
             hasNext: false,
-            cursors: {}
-        }
+            cursors: {},
+        },
     };
-    return result
+    return result;
 }
 
 
