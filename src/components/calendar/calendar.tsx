@@ -9,24 +9,6 @@ import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 import { RouteParams } from '/src/router/config';
 import { SlotAvailability } from '@wix/redirects/build/cjs/src/headless-v1-redirect-session.universal';
 
-interface Slot {
-    sessionId?: string | null;
-    serviceId?: string | null;
-    scheduleId?: string | null;
-    startDate?: string | null;
-    endDate?: string | null;
-}
-
-interface DataItem {
-    slot?: Slot;
-    bookable: boolean;
-    isFromV2: boolean;
-    locked: boolean;
-    openSpots: number;
-    totalSpots: number;
-    waitingList: Record<string, unknown>;
-}
-
 export const Calendar: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const today = startOfDay(new Date());
