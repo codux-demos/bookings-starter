@@ -5,9 +5,22 @@
 }
 
 .title {
-    font-weight: 800;
+    border-bottom: 1px solid $orange-red;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
 }
 
 .checkout-button {
     margin-top: 20px;
+}
+.section {
+    display: flex;
+    column-gap: 20px;
+}
+@media (width <=768px) {
+
+    .section {
+        flex-direction: column;
+    }
 }
