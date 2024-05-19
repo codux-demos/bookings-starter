@@ -34,7 +34,7 @@ export const HeroImage = ({
                     <button
                         onClick={onButtonClick}
                         className={classNames(
-                            CommonStyles_module.primaryButton,
+                            CommonStyles_module.primaryButtonVar1,
                             styles['overlay-button'],
                         )}
                     >
