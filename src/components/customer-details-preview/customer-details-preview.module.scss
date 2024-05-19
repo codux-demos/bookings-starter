@@ -1,17 +1,10 @@
 @import '@styles/theme.module.scss';
 
 .root {
-}
-.customerDetailsPreview {
-    display: flex;
-    flex-direction: column;
-    color: $charcoal-black;
-}
-.dddd {
     display: flex;
     flex-direction: column;
 }
-.CustomerDetailsTitle {
+.title {
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 700;

@@ -5,7 +5,7 @@ import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
 export default createBoard({
     name: 'CustomerDetailsPreview',
     Board: () => (
-        <ComponentWrapper settings={{}}>
+        <ComponentWrapper >
             <ContentSlot>
                 <CustomerDetailsPreview
                     email="erezs@wix.com"
