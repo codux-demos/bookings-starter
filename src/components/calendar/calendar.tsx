@@ -8,19 +8,36 @@ import { useParams } from 'react-router-dom';
 import { RouteParams } from '/src/router/config';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 
-interface CalendarProps {
-    data: { [date: string]: string[] };
+
+interface Slot {
+    sessionId: string;
+    serviceId: string;
+    scheduleId: string;
+    startDate: string;
+    endDate: string;
 }
 
-export const Calendar: React.FC<CalendarProps> = () => {
-    const { slug } = useParams<RouteParams['/lesson/:slug']>();
-    const { data } = useLessonBySlug(slug);
-    const { data: availability, isLoading } = useAvailability(data?._id!);
-    console.log(availability)
+interface DataItem {
+    slot: Slot;
+    bookable: boolean;
+    isFromV2: boolean;
+    locked: boolean;
+    openSpots: number;
+    totalSpots: number;
+    waitingList: Record<string, unknown>;
+}
+
+interface CalendarProps {
+    data: {
+        [key: string]: DataItem[];
+    }
+}
 
 
+export const Calendar: React.FC<CalendarProps> = ({ data }) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const today = startOfDay(new Date());
+
     const renderDayContents = (day: number, date: Date) => {
         const dateString = format(date, 'dd/MM/yyyy');
         const isAvailable = dateString in data && date >= today;
