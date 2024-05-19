@@ -1,7 +1,7 @@
-import { CalendarDate } from '../../../components/calendar-date/calendar-date';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
+import { CalendarDate } from '../../../components/calendar-date/calendar-date';
 import styles from './calendar-date.board.module.scss';
+import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
 
 export default createBoard({
     name: 'CalendarDate',

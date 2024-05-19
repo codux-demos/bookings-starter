@@ -1,20 +1,15 @@
-import { Calendar } from '../../../components/calendar/calendar';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
-import Calendar_board_module from './calendar.board.module.scss';
-
-
+import { Calendar } from '../../../components/calendar/calendar';
+import { PageWrapper } from '../../board-wrappers/page-wrapper';
 
 export default createBoard({
     name: 'Calendar',
     Board: () => (
-        <ComponentWrapper settings={{}}>
+        <PageWrapper>
             <ContentSlot>
-                <div className={Calendar_board_module.heyyyy}>
-                    <Calendar/>
-                </div>
+                <Calendar />
             </ContentSlot>
-        </ComponentWrapper>
+        </PageWrapper>
     ),
 
     isSnippet: true,

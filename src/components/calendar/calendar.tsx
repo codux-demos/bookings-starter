@@ -1,13 +1,12 @@
-import { format, startOfDay, parseISO } from 'date-fns';
-import React, { useState, useContext } from 'react';
+import { format, parseISO, startOfDay } from 'date-fns';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useParams } from 'react-router-dom';
 import { CalendarDate } from '../calendar-date/calendar-date';
 import './datepickerstyles.css';
-import { useParams } from 'react-router-dom';
-import { RouteParams } from '/src/router/config';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
-import { WixAPIContext } from '/src/api/wix-api-context-provider';
+import { RouteParams } from '/src/router/config';
 import { SlotAvailability } from '@wix/redirects/build/cjs/src/headless-v1-redirect-session.universal';
 
 interface Slot {
@@ -31,10 +30,9 @@ interface DataItem {
 export const Calendar: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const today = startOfDay(new Date());
-    const api = useContext(WixAPIContext);
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data: lessonData } = useLessonBySlug(slug);
-    const { data: availability, isLoading } = useAvailability(lessonData?._id!);
+    const { data: availability } = useAvailability(lessonData?._id!);
 
 
     const calendarDataByDate = availability?.availabilityEntries.reduce<{ [key: string]: SlotAvailability[] }>((accumulator, lesson) => {
