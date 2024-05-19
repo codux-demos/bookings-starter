@@ -10,8 +10,9 @@ export default createBoard({
             <ContentSlot>
                 <div className={styles.container}>
                     <CalendarDate isAvailable={true} date={9} isSelected={false} />
-                    <CalendarDate isAvailable={false} date={9} isSelected={false} />
                     <CalendarDate isAvailable={true} date={9} isSelected={true} />
+                    <CalendarDate isAvailable={false} date={9} isSelected={false} />
+                    <CalendarDate isAvailable={false} date={9} isSelected={true} />
                 </div>
             </ContentSlot>
         </ComponentWrapper>
