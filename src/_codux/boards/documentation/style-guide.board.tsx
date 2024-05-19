@@ -11,7 +11,7 @@ export default createBoard({
         <div className={Classnames(StyleGuide_board_module.root)}>
             <div className={StyleGuide_board_module.pageHeader}>
                 <h1 className={StyleGuide_board_module.TitleHeader}>Style Guide</h1>
-                <span className={StyleGuide_board_module.logo}>Booking - Yoga</span>
+                <span className={StyleGuide_board_module.logo}>Booking - Boxing</span>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
@@ -231,26 +231,13 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
-                                VarsClasses.white,
+                                StyleGuide_board_module['orange-red'],
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            white
+                            orange-red
                             <br />
-                            #FFFFFF
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(
-                                StyleGuide_board_module.colorContainer,
-                                VarsClasses.snowWhite,
-                            )}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            snow-white
-                            <br />
-                            #f5f5f5
+                            #ff5b2b
                         </div>
                     </div>
                     <div>
@@ -279,102 +266,85 @@ export default createBoard({
                             #282b2d{' '}
                         </div>
                     </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Secondary / Dark</h2>
-                <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
-                                CommonStyles_module.o1,
+                                VarsClasses.white,
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            o1
+                            white
                             <br />
-                            #FF5B2B
+                            #FFFFFF
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd12')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                VarsClasses.snowWhite,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d20
-                            <br /> #AFAFB6
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd30')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            d30
+                            snow-white
                             <br />
-                            #808087
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            d40
-                            <br />
-                            #2B2B31{' '}
+                            #f5f5f5
                         </div>
                     </div>
                 </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Warning </h2>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>Secondary / Dark</h2>
                 <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w10')}
+                            className={Classnames(
+                                StyleGuide_board_module['orange-red-40'],
+                                StyleGuide_board_module.colorContainer,
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            w10
+                            orange-red-40
                             <br />
-                            #FEF4E9
+                            rgba(255,93,43,0.4)
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w20')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module['orange-red-10'],
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            w20
+                            orange-red-10
                             <br />
-                            #FCD0A0
+                            rgba(255, 91, 43, 0.1)
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w30')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module['snow-white-40'],
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            w30
+                            snow-white-40
                             <br />
-                            ##FABF7A
+                            rgba(245, 245, 245, 0.4)
                         </div>
                     </div>
-                    <div>
+                    <div className={StyleGuide_board_module.box}>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w40')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module['snow-white-10'],
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            w40
+                            snow-white-10
                             <br />
-                            #2B2B31{' '}
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w50')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w40
-                            <br />
-                            #AA661E{' '}
+                            rgba(245, 245, 245, 0.1)
                         </div>
                     </div>
                 </div>
@@ -382,52 +352,15 @@ export default createBoard({
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module['hot-red'],
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            e10
+                            hot-red
                             <br />
-                            #feecec
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e20')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e20
-                            <br />
-                            #fab2af
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e30')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e30
-                            <br />
-                            #f26561
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e40
-                            <br />
-                            #ec6d69{' '}
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e50')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e50
-                            <br />
-                            #a5302c{' '}
+                            #ff2f2f
                         </div>
                     </div>
                 </div>
@@ -806,9 +739,9 @@ export default createBoard({
     ),
     isSnippet: true,
     environmentProps: {
-        windowWidth: 1014,
+        windowWidth: 1024,
         canvasWidth: 1021,
         canvasHeight: 1576,
-        windowHeight: 1659,
+        windowHeight: 768,
     },
 });

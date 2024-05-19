@@ -3,6 +3,7 @@ import styles from './home-page.module.scss';
 import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { useNavigate } from 'react-router-dom';
+import { LessonsList } from '../../components/lessons-list/lessons-list';
 
 export interface HomePageProps {
     className?: string;
@@ -14,15 +15,23 @@ export const HomePage = ({ className }: HomePageProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <HeroImage
-                title="Incredible Prices on All Your Favorite Items"
                 topLabel="Best Prices"
-                bottomLabel="Get more for less on selected brands"
+                bottomLabel="PULSEFIT STUDIO"
                 buttonLabel="Shop Now"
                 topLabelClassName={styles['top-label-highlighted']}
                 onButtonClick={() => navigate(ROUTES.lessons.to())}
+                title="Incredible Prices on All Your Favorite Items"
             />
-            <h1 className={styles['hero-title']}>Best Sellers</h1>
-            <p className={styles.HPprgrp}>Shop our best seller items</p>
+            <div className={styles.content}>
+                <h1 className={styles['hero-title']}>YOU WANT IT? WE GOT IT</h1>
+                <p className={styles.HPprgrp}>
+                    Use this space to promote the business, its products or its services. Help
+                    people become familiar with the business and its offerings, creating a sense of
+                    connection and trust. Focus on what makes the business unique and how users can
+                    benefit from choosing it.
+                </p>
+            </div>
+            <LessonsList limit={5} />
             {/* <div className={styles.cardsLayout}>
                 {lessons?.map((lesson) =>
                     lesson.slug && lesson.name ? (

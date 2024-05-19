@@ -2,6 +2,7 @@
 
 .root {
     position: relative;
+    border-radius: 20px;
 }
 
 .overlay {
@@ -10,14 +11,17 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding-left: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .image {
     object-fit: cover;
     object-position: 50% 0%;
-    height: 640px;
+    height: 900px;
     width: 100%;
+    border-radius: 16px;
 }
 
 .small-title {
@@ -27,12 +31,9 @@
 }
 
 .big-title {
-    max-width: 80%;
-    font: $extra-large-thin-title;
-    line-height: 1.2;
-    font-size: 85px;
-    letter-spacing: 2px;
-    margin-top: 25px;
+    font: $extra-large-bold-title;
+    font-size: 11dvw;
+    text-align: center;
 }
 
 .overlay-button {
@@ -44,10 +45,6 @@
 @media (width >= $large-desktop) {
     .small-title {
         font-size: 42px;
-    }
-
-    .big-title {
-        max-width: 70%;
     }
 
     .overlay-button {
@@ -66,8 +63,7 @@
     }
 
     .big-title {
-        font-size: 50px;
-        margin-top: 11px;
+        font-size: 42px;
     }
 
     .overlay-button {
