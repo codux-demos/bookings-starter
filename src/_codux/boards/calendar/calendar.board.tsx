@@ -1,4 +1,4 @@
-import { ContentSlot, createBoard } from '@wixc3/react-board';
+import { createBoard } from '@wixc3/react-board';
 import { Calendar } from '../../../components/calendar/calendar';
 import { PageWrapper } from '../../board-wrappers/page-wrapper';
 import Calendar_board_module from './calendar.board.module.scss';
