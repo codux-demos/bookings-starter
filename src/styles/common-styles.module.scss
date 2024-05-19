@@ -15,7 +15,8 @@
 }
 
 .primaryButton,
-.secondaryButton {
+.secondaryButton,
+.primaryButtonVar1 {
     display: flex;
     align-items: center;
     font: $small-text;
@@ -28,7 +29,8 @@
     z-index: 1;
 }
 
-.primaryButton {
+.primaryButton,
+.primaryButtonVar1 {
     border: 1px solid $snow-white;
 
     &:hover {
@@ -36,6 +38,13 @@
         border: 1px solid transparent;
         color: $charcoal-black;
     }
+}
+
+.primaryButtonVar1 {
+    background-color: $snow-white;
+    color: $charcoal-black;
+    outline: 1px solid $snow-white;
+    outline-offset: 10px;
 }
 
 .secondaryButton {
