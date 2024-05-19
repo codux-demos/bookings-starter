@@ -47,14 +47,7 @@ export const Checkout = ({ className }: CheckoutProps) => {
                 </label>
                 <label className={commonStyles['input-label']} htmlFor="phone">
                     Add your message
-                    <input
-                        id="message"
-                        type="text"
-                        name="message"
-                        maxLength={200}
-                        multiple
-                        aria-rowcount={0}
-                    />
+                    <input id="message" type="text" name="message" maxLength={200} />
                 </label>
                 <button
                     type="submit"
