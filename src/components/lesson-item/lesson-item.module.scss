@@ -18,7 +18,7 @@
     justify-self: end;
 }
 
-@media (width <= 768px) {
+@media (width <= $tablet-width) {
     .root {
         flex-direction: column;
         grid-auto-flow: column;
