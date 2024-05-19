@@ -29,7 +29,7 @@
     flex-direction: column;
     padding-right: 60px;
     padding-left: 60px;
-    background-color: #ebeef5;
+    background-color: $charcoal-black;
     margin-top: 20px;
 }
 
@@ -40,10 +40,11 @@
     line-height: 0;
     column-gap: 12px;
     align-items: center;
+    color: $snow-white;
 }
 .SectionSubtitle {
     padding-left: 47px;
-    color: #898989;
+    color: $snow-white;
     font-size: 15px;
 }
 .subsectionContainer {
@@ -179,4 +180,7 @@
 }
 .box {
     width: 122px;
+}
+.image {
+    fill: #ffffff;
 }
