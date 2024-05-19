@@ -325,6 +325,19 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module['snow-white-50'],
+                            )}
+                        />
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            snow-white-50
+                            <br />
+                            rgba(245, 245, 245, 0.5)
+                        </div>
+                    </div>
+                    <div className={StyleGuide_board_module.box}>
+                        <div
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
                                 StyleGuide_board_module['snow-white-40'],
                             )}
                         />

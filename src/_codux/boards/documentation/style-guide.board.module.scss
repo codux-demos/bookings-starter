@@ -19,7 +19,7 @@
 }
 .logo {
     text-transform: uppercase;
-    color: #3f6ff3;
+    color: $orange-red;
     font-size: 30px;
     font-weight: 700;
 }
@@ -29,8 +29,10 @@
     flex-direction: column;
     padding-right: 60px;
     padding-left: 60px;
-    background-color: #ebeef5;
+    background-color: $orange-red-10;
     margin-top: 20px;
+    color: $snow-white-10;
+    background: $orange-red-40;
 }
 
 .SectionTitle {
@@ -40,11 +42,13 @@
     line-height: 0;
     column-gap: 12px;
     align-items: center;
+    color: $snow-white;
+    margin-bottom: 6px;
 }
 .SectionSubtitle {
-    padding-left: 47px;
-    color: #898989;
+    color: $snow-white;
     font-size: 15px;
+    padding-left: 34px;
 }
 .subsectionContainer {
     padding-right: 60px;
@@ -87,7 +91,7 @@
 }
 
 .subtitleValue {
-    color: #898989;
+    color: $snow-white-50;
     font-size: 11px;
 }
 .margin {
@@ -176,6 +180,9 @@
 }
 .snow-white-40 {
     background: $snow-white-40;
+}
+.snow-white-50 {
+    background: $snow-white-50;
 }
 .box {
     width: 122px;
