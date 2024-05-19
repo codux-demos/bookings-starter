@@ -4,9 +4,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { CalendarDate } from '../calendar-date/calendar-date';
 import './datepickerstyles.css';
-import { useParams } from 'react-router-dom';
-import { RouteParams } from '/src/router/config';
-import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 
 
 interface Slot {
@@ -42,7 +39,6 @@ export const Calendar: React.FC<CalendarProps> = ({ data }) => {
         const dateString = format(date, 'dd/MM/yyyy');
         const isAvailable = dateString in data && date >= today;
         const isSelected = format(date, 'dd/MM/yyyy') === format(selectedDate, 'dd/MM/yyyy');
-
         return <CalendarDate isAvailable={isAvailable} date={day} isSelected={isSelected} />;
     };
 
