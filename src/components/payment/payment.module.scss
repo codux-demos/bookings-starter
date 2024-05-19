@@ -1,40 +1,37 @@
 @import '@styles/theme.module.scss';
 
 .root {
+    margin: 10px;
 }
+
 .boldMessage {
     font-weight: 600;
     font-size: 22px;
     margin-bottom: 10px;
 }
+
 .title {
     font-weight: bolder;
     font-size: 18px;
     margin-bottom: 10px;
 }
+
 .subTitle {
     margin-top: 30px;
     margin-bottom: 10px;
     font-weight: 500;
 }
-.btnPayment {
-    width: 100%;
-    text-align: center;
-    background-color: #5783d7;
-    background-image: linear-gradient(#3a73dd, #3a73dd);
-    background-position: 0%;
-    background-size: auto;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-origin: padding-box;
-    background-clip: border-box;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 50px;
-    color: #f0f2ec;
-    font-weight: 600;
-    font-size: 16px;
+
+.submit-button {
+    margin-top: 20px;
 }
-.paymentdiv {
-    margin: 10px;
+
+.title-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
 }
