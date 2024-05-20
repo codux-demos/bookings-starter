@@ -2,6 +2,7 @@
 
 .root {
     margin: 10px;
+    display: flex;
 }
 
 .title {
@@ -14,13 +15,51 @@
 .checkout-button {
     margin-top: 20px;
 }
+
 .section {
     display: flex;
     column-gap: 20px;
 }
-@media (width <=768px) {
 
+@media (width <=768px) {
     .section {
         flex-direction: column;
     }
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+.booking-details {
+    display: flex;
+    flex-grow: 2;
+    padding: 6px 14px 6px 20px;
+    flex-direction: column;
+}
+
+.booking-details-content {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $orange-red;
+    padding-bottom: 30px;
+}
+
+.booking-details-title {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.secondary-info {
+    color: $snow-white;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.availability-chip {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
