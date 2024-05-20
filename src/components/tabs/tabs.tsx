@@ -17,6 +17,7 @@ export const Tabs = ({ items, defaultId, children }: TabsProps) => {
     const [activeTab, setActiveTab] = useState(defaultId || items[0].id);
 
     const renderTabContent = (children: React.ReactNode) => {
+        if (!children) return null
         return React.Children.map(children, (child) => {
             if (React.isValidElement(child) && child.props.id === activeTab) {
                 return child;
