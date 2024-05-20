@@ -16,11 +16,12 @@ export const Calendar: React.FC = () => {
     const { data: lessonData } = useLessonBySlug(slug);
     const { data: availability } = useAvailability(lessonData?._id!);
 
-
-    const calendarDataByDate = availability?.availabilityEntries.reduce<{ [key: string]: SlotAvailability[] }>((accumulator, lesson) => {
+    const calendarDataByDate = availability?.availabilityEntries.reduce<{
+        [key: string]: SlotAvailability[];
+    }>((accumulator, lesson) => {
         const lessonDate = lesson.slot?.endDate
-            ? format(parseISO(lesson.slot.endDate), "dd/MM/yyyy")
-            : "Invalid date";
+            ? format(parseISO(lesson.slot.endDate), 'dd/MM/yyyy')
+            : 'Invalid date';
         if (lessonDate in accumulator) {
             accumulator[lessonDate].push(lesson);
         } else {
@@ -48,6 +49,7 @@ export const Calendar: React.FC = () => {
             minDate={today}
             filterDate={(date) => date.getDay() !== 6}
             formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 3)}
+            disabled={undefined}
         />
     );
 };
