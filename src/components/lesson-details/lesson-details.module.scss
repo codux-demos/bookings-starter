@@ -37,6 +37,7 @@
     justify-content: space-between;
     font-size: 15px;
     line-height: 1;
+    cursor: pointer;
 }
 
 .AccordionContent {
@@ -96,4 +97,8 @@
     padding-bottom: 8px;
     border-radius: 30px;
     margin-top: 20px;
+}
+.lessonTitle {
+    text-transform: capitalize;
+    font: $medium-title;
 }

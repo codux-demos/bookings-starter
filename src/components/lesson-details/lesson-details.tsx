@@ -8,9 +8,21 @@ import commonStyles from '@styles/common-styles.module.scss';
 
 export interface LessonDetailsProps {
     className?: string;
+    title?: string;
+    startDate?: string;
+    location?: string;
+    duration?: string;
+    price?: string;
 }
 
-export const LessonDetails = ({ className }: LessonDetailsProps) => {
+export const LessonDetails = ({
+    className,
+    title,
+    startDate,
+    location,
+    duration,
+    price,
+}: LessonDetailsProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <Accordion.Root
@@ -22,12 +34,11 @@ export const LessonDetails = ({ className }: LessonDetailsProps) => {
                 <Accordion.Item className={styles.AccordionItem} value="item-1">
                     <AccordionTrigger>Service Details</AccordionTrigger>
                     <AccordionContent>
-                        <h2>Lesson Title</h2>
-                        <h2>Date and start hour</h2>
-                        <h4>Location</h4>
-                        <h4>Instructor</h4>
-                        <h4>Duration</h4>
-                        <h4>Price</h4>
+                        <h2 className={styles.lessonTitle}>{title}</h2>
+                        <h2>{startDate}</h2>
+                        <h4>{location}</h4>
+                        <h4>{duration}</h4>
+                        <h4>{price}</h4>
                         <Separator.Root className={styles.Separator} />
                         <button className={styles.nextButton}>Next</button>
                     </AccordionContent>
