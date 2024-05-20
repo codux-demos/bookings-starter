@@ -44,17 +44,13 @@
 
 // --- MEDIA QUERIES ---
 
-@media (430px < width < 980px) {
+@media (width <= 1024px) {
     .cardsLayout {
         column-gap: 4vw;
     }
 
     .productCard {
         width: 40vw;
-    }
-
-    .HPprgrp {
-        font: $medium-paragraph-bold;
     }
 }
 
@@ -65,10 +61,5 @@
 
     .productCard {
         width: 90vw;
-    }
-
-    .HPprgrp {
-        font: $large-title-mobile;
-        margin-bottom: 40px;
     }
 }

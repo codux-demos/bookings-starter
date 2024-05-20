@@ -1,0 +1,11 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}

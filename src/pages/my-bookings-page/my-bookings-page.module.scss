@@ -53,7 +53,7 @@
     align-items: center;
 }
 
-@media (width <=768px) {
+@media (width <= $tablet-width) {
     .root {
         padding: 16px;
     }
