@@ -4,6 +4,7 @@ import StyleGuide_board_module from './style-guide.board.module.scss';
 import Classnames from 'classnames';
 import SectionSvg from '../../../assets/svg/section.svg';
 import CommonStyles_module from '../../../styles/common-styles.module.scss';
+import SectionSvg0 from '../../../assets/section.svg';
 
 export default createBoard({
     name: 'StyleGuide',
@@ -15,7 +16,7 @@ export default createBoard({
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} className={StyleGuide_board_module.image} />
+                    <img src={SectionSvg0} className={StyleGuide_board_module.image} />
                     <h2>Typography</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
