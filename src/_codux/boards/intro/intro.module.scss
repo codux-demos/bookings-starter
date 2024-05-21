@@ -12,7 +12,7 @@
 }
 
 .myStyle {
-    font: $medium-paragraph;
+    font: $extra-large-bold-title;
     padding: 40px 100px;
     text-align: center;
     margin-bottom: 8px;
@@ -38,14 +38,16 @@
         width: 100vw;
         margin-top: unset;
     }
-    
-    .myStyle, .myParagraph {
+
+    .myStyle,
+    .myParagraph {
         padding: 50px 40px;
     }
 }
 
 @media (width <= $mobile-width) {
-    .myStyle, .myParagraph {
+    .myStyle,
+    .myParagraph {
         font-size: 20px;
     }
 }
