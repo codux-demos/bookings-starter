@@ -14,7 +14,7 @@ export default createBoard({
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} className={StyleGuide_board_module.image} />
+                    <img src={SectionSvg} />
                     <h2>Typography</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
