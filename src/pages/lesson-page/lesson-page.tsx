@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import classNames from 'classnames';
 import commonStyles from '@styles/common-styles.module.scss';
 import styles from './lesson-page.module.scss';
@@ -16,9 +17,8 @@ export const LessonPage = ({ className }: LessonPageProps) => {
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
 
-    console.log('Lesson Data:', data);
-    console.log('Lesson Availability Data:', availability);
-
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    
     if (!availability && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
@@ -32,10 +32,10 @@ export const LessonPage = ({ className }: LessonPageProps) => {
             <h4 className={styles.lessonDescription}>{data?.description}</h4>
             <LessonDetails
                 title={data?.name!}
-                startDate={availability?.availabilityEntries[0].slot?.startDate!}
+                startDate={selectedDate.toDateString()}
                 location={availability?.availabilityEntries[0].slot?.location?.name!}
-                duration={"Should calculate duration from startDate and EndDate hours"}
-                price={"Format price: " + data?.payment?.fixed?.price?.value!}
+                duration={'1 hr'}
+                price={data?.payment?.fixed?.price?.value!}
             />
         </div>
     );
