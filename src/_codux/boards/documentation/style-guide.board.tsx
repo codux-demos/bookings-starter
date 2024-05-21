@@ -3,7 +3,6 @@ import { createBoard } from '@wixc3/react-board';
 import StyleGuide_board_module from './style-guide.board.module.scss';
 import Classnames from 'classnames';
 import SectionSvg from '../../../assets/svg/section.svg';
-import CommonStyles_module from '../../../styles/common-styles.module.scss';
 
 export default createBoard({
     name: 'StyleGuide',
@@ -428,49 +427,6 @@ export default createBoard({
                             <br />
                             #0F804E{' '}
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className={StyleGuide_board_module.SectionContainer}>
-                <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} />
-                    <h2>Shadows</h2>
-                </div>
-                <p className={StyleGuide_board_module.SectionSubtitle}>
-                    Shadows help create the illusion of depth and dimension in a flat, 2D digital
-                    space. By simulating how light interacts with objects in the real world, shadows
-                    visually separate elements, define their shapes, and show their relative
-                    positions.
-                </p>
-            </div>
-            <div className={StyleGuide_board_module.subsectionContainer}>
-                <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
-                        <div
-                            className={Classnames(
-                                'shadow100',
-                                StyleGuide_board_module.shadowContainer,
-                            )}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>shadow100</div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(
-                                'shadow200',
-                                StyleGuide_board_module.shadowContainer,
-                            )}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>shadow200</div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(
-                                'shadow300',
-                                StyleGuide_board_module.shadowContainer,
-                            )}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>shadow300</div>
                     </div>
                 </div>
             </div>
