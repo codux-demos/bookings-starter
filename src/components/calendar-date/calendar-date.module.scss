@@ -1,3 +1,5 @@
+@import '@styles/theme.module.scss';
+
 .container {
     width: 35px;
     height: 35px;
@@ -10,15 +12,15 @@
 }
 
 .date {
-    color: white;
+    color: $white;
 }
 
 .available .date {
-    color: #ff5b2b;
+    color: $o1;
 }
 
 .container:hover {
-    background-color: rgba(255, 91, 43, 0.2); // Subtle orange background on hover
+    background-color: rgba(255, 91, 43, 0.2); 
 }
 
 .container.selected:hover {
@@ -29,18 +31,20 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #ff5b2b;
 }
 
 .selectedDot {
     background-color: black;
 }
 
+.dayPassed {
+    color:grey;
+}
+
 .selected {
-    background-color: #ff5b2b;
+    background-color: $o1;
     color: black;
     .date {
         color: black;
     }
-    font-family: DM Sans;
 }

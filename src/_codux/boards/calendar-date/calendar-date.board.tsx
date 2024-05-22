@@ -9,10 +9,11 @@ export default createBoard({
         <ComponentWrapper settings={{}}>
             <ContentSlot>
                 <div className={styles.container}>
-                    <CalendarDate isAvailable={true} date={9} isSelected={false} />
-                    <CalendarDate isAvailable={true} date={9} isSelected={true} />
-                    <CalendarDate isAvailable={false} date={9} isSelected={false} />
-                    <CalendarDate isAvailable={false} date={9} isSelected={true} />
+                    <CalendarDate date={9} isAvailable={true} />
+                    <CalendarDate date={9} isAvailable isSelected />
+                    <CalendarDate date={9} />
+                    <CalendarDate date={9} isSelected={true} />
+                    <CalendarDate date={9} isDayPassed/>
                 </div>
             </ContentSlot>
         </ComponentWrapper>
@@ -20,5 +21,6 @@ export default createBoard({
     isSnippet: true,
     environmentProps: {
         canvasMargin: { right: 0, bottom: 0, left: 0, top: 0 },
+        windowWidth: 1040,
     },
 });
