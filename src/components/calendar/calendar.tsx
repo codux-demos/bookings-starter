@@ -1,11 +1,15 @@
 import classNames from 'classnames';
 import styles from './calendar.module.scss';
 import commonStyles from '@styles/common-styles.module.scss';
+import { DayPicker } from 'react-day-picker';
 
 export interface CalendarProps {
-    className?: string;
+    selectedDate: Date;
+    setSelectedDate: (date: Date | null) => void;
 }
 
-export const Calendar = ({ className }: CalendarProps) => {
-    return <div className={classNames(styles.root, className)}>Calendar</div>;
+export const Calendar = () => {
+    return (
+        <DayPicker />
+    )
 };
