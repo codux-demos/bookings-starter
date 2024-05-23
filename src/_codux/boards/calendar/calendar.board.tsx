@@ -16,7 +16,7 @@ export default createBoard({
         return (
             <PageWrapper>
                 <ContentSlot>
-                    <Calendar selectedDate={selectedDate} />
+                    <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                 </ContentSlot>
             </PageWrapper>
         );
