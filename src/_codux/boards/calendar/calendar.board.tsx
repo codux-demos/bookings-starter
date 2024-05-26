@@ -10,7 +10,7 @@ export default createBoard({
         const today = new Date();
         const formattedToday = format(today, 'dd/MM/yyyy');
         const [selectedDate, setSelectedDate] = useState(today);
-        const availableDates = ["29/05/2024", "30/5/2024"]
+        const availableDates = ["29/05/2024", "30/05/2024"]
         return (
             <PageWrapper>
                 <ContentSlot>

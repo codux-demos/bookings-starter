@@ -1,4 +1,47 @@
-@import '@styles/theme.module.scss';
+/* Base styles for the day cells */
+.react-day-picker__day {
+  position: relative;
+  cursor: pointer;
+}
 
-.root {
+.react-day-picker__day--selected {
+  background-color: orange;
+  color: black;
+}
+
+.react-day-picker__day--available {
+  color: orange;
+}
+
+.react-day-picker__day--dayPassed {
+  color: grey;
+}
+
+.react-day-picker__day--outside {
+  visibility: hidden;
+}
+
+.react-day-picker__day--selected:hover {
+  background-color: rgba(255, 91, 43, 0.8);
+}
+
+.react-day-picker__day:hover {
+  background-color: rgba(255, 91, 43, 0.2);
+}
+
+/* Custom styles for additional visual cues */
+.react-day-picker__day--available::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+.react-day-picker__day--selected .react-day-picker__day--available::after {
+  background-color: black;
 }

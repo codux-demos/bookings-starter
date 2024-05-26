@@ -1,7 +1,7 @@
 import React from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format, isBefore, isSameDay } from 'date-fns';
-import { CalendarDate } from '../calendar-date/calendar-date';
+
 import 'react-day-picker/dist/style.css';
 
 interface CalendarComponentProps {
@@ -21,6 +21,7 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
         available: (date: Date) => {
             const dateString = format(date, 'dd/MM/yyyy');
             return availableDates.includes(dateString) && !isBefore(date, today);
+        
         },
         selected: (date: Date) => isSameDay(date, selectedDate),
         dayPassed: (date: Date) => isBefore(date, today),
@@ -32,6 +33,11 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
             selected={selectedDate}
             onSelect={setSelectedDate}
             modifiers={modifiers}
+            modifiersStyles={{
+                available: { color: 'orange' },
+                selected: { backgroundColor: 'orange', color: 'black' },
+                dayPassed: { color: 'grey' },
+            }}
         />
     );
 };
