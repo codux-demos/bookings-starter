@@ -10,27 +10,33 @@ interface CalendarDateProps {
     date: number;
 }
 
-export const CalendarDate = ({ isAvailable = false, isSelected = false, date, isDayPassed = false }: CalendarDateProps) => {
+export const CalendarDate = ({
+    isAvailable = false,
+    isSelected = false,
+    isDayPassed = false,
+    date,
+}: CalendarDateProps) => {
     return (
         <div
             className={classNames(styles.container, {
                 [styles.available]: isAvailable,
                 [styles.selected]: isSelected,
-
-            })}>
-            <div className={classNames(styles.date, {
-                [styles.dayPassed]: isDayPassed,
             })}
-            >{date}</div>
-            {
-                isAvailable && (
-                    <div
-                        className={classNames(styles.dot, styles.isAvailable, {
-                            [styles.selectedDot]: isSelected,
-                        })}
-                    ></div>
-                )
-            }
-        </div >
+        >
+            <div
+                className={classNames(styles.date, {
+                    [styles.dayPassed]: isDayPassed,
+                })}
+            >
+                {date}
+            </div>
+            {isAvailable && (
+                <div
+                    className={classNames(styles.dot, styles.isAvailable, {
+                        [styles.selectedDot]: isSelected,
+                    })}
+                ></div>
+            )}
+        </div>
     );
 };
