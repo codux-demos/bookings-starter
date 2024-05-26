@@ -1,47 +1,56 @@
-/* Base styles for the day cells */
-.react-day-picker__day {
-  position: relative;
-  cursor: pointer;
+@import '@styles/theme.module.scss';
+
+.container {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
 }
 
-.react-day-picker__day--selected {
-  background-color: orange;
-  color: black;
+.available:after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    width: 5px;
+    height: 5px;
+    background-color: $orange-red;
+    border-radius: 50%;
 }
 
-.react-day-picker__day--available {
-  color: orange;
+.available {
+    color: $orange-red;
 }
 
-.react-day-picker__day--dayPassed {
-  color: grey;
+.available:hover {
+    background-color: rgba(255, 91, 43, 0.2);
+}
+
+.dayPassed {
+    color: grey;
+    pointer-events: none;
+}
+
+.selected {
+    background-color: $orange-red;
+    color: black;
+    .date {
+        color: black;
+    }
+}
+
+.selected.available:after {
+    background-color: black; // Black dot for selected and available date
+}
+
+.selected:hover {
+    background-color: red;
+    color: black;
 }
 
 .react-day-picker__day--outside {
-  visibility: hidden;
-}
-
-.react-day-picker__day--selected:hover {
-  background-color: rgba(255, 91, 43, 0.8);
-}
-
-.react-day-picker__day:hover {
-  background-color: rgba(255, 91, 43, 0.2);
-}
-
-/* Custom styles for additional visual cues */
-.react-day-picker__day--available::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
-  background-color: orange;
-  border-radius: 50%;
-}
-
-.react-day-picker__day--selected .react-day-picker__day--available::after {
-  background-color: black;
+    visibility: hidden;
 }
