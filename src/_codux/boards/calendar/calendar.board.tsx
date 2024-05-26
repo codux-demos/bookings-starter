@@ -10,9 +10,7 @@ export default createBoard({
         const today = new Date();
         const formattedToday = format(today, 'dd/MM/yyyy');
         const [selectedDate, setSelectedDate] = useState(today);
-        // Assuming generateDates returns an array of date strings in 'dd/MM/yyyy' format
-        // const availability = generateDates(format(today, 'dd/MM/yyyy'), '07/06/2024');
-
+        
         return (
             <PageWrapper>
                 <ContentSlot>

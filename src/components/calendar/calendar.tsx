@@ -14,5 +14,6 @@ export const Calendar = ({ selectedDate, setSelectedDate }: CalendarProps) => {
     return <DayPicker 
     mode="single"
     selected = {selectedDate}
+    onSelect={setSelectedDate}
 />;
 };
