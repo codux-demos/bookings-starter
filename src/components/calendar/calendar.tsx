@@ -4,33 +4,6 @@ import { format, isBefore, isSameDay } from 'date-fns';
 import { CalendarDate } from '../calendar-date/calendar-date';
 import 'react-day-picker/dist/style.css';
 
-interface CustomDayProps {
-    date: Date;
-    displayMonth: Date;
-    selectedDate: Date;
-    availableDates: string[];
-}
-
-
-const CustomDay: React.FC<CustomDayProps> = ({ date, displayMonth,selectedDate, availableDates}) => {
-    const today = new Date();
-    const dateString = format(date, 'dd/MM/yyyy');
-    const isDayPassed = isBefore(date, today);
-    const isAvailable = availableDates.includes(dateString) && !isDayPassed;
-    const isSelected = isSameDay(date, selectedDate);
-
-    return (
-        <CalendarDate
-            isAvailable={isAvailable}
-            date={date.getDate()}
-            isSelected={isSelected}
-            isDayPassed={isDayPassed}
-        />
-    );
-};
-
-
-
 interface CalendarComponentProps {
     selectedDate: Date;
     setSelectedDate: (date: Date) => void;
@@ -42,13 +15,23 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
     setSelectedDate,
     availableDates,
 }) => {
+    const today = new Date();
+
+    const modifiers = {
+        available: (date: Date) => {
+            const dateString = format(date, 'dd/MM/yyyy');
+            return availableDates.includes(dateString) && !isBefore(date, today);
+        },
+        selected: (date: Date) => isSameDay(date, selectedDate),
+        dayPassed: (date: Date) => isBefore(date, today),
+    };
+
     return (
         <DayPicker
             mode="single"
             selected={selectedDate}
             onSelect={setSelectedDate}
-            components = { {Day: CustomDay}}
-
+            modifiers={modifiers}
         />
     );
 };
