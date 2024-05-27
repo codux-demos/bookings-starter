@@ -11,20 +11,11 @@ export default createBoard({
         const [selectedDate, setSelectedDate] = useState(today);
         const availableDates = ['29/05/2024', '30/05/2024'];
         return (
-            <PageWrapper>
-                <ContentSlot>
-                    <Calendar
-                        selectedDate={selectedDate}
-                        setSelectedDate={setSelectedDate}
-                        availableDates={availableDates}
-                    />
-                </ContentSlot>
-            </PageWrapper>
+            <Calendar
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                availableDates={availableDates}
+            />
         );
-    },
-    isSnippet: false,
-    environmentProps: {
-        canvasMargin: { right: 0, bottom: 0, left: 0 },
-        windowWidth: 858,
     },
 });

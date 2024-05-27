@@ -8,14 +8,15 @@ import { useState } from 'react';
 import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 
-export interface LessonPageProps {
-    className?: string;
-}
 
-export const LessonPage = ({ className }: LessonPageProps) => {
+
+export const LessonPage = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
+
+    const typeOfClass = data?.name;
+    console.log(data);
     const availableDates =
         availability?.availabilityEntries.reduce((acc: string[], cur) => {
             if (cur?.slot?.startDate) {
@@ -26,12 +27,13 @@ export const LessonPage = ({ className }: LessonPageProps) => {
         }, []) || [];
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    if (!availability && isLoading) {
-        return <div className={commonStyles.loading}>Loading...</div>;
-    }
-
     return (
-        <div>
+        <div className={classNames(styles.root)}>
+            <h1 className={styles.header}> {typeOfClass}</h1>
+            <h2>Check out our availability and book the date and t</h2>
+
+            <hr className={styles.asd} />
+
             <Calendar
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
