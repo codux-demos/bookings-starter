@@ -8,8 +8,6 @@ import { useState } from 'react';
 import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 
-
-
 export const LessonPage = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
@@ -29,10 +27,14 @@ export const LessonPage = () => {
 
     return (
         <div className={classNames(styles.root)}>
-            <h1 className={styles.header}> {typeOfClass}</h1>
-            <h2>Check out our availability and book the date and t</h2>
+            <button>Button</button>
+            <div>
+                <h1 className={styles.header}> {typeOfClass}</h1>
+                <h2>Check out our availability and book the date and time that works for you</h2>
+            </div>
+            <h2 className={styles.secondTitle}>Select a Date and time</h2>
 
-            <hr className={styles.asd} />
+            <hr className={styles.horizontalLine} />
 
             <Calendar
                 selectedDate={selectedDate}

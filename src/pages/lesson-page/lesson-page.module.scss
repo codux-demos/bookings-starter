@@ -1,8 +1,24 @@
 @import '@styles/theme.module.scss';
 
 .root {
-
 }
+
 .header {
-    font: $large-title
+    font: $large-title;
+}
+.secondTitle {
+    font: $small-text-font-bold;
+}
+.horizontalLine {
+    width: 100%;
+    color: $snow-white-40;
+    background-color: $snow-white-40;
+    background-image: none;
+    background-position: 0%;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    height: 1px;
 }
