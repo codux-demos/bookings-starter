@@ -19,12 +19,11 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
     // Set the time to midnight to ensure only the date part is compared
     today.setHours(0, 0, 0, 0);
 
-
     const modifiers = {
         available: (date: Date) => {
             const dateString = format(date, 'dd/MM/yyyy');
             return availableDates.includes(dateString) && !isBefore(date, today);
-     },
+        },
         selected: (date: Date) => isSameDay(date, selectedDate),
         dayPassed: (date: Date) => isBefore(date, today),
     };
@@ -42,9 +41,6 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
             onSelect={setSelectedDate}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
-            classNames={{
-                day: styles.container,
-            }}
         />
     );
 };

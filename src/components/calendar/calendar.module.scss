@@ -6,27 +6,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     border-radius: 50%;
-    position: relative;
 }
 
 .available:after {
     content: '';
     position: absolute;
-    top: 25px;
+    top: 30px;
     width: 5px;
     height: 5px;
     background-color: $orange-red;
     border-radius: 50%;
+    
 }
 
 .available {
     color: $orange-red;
 }
 
-.available:hover {
-    background-color: rgba(255, 91, 43, 0.2);
+.available:hover{
+    background-color: rgba(255, 91, 43, 0.2) !important;
+}
+
+.selected:hover {
+    background-color: rgba(255, 91, 43, 0.8) !important;
 }
 
 .dayPassed {
@@ -37,20 +40,15 @@
 .selected {
     background-color: $orange-red;
     color: black;
-    .date {
-        color: black;
-    }
 }
 
 .selected.available:after {
-    background-color: black; // Black dot for selected and available date
+    background-color: black; 
+
 }
 
 .selected:hover {
-    background-color: red;
+    background-color: red ;
     color: black;
 }
 
-.react-day-picker__day--outside {
-    visibility: hidden;
-}
