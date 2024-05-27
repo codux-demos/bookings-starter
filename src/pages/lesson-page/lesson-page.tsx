@@ -8,7 +8,13 @@ import { useState } from 'react';
 import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 
-export const LessonPage = () => {
+interface LessonPageProps{
+    selectedDate : Date;
+    setSelectedDate: (date: Date) =>void
+}
+
+
+export const LessonPage:React.FC<LessonPageProps> = ({selectedDate, setSelectedDate}) => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
@@ -23,7 +29,6 @@ export const LessonPage = () => {
             }
             return acc;
         }, []) || [];
-    const [selectedDate, setSelectedDate] = useState(new Date());
 
     return (
         <div className={classNames(styles.root)}>

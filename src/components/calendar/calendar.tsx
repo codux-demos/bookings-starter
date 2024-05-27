@@ -15,9 +15,20 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
     setSelectedDate,
     availableDates,
 }) => {
+    const adjustToLocalTime = (date: Date) => {
+        const offset = date.getTimezoneOffset();
+        const localDate = new Date(date.getTime() - offset * 60 * 1000);
+        return localDate;
+    };
+
+    const handleDateSelect = (date: Date | undefined) => {
+        if (date) {
+            const localDate = adjustToLocalTime(date);
+            setSelectedDate(localDate);
+        }
+    };
+
     const today = new Date();
-    // Set the time to midnight to ensure only the date part is compared
-    today.setHours(0, 0, 0, 0);
 
     const modifiers = {
         available: (date: Date) => {
@@ -38,7 +49,7 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
         <DayPicker
             mode="single"
             selected={selectedDate}
-            onSelect={setSelectedDate}
+            onSelect={handleDateSelect}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
         />
