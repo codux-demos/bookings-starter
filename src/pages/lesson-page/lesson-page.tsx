@@ -28,17 +28,26 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
+    console.log(availability)
 
     const typeOfClass = data?.name;
-    console.log(data);
+    const lessonsByDate: { [key: string]: any[] } = {};
     const availableDates =
-        availability?.availabilityEntries.reduce((acc: string[], cur) => {
-            if (cur?.slot?.startDate) {
-                const date = format(new Date(cur?.slot?.startDate), 'dd/MM/yyyy');
-                if (!acc.includes(date)) acc.push(date);
+        availability?.availabilityEntries.reduce((acc: string[], current) => {
+            if (current?.slot?.startDate) {
+                const date: string = format(new Date(current?.slot?.startDate), 'dd/MM/yyyy');
+                if (!lessonsByDate[date]) {
+                    lessonsByDate[date] = [];
+                }
+                lessonsByDate[date].push({
+                    day: deduceDays[new Date(current?.slot?.startDate).getDay()],
+                    startHour: format(new Date(current?.slot?.startDate), 'HH:mm')
+                });
             }
             return acc;
         }, []) || [];
+
+
 
     return (
         <div className={classNames(styles.root)}>
@@ -59,6 +68,7 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
                 setSelectedDate={setSelectedDate}
                 availableDates={availableDates}
             />
+
 
         </div>
     );
