@@ -25,7 +25,7 @@ export const LessonDetails = ({
 }: LessonDetailsProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <Accordion.Root className={styles.AccordionRoot} type="single" collapsible={true}>
+            <Accordion.Root className={styles.AccordionRoot} type="single" defaultValue="item-1" collapsible>
                 <Accordion.Item className={styles.AccordionItem} value="item-1">
                     <AccordionTrigger>Service Details</AccordionTrigger>
                     <AccordionContent>
