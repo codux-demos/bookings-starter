@@ -8,13 +8,23 @@ import { useState } from 'react';
 import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 
-interface LessonPageProps{
-    selectedDate : Date;
-    setSelectedDate: (date: Date) =>void
+const deduceDays = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday"
+};
+
+interface LessonPageProps {
+    selectedDate: Date;
+    setSelectedDate: (date: Date) => void
 }
 
 
-export const LessonPage:React.FC<LessonPageProps> = ({selectedDate, setSelectedDate}) => {
+export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelectedDate }) => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
@@ -49,6 +59,7 @@ export const LessonPage:React.FC<LessonPageProps> = ({selectedDate, setSelectedD
                 setSelectedDate={setSelectedDate}
                 availableDates={availableDates}
             />
+
         </div>
     );
 };
