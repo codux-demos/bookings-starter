@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 
-const deduceDays = {
+const deduceDays: { [key: number]: string } = {
     0: "Sunday",
     1: "Monday",
     2: "Tuesday",
