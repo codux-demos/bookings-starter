@@ -6,7 +6,7 @@ export default createBoard({
     name: 'Fake LessonPage',
     Board: () => (
         //in practice PageWrapper with a path will render the correct page, but it is less convenient to use in a board
-        <PageWrapper>
+        <PageWrapper path="/lesson/yin-y">
             <ContentSlot>
                 <LessonPage />
             </ContentSlot>
