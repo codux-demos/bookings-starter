@@ -27,12 +27,15 @@ export const LessonPage = () => {
 
     return (
         <div className={classNames(styles.root)}>
-            <button>Button</button>
+            <button>Back Button</button>
             <div>
                 <h1 className={styles.header}> {typeOfClass}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
             </div>
-            <h2 className={styles.secondTitle}>Select a Date and time</h2>
+            <div className={styles.aboveTheLine}>
+                <h2 className={styles.secondTitle}>Select a Date and time</h2>
+                <h2>Timezone:</h2>
+            </div>
 
             <hr className={styles.horizontalLine} />
 

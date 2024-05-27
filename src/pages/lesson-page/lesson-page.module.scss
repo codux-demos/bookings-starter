@@ -22,3 +22,8 @@
     background-clip: border-box;
     height: 1px;
 }
+.aboveTheLine {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+}
