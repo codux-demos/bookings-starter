@@ -3,9 +3,13 @@ $white: #ffffff;
 $black: #000000;
 $charcoal-black: #282b2d;
 $snow-white: #f5f5f5;
-$light-gray: #bebbbb;
-$gray: #808080;
-$orange-red: #FF5B2B;
+$snow-white-50: rgba(245, 245, 245, 0.5);
+$snow-white-40: rgba(245, 245, 245, 0.4);
+$snow-white-10: rgba(245, 245, 245, 0.1);
+$hot-red: #ff2f2f;
+$orange-red: #ff5b2b;
+$orange-red-40: rgba(255, 93, 43, 0.4);
+$orange-red-10: rgba(255, 91, 43, 0.1);
 
 //fonts
 $my-prettyfont: 'DM Sans', sans-serif;
@@ -13,7 +17,7 @@ $my-prettyfont: 'DM Sans', sans-serif;
 //titles
 $extra-large-thin-title: 100 65px/1.2 $my-prettyfont;
 $large-thin-title: 100 45px/1.4 $my-prettyfont;
-$extra-large-bold-title: 1000 120px/1.4 $my-prettyfont;
+$extra-large-bold-title: 1000 120px/1.2 $my-prettyfont;
 $large-title: 400 45px/1.4 $my-prettyfont;
 $large-title-mobile: 400 30px/1.4 $my-prettyfont;
 $medium-title: 300 20px/1.4 $my-prettyfont;
@@ -32,4 +36,5 @@ $extra-small-text: 400 12px/1.45 $my-prettyfont;
 
 //media sizes
 $mobile-width: 430px;
+$tablet-width: 768px;
 $large-desktop: 1400px;

@@ -1,0 +1,43 @@
+@import '@styles/theme.module.scss';
+
+.root {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content {
+    max-width: 980px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.fields-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 80px;
+    row-gap: 40px;
+    margin-bottom: 20px;
+}
+@media (width <= $tablet-width) {
+    .fields-section {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+} 
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+.profile-submit {
+    justify-content: center;
+    align-self: flex-end;
+}
+.profile-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}

@@ -2,22 +2,18 @@
 
 .root {
     position: relative;
+    border-radius: 20px;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-left: 5vw;
-}
-
-.image {
-    object-fit: cover;
-    object-position: 50% 0%;
-    height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('../../../assets/img/[1400_640]_heroImage.webp') no-repeat center;
+    background-size: cover;
+    height: 900px;
     width: 100%;
+    border-radius: 16px;
 }
 
 .small-title {
@@ -27,12 +23,9 @@
 }
 
 .big-title {
-    max-width: 80%;
-    font: $extra-large-thin-title;
-    line-height: 1.2;
-    font-size: 85px;
-    letter-spacing: 2px;
-    margin-top: 25px;
+    font: $extra-large-bold-title;
+    font-size: 11dvw;
+    text-align: center;
 }
 
 .overlay-button {
@@ -46,18 +39,29 @@
         font-size: 42px;
     }
 
-    .big-title {
-        max-width: 70%;
-    }
-
     .overlay-button {
         height: 47px;
     }
 }
 
+@media (width <= 1024px) {
+    .overlay {
+        background: url('../../../assets/img/[1024_640]_heroImage.webp') no-repeat center;
+        height: 600px;
+    }
+}
+
+@media (width <= $tablet-width) {
+    .overlay {
+        background: url('../../../assets/img/[760_460]_heroImage.webp') no-repeat center;
+        height: 500px;
+    }
+}
+
 @media (width <= $mobile-width) {
     .overlay {
-        padding-left: 8vw;
+        background: url('../../../assets/img/[430_340]_heroImage.webp') no-repeat center;
+        height: 300px;
     }
 
     .small-title {
@@ -66,8 +70,7 @@
     }
 
     .big-title {
-        font-size: 50px;
-        margin-top: 11px;
+        font-size: 42px;
     }
 
     .overlay-button {

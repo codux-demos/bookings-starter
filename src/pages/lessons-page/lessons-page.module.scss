@@ -11,7 +11,7 @@
     margin-bottom: 60px;
 }
 
-@media (width <= 768px) {
+@media (width <= $tablet-width) {
     .title {
         margin-top: 20px;
         margin-bottom: 10px;

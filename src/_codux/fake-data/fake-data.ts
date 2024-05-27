@@ -8,11 +8,13 @@ import {
     FakeImage,
     FakeImagesListKey,
 } from './fake-images';
+import { members } from '@wix/members';
 
 type Lesson = Exclude<Awaited<ReturnType<WixAPI['getLesson']>>, undefined>;
 type Media = Exclude<Exclude<Lesson['media'], undefined>['mainMedia'], undefined>;
 type LessonAvailability = Exclude<Awaited<ReturnType<WixAPI['getServiceAvailability']>>, undefined>;
 type Bookings = Exclude<Awaited<ReturnType<WixAPI['getMyUpcomingBookings']>>, undefined>;
+type Member = Exclude<Awaited<ReturnType<WixAPI['getMyProfile']>>, undefined>;
 
 export type FakeDataSettings = {
     /** @important */
@@ -32,10 +34,10 @@ export type FakeDataSettings = {
 };
 
 export function createLessons(
-    settings?: FakeDataSettings
+    settings?: FakeDataSettings,
 ): Awaited<ReturnType<WixAPI['getAllLessons']>> {
     return Array.from(new Array(settings?.numberOfLessons || 10)).map((id) =>
-        createLesson(id, settings)
+        createLesson(id, settings),
     );
 }
 
@@ -109,7 +111,7 @@ const createAvailability = (
         startDate?: Date;
         endDate?: Date;
         bookingDisabled?: boolean;
-    }
+    },
 ): LessonAvailability['availabilityEntries'][number] => {
     const defaultDate = new Date();
     return {
@@ -133,7 +135,7 @@ const createAvailability = (
 };
 
 export const createLessonAvailability = (
-    lessonId: string = faker.string.uuid()
+    lessonId: string = faker.string.uuid(),
 ): LessonAvailability => {
     const fakeDates = faker.date.betweens({
         from: new Date(),
@@ -224,7 +226,7 @@ export function createBookingData({ isHistory = false }) {
 export function createUpcomingBookings(settings?: FakeDataSettings): Bookings {
     const result: any = {
         extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() =>
-            createBookingData({ isHistory: false })
+            createBookingData({ isHistory: false }),
         ),
         pagingMetaData: {
             count: 0,
@@ -238,7 +240,7 @@ export function createUpcomingBookings(settings?: FakeDataSettings): Bookings {
 export function createBookingHistory(settings?: FakeDataSettings): Bookings {
     const result: any = {
         extendedBookings: Array.from(new Array(settings?.numberOfBookings || 10)).map(() =>
-            createBookingData({ isHistory: true })
+            createBookingData({ isHistory: true }),
         ),
         pagingMetaData: {
             count: 0,
@@ -248,3 +250,28 @@ export function createBookingHistory(settings?: FakeDataSettings): Bookings {
     };
     return result;
 }
+
+export const createUserData = (): Member => ({
+    member: {
+        _id: faker.string.uuid(),
+        status: members.Status.APPROVED,
+        profile: {
+            nickname: faker.person.fullName(),
+            slug: faker.lorem.slug(),
+            title: faker.person.jobTitle(),
+        },
+        contact: {
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
+            addresses: [],
+            phones: [
+                faker.phone.number(),
+            ],
+        },
+        loginEmail: faker.internet.email(),
+        privacyStatus: members.PrivacyStatusStatus.PUBLIC,
+        activityStatus: members.ActivityStatusStatus.ACTIVE,
+        _createdDate: new Date(faker.date.past()),
+        _updatedDate: new Date(faker.date.recent()),
+    },
+});

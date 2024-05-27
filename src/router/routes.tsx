@@ -7,6 +7,7 @@ import { LessonsPage } from '../pages/lessons-page/lessons-page';
 import { ThankYouPage } from '../components/thank-you-page/thank-you-page';
 import { LessonPage } from '../pages/lesson-page/lesson-page';
 import { MyBookingsPage } from '../pages/my-bookings-page/my-bookings-page';
+import { ProfilePage } from '../pages/profile-page/profile-page';
 
 export const getRoutes: () => RouteObject[] = () => [
     {
@@ -19,6 +20,7 @@ export const getRoutes: () => RouteObject[] = () => [
             { path: ROUTES.thankYou.route, element: <ThankYouPage /> },
             { path: ROUTES.lesson.route, element: <LessonPage /> },
             { path: ROUTES.myBookings.route, element: <MyBookingsPage /> },
+            { path: ROUTES.myProfile.route, element: <ProfilePage /> },
         ],
     },
 ];

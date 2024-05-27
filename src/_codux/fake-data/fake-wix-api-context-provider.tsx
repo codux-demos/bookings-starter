@@ -6,6 +6,7 @@ import {
     createUpcomingBookings,
     createBookingHistory,
     createLessonAvailability,
+    createUserData,
 } from './fake-data';
 import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
@@ -41,6 +42,9 @@ function getWixApi(settings?: Settings): WixAPI {
         checkout: () => {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
+        },
+        getMyProfile: async () => {
+            return Promise.resolve(createUserData());
         },
         getServiceAvailability: (lessonId: string) => {
             return Promise.resolve(createLessonAvailability(lessonId));

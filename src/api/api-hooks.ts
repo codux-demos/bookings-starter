@@ -49,3 +49,8 @@ export const useBookingHistory = () => {
     const wixApi = useWixApi();
     return useSwr('booking-history', wixApi.getMyBookingHistory);
 };
+
+export const useMyProfile = () => {
+    const wixApi = useWixApi();
+    return useSwr('my-profile', wixApi.getMyProfile);
+};

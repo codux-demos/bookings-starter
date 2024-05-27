@@ -18,13 +18,13 @@
     justify-self: end;
 }
 
-@media (width <= 768px) {
+@media (width <= $tablet-width) {
     .root {
         flex-direction: column;
         grid-auto-flow: column;
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr;
-        border: 1px solid $light-gray;
+        border: 1px solid $snow-white-40;
         margin: 5px;
     }
 

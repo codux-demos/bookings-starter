@@ -15,7 +15,8 @@
 }
 
 .primaryButton,
-.secondaryButton {
+.secondaryButton,
+.primaryButtonVar1 {
     display: flex;
     align-items: center;
     font: $small-text;
@@ -28,7 +29,8 @@
     z-index: 1;
 }
 
-.primaryButton {
+.primaryButton,
+.primaryButtonVar1 {
     border: 1px solid $snow-white;
 
     &:hover {
@@ -36,6 +38,13 @@
         border: 1px solid transparent;
         color: $charcoal-black;
     }
+}
+
+.primaryButtonVar1 {
+    background-color: $snow-white;
+    color: $charcoal-black;
+    outline: 1px solid $snow-white;
+    outline-offset: 10px;
 }
 
 .secondaryButton {
@@ -66,6 +75,23 @@
     font: $extra-large-text;
 }
 
-.o1 {
-    background-color: $orange-red;
+.input-label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-label input {
+    border: 1px solid $white;
+    padding: 8px;
+}
+
+.chip {
+    padding: 3px 10px;
+    border: 1px solid $snow-white;
+    border-radius: 25px;
+    width: fit-content;
+    font-size: 10px;
 }
