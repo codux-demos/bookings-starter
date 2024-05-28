@@ -1,3 +1,4 @@
+@import '@styles/theme.module.scss';
 
 .secondTitle {
     font: $small-text-font-bold;
@@ -13,7 +14,7 @@
     background-attachment: scroll;
     background-origin: padding-box;
     background-clip: border-box;
-    height: 10px;
+    height: 1px;
 }
 .aboveTheLine {
     display: flex;
@@ -34,4 +35,8 @@
 }
 .lessonDescription {
     font: $small-text;
+}
+.calendarWithDetails {
+    display: flex;
+    justify-content: space-between;
 }
