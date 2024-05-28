@@ -12,14 +12,14 @@ export default createBoard({
         return (
             <PageWrapperRealData path="/lesson/yin-yoga">
                 <ContentSlot>
-                    <LessonPage selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+                    <LessonPage />
                 </ContentSlot>
             </PageWrapperRealData>
         );
     },
     environmentProps: {
         canvasWidth: 1034,
-        canvasHeight: 726,
+        canvasHeight: 792,
         windowWidth: 1024,
         windowHeight: 768,
     },
