@@ -6,7 +6,7 @@
 .AccordionRoot {
     width: 300px;
     color: $white;
-    background-color: $charcoal-black;
+    background-color: $black;
 }
 
 .AccordionItem {
@@ -98,6 +98,7 @@
     border-radius: 30px;
     margin-top: 20px;
 }
+
 .lessonTitle {
     text-transform: capitalize;
     font: $medium-title;

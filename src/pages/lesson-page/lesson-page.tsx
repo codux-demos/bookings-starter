@@ -11,26 +11,24 @@ import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import { LessonDetails } from '/src/components/lesson-details/lesson-details';
 
 const deduceDays: { [key: number]: string } = {
-    0: "Sunday",
-    1: "Monday",
-    2: "Tuesday",
-    3: "Wednesday",
-    4: "Thursday",
-    5: "Friday",
-    6: "Saturday"
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday',
 };
 
 interface LessonPageProps {
     selectedDate: Date;
-    setSelectedDate: (date: Date) => void
+    setSelectedDate: (date: Date) => void;
 }
-
 
 export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelectedDate }) => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
-    console.log(availability)
 
     const typeOfClass = data?.name;
     const lessonsByDate: { [key: string]: any[] } = {};
@@ -38,22 +36,26 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
         availability?.availabilityEntries.reduce((acc: string[], current) => {
             if (current?.slot?.startDate) {
                 const date: string = format(new Date(current?.slot?.startDate), 'dd/MM/yyyy');
+                if (!acc.includes(date)) {
+                    acc.push(date);
+                }
                 if (!lessonsByDate[date]) {
                     lessonsByDate[date] = [];
                 }
                 lessonsByDate[date].push({
                     day: deduceDays[new Date(current?.slot?.startDate).getDay()],
-                    startHour: format(new Date(current?.slot?.startDate), 'HH:mm')
+                    startHour: format(new Date(current?.slot?.startDate), 'HH:mm'),
                 });
             }
             return acc;
         }, []) || [];
-
-
+    console.log(data?.name)
 
     return (
         <div className={classNames(styles.root)}>
-            <button>Back Button</button>
+            <button className={classNames(commonStyles.secondaryButton, styles.backButton)}>
+                <ChevronLeftIcon /> Back
+            </button>
             <div>
                 <h1 className={styles.header}> {typeOfClass}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
@@ -64,27 +66,12 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
             </div>
 
             <hr className={styles.horizontalLine} />
-
-            <Calendar
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-                availableDates={availableDates}
-            />
-
-
-            const [selectedDate, setSelectedDate] = useState(new Date());
-
-            if (!availability && isLoading) {
-        return <div className={commonStyles.loading}>Loading...</div>;
-    }
-
-            return (
-            <div className={classNames(styles.root, className)}>
-                <button className={classNames(commonStyles.secondaryButton, styles.backButton)}>
-                    <ChevronLeftIcon /> Back
-                </button>
-                <h2 className={styles.lessonTitle}>{data?.name}</h2>
-                <h4 className={styles.lessonDescription}>{data?.description}</h4>
+            <div className={styles.calendarWithDetails}>
+                <Calendar
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                    availableDates={availableDates}
+                />
                 <LessonDetails
                     title={data?.name!}
                     startDate={selectedDate.toDateString()}
@@ -93,5 +80,6 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
                     price={data?.payment?.fixed?.price?.value!}
                 />
             </div>
-            );
+        </div>
+    );
 };

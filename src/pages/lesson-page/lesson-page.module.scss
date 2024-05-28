@@ -22,11 +22,13 @@
     background-clip: border-box;
     height: 1px;
 }
+
 .aboveTheLine {
     display: flex;
     align-content: space-between;
     justify-content: space-between;
 }
+
 .backButton {
     display: flex;
     flex-direction: row;
@@ -41,4 +43,8 @@
 }
 .lessonDescription {
     font: $small-text;
+}
+.calendarWithDetails {
+    display: flex;
+    justify-content: space-between;
 }
