@@ -20,15 +20,11 @@ const deduceDays: { [key: number]: string } = {
     6: 'Saturday',
 };
 
-interface LessonPageProps {
-    selectedDate: Date;
-    setSelectedDate: (date: Date) => void;
-}
-
-export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelectedDate }) => {
+export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const typeOfClass = data?.name;
     const lessonsByDate: { [key: string]: any[] } = {};
@@ -49,7 +45,7 @@ export const LessonPage: React.FC<LessonPageProps> = ({ selectedDate, setSelecte
             }
             return acc;
         }, []) || [];
-    console.log(data?.name)
+    console.log(lessonsByDate);
 
     return (
         <div className={classNames(styles.root)}>
