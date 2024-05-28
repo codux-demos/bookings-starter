@@ -9,6 +9,7 @@ import { Calendar } from '/src/components/calendar/calendar';
 import { format } from 'date-fns';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import { LessonDetails } from '/src/components/lesson-details/lesson-details';
+import { HourButton } from '/src/components/hour-button/hour-button';
 
 const deduceDays: { [key: number]: string } = {
     0: 'Sunday',
@@ -25,7 +26,7 @@ export const LessonPage: React.FC = () => {
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
     const [selectedDate, setSelectedDate] = useState(new Date());
-
+    const formattedSelectedDate = format(selectedDate, 'dd/MM/yyyy');
     const typeOfClass = data?.name;
     const lessonsByDate: { [key: string]: any[] } = {};
     const availableDates =
@@ -68,6 +69,11 @@ export const LessonPage: React.FC = () => {
                     setSelectedDate={setSelectedDate}
                     availableDates={availableDates}
                 />
+                <div className={styles.hourButtonsContainer}>
+                    {lessonsByDate[formattedSelectedDate]?.map((lesson, index) => (
+                        <HourButton key={index} hour={lesson.startHour} />
+                    ))}
+                </div>
                 <LessonDetails
                     title={data?.name!}
                     startDate={selectedDate.toDateString()}
