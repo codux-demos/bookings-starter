@@ -29,12 +29,14 @@ export const LessonPage: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const formattedSelectedDate = format(selectedDate, 'dd/MM/yyyy');
 
-    const typeOfClass = data?.name;
+    const typeOfClass = data?.name!;
+    console.log(availability)
     const lessonsByDate: { [key: string]: any[] } = {};
     const availableDates =
         availability?.availabilityEntries.reduce((acc: string[], current) => {
-            if (current?.slot?.startDate) {
-                const date: string = format(new Date(current?.slot?.startDate), 'dd/MM/yyyy');
+            const curStartDate = current?.slot?.startDate;
+            if (curStartDate) {
+                const date: string = format(new Date(curStartDate), 'dd/MM/yyyy');
                 if (!acc.includes(date)) {
                     acc.push(date);
                 }
@@ -42,12 +44,12 @@ export const LessonPage: React.FC = () => {
                     lessonsByDate[date] = [];
                 }
                 lessonsByDate[date].push({
-                    day: deduceDays[new Date(current?.slot?.startDate).getDay()],
-                    startHour: format(new Date(current?.slot?.startDate), 'HH:mm'),
+                    day: deduceDays[new Date(curStartDate).getDay()],
+                    startHour: format(new Date(curStartDate), 'HH:mm'),
                 });
             }
             return acc;
-        }, []) || [];
+        }, []);
 
     return (
         <div className={classNames(styles.root)}>
@@ -76,7 +78,7 @@ export const LessonPage: React.FC = () => {
                     </div>
                 </div>
                 <LessonDetails
-                    title={data?.name!}
+                    title={typeOfClass}
                     startDate={selectedDate.toDateString()}
                     location={availability?.availabilityEntries[0].slot?.location?.name!}
                     duration={'1 hr'}

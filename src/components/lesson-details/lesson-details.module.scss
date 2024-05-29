@@ -97,6 +97,10 @@
     padding-bottom: 8px;
     border-radius: 30px;
     margin-top: 20px;
+    cursor: pointer;
+}
+.nextButton:hover{
+    background-color: $orange-red;
 }
 
 .lessonTitle {
