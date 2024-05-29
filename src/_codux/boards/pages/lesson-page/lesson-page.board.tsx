@@ -4,7 +4,7 @@ import { PageWrapperRealData } from '/src/_codux/board-wrappers/page-wrapper-rea
 import { useState } from 'react';
 
 export default createBoard({
-    name: 'LessonPage',
+    name: '8 - LessonPage',
     Board: () => {
         //in practice PageWrapperRealData with a path will render the correct page, but it is less convenient to use in a board
         const [selectedDate, setSelectedDate] = useState(new Date());

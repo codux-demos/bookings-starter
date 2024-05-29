@@ -25,8 +25,10 @@ export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
+
     const [selectedDate, setSelectedDate] = useState(new Date());
     const formattedSelectedDate = format(selectedDate, 'dd/MM/yyyy');
+
     const typeOfClass = data?.name;
     const lessonsByDate: { [key: string]: any[] } = {};
     const availableDates =
@@ -46,33 +48,32 @@ export const LessonPage: React.FC = () => {
             }
             return acc;
         }, []) || [];
-    console.log(lessonsByDate);
 
     return (
         <div className={classNames(styles.root)}>
             <button className={classNames(commonStyles.secondaryButton, styles.backButton)}>
                 <ChevronLeftIcon /> Back
             </button>
-            <div>
-                <h1 className={styles.header}> {typeOfClass}</h1>
+            <div className={styles.headerSection}>
+                <h1 className={styles.typeOfClass}> {typeOfClass}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
             </div>
-            <div className={styles.aboveTheLine}>
-                <h2 className={styles.secondTitle}>Select a Date and time</h2>
-                <h2>Timezone:</h2>
-            </div>
-
-            <hr className={styles.horizontalLine} />
             <div className={styles.calendarWithDetails}>
-                <Calendar
-                    selectedDate={selectedDate}
-                    setSelectedDate={setSelectedDate}
-                    availableDates={availableDates}
-                />
-                <div className={styles.hourButtonsContainer}>
-                    {lessonsByDate[formattedSelectedDate]?.map((lesson, index) => (
-                        <HourButton key={index} hour={lesson.startHour} />
-                    ))}
+                <div className={styles.schedulingContainer}>
+                    <h2 className={styles.secondTitle}>Select a Date and time</h2>
+                    <hr className={styles.seperator} />
+                    <div className={styles.calendarWithDetails}>
+                        <Calendar
+                            selectedDate={selectedDate}
+                            setSelectedDate={setSelectedDate}
+                            availableDates={availableDates}
+                        />
+                        <div className={styles.hourButtonsContainer}>
+                            {lessonsByDate[formattedSelectedDate]?.map((lesson, index) => (
+                                <HourButton key={index} hour={lesson.startHour} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
                 <LessonDetails
                     title={data?.name!}

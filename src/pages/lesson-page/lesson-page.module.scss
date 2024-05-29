@@ -3,24 +3,21 @@
 .secondTitle {
     font: $small-text-font-bold;
 }
-.horizontalLine {
-    width: 70%;
-    color: $snow-white-40;
-    background-color: $snow-white-40;
-    background-image: none;
-    background-position: 0%;
-    background-size: auto;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-origin: padding-box;
-    background-clip: border-box;
+
+.seperator {
     height: 1px;
+    width: 100%;
+    margin: 10px 0;
+    background-color: $snow-white;
+    opacity: 15%;
 }
+
 .aboveTheLine {
     display: flex;
     align-content: space-between;
     justify-content: space-between;
 }
+
 .backButton {
     display: flex;
     flex-direction: row;
@@ -29,6 +26,7 @@
     padding: 0px;
     border-radius: 0;
 }
+
 .lessonTitle {
     text-transform: capitalize;
     font: $large-title;
@@ -36,6 +34,7 @@
 .lessonDescription {
     font: $small-text;
 }
+
 .calendarWithDetails {
     display: flex;
     justify-content: space-between;
@@ -43,5 +42,20 @@
 
 .hourButtonsContainer {
     width: 100%;
-    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.typeOfClass {
+    font: $large-title;
+}
+
+.schedulingContainer {
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 1em;
+}
+
+.headerSection {
+    padding-top: 1em;
+    padding-bottom: 2em;
 }
