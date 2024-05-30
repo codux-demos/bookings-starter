@@ -1,0 +1,51 @@
+@import '@styles/theme.module.scss';
+
+.container {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+}
+
+.available:after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    width: 5px;
+    height: 5px;
+    background-color: $orange-red;
+    border-radius: 50%;
+}
+
+.available {
+    color: $orange-red;
+}
+
+.available:hover {
+    background-color: rgba($orange-red, 0.2);
+}
+
+.dayInPast {
+    color: grey;
+    pointer-events: none;
+}
+
+.selected {
+    background-color: $orange-red;
+    color: black;
+}
+
+.selected:after {
+    background-color: black; 
+}
+
+.selected:hover {
+    background-color: red;
+    color: black;
+}
+
+
