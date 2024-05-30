@@ -14,8 +14,6 @@ import { deduceDays } from '/src/utils/constants';
 import { Lesson } from '/src/utils/types';
 import { processAvailability } from '/src/utils/utils';
 
-
-
 export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
@@ -28,7 +26,9 @@ export const LessonPage: React.FC = () => {
 
     const typeOfClass = data?.name!;
 
-    const { lessonsByDate, availableDates } = processAvailability(availability?.availabilityEntries || []);
+    const { lessonsByDate, availableDates } = processAvailability(
+        availability?.availabilityEntries || [],
+    );
 
     useEffect(() => {
         if (lessonsByDate[formattedSelectedDate]?.length > 0) {
@@ -63,6 +63,7 @@ export const LessonPage: React.FC = () => {
                                     className={classNames(
                                         CommonStyles_module.primaryButton,
                                         styles.container,
+                                        { [styles.selectedHour]: selectedHour === lesson.startHour },
                                     )}
                                 >
                                     {lesson.startHour}
