@@ -1,30 +1,20 @@
-import classNames from 'classnames';
-import commonStyles from '@styles/common-styles.module.scss';
-import styles from './lesson-page.module.scss';
-import { useParams } from 'react-router-dom';
-import { RouteParams } from '/src/router/config';
-import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
-import { useState } from 'react';
-import { Calendar } from '/src/components/calendar/calendar';
-import { format } from 'date-fns';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
-import { LessonDetails } from '/src/components/lesson-details/lesson-details';
+import commonStyles from '@styles/common-styles.module.scss';
+import classNames from 'classnames';
+import { format } from 'date-fns';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
+import styles from './lesson-page.module.scss';
+import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
+import { Calendar } from '/src/components/calendar/calendar';
+import { LessonDetails } from '/src/components/lesson-details/lesson-details';
+import { RouteParams } from '/src/router/config';
+import { deduceDays } from '/src/utils/constants';
+import { Lesson } from '/src/utils/types';
+import { processAvailability } from '/src/utils/utils';
 
-const deduceDays: { [key: number]: string } = {
-    0: 'Sunday',
-    1: 'Monday',
-    2: 'Tuesday',
-    3: 'Wednesday',
-    4: 'Thursday',
-    5: 'Friday',
-    6: 'Saturday',
-};
 
-interface Lesson {
-    day: string;
-    startHour: string;
-}
 
 export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
@@ -38,26 +28,13 @@ export const LessonPage: React.FC = () => {
 
     const typeOfClass = data?.name!;
 
-    const lessonsByDate: { [key: string]: Lesson[] } = {};
-    const availableDates: string[] = [];
+    const { lessonsByDate, availableDates } = processAvailability(availability?.availabilityEntries || []);
 
-    availability?.availabilityEntries.forEach((entry) => {
-    const curStartDate = entry?.slot?.startDate;
-    if (!curStartDate) return;
-
-    const formattedDate = format(new Date(curStartDate), 'dd/MM/yyyy');
-    const startHour = format(new Date(curStartDate), 'HH:mm');
-    const dayOfWeek = deduceDays[new Date(curStartDate).getDay()];
-
-    // Only add unique dates to availableDates
-    if (!lessonsByDate[formattedDate]) {
-        lessonsByDate[formattedDate] = [];
-        availableDates.push(formattedDate);
-    }
-
-    // Add lesson details to the lessonsByDate
-    lessonsByDate[formattedDate].push({ day: dayOfWeek, startHour });
-});
+    useEffect(() => {
+        if (lessonsByDate[formattedSelectedDate]?.length > 0) {
+            setSelectedHour(lessonsByDate[formattedSelectedDate][0].startHour);
+        }
+    }, [formattedSelectedDate, lessonsByDate]);
 
     return (
         <div className={classNames(styles.root)}>
