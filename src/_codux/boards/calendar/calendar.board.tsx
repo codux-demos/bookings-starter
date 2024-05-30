@@ -8,23 +8,17 @@ export default createBoard({
     name: 'Calendar',
     Board: () => {
         const today = new Date();
-        const [selectedDate, setSelectedDate] = useState(today);
-        const availableDates = ['29/05/2024', '30/05/2024'];
+        const [selectedDate, onDateSelected] = useState(today);
+        const availableDates = [new Date('2024-05-31'), new Date('2024-05-30')];
+
         return (
-            <PageWrapper>
-                <ContentSlot>
-                    <Calendar
-                        selectedDate={selectedDate}
-                        setSelectedDate={setSelectedDate}
-                        availableDates={availableDates}
-                    />
-                </ContentSlot>
-            </PageWrapper>
+            <ContentSlot>
+                <Calendar
+                    selectedDate={selectedDate}
+                    onDateSelected={onDateSelected}
+                    availableDates={availableDates}
+                />
+            </ContentSlot>
         );
-    },
-    isSnippet: false,
-    environmentProps: {
-        canvasMargin: { right: 0, bottom: 0, left: 0 },
-        windowWidth: 858,
     },
 });

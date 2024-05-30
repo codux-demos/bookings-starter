@@ -6,40 +6,37 @@ import styles from './calendar.module.scss';
 
 interface CalendarComponentProps {
     selectedDate: Date;
-    setSelectedDate: (date: Date | undefined) => void;
-    availableDates: string[];
+    onDateSelected: (date: Date | undefined) => void;
+    availableDates: Date[];
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
     selectedDate,
-    setSelectedDate,
+    onDateSelected,
     availableDates,
 }) => {
     const today = new Date();
-    // Set the time to midnight to ensure only the date part is compared
     today.setHours(0, 0, 0, 0);
-
 
     const modifiers = {
         available: (date: Date) => {
-            const dateString = format(date, 'dd/MM/yyyy');
-            return availableDates.includes(dateString) && !isBefore(date, today);
-     },
+            return !isBefore(date, today) && availableDates.some(availableDate => isSameDay(date, availableDate));
+        },
         selected: (date: Date) => isSameDay(date, selectedDate),
-        dayPassed: (date: Date) => isBefore(date, today),
+        dayInPast: (date: Date) => isBefore(date, today),
     };
 
     const modifiersClassNames = {
         available: styles.available,
         selected: styles.selected,
-        dayPassed: styles.dayPassed,
+        dayInPast: styles.dayInPast,
     };
 
     return (
         <DayPicker
             mode="single"
             selected={selectedDate}
-            onSelect={setSelectedDate}
+            onSelect={onDateSelected}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
             classNames={{

@@ -26,10 +26,10 @@
 }
 
 .available:hover {
-    background-color: rgba(255, 91, 43, 0.2);
+    background-color: rgba($orange-red, 0.2);
 }
 
-.dayPassed {
+.dayInPast {
     color: grey;
     pointer-events: none;
 }
@@ -37,13 +37,10 @@
 .selected {
     background-color: $orange-red;
     color: black;
-    .date {
-        color: black;
-    }
 }
 
-.selected.available:after {
-    background-color: black; // Black dot for selected and available date
+.selected:after {
+    background-color: black; 
 }
 
 .selected:hover {
@@ -51,6 +48,4 @@
     color: black;
 }
 
-.react-day-picker__day--outside {
-    visibility: hidden;
-}
+
