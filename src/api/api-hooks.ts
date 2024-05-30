@@ -31,7 +31,7 @@ export function useLessonBySlug(slug?: string) {
 }
 
 export const useAvailability = (serviceId: string) => {
-    const wixApi = useContext(WixAPIContext);
+    const wixApi = useWixApi();
     return useSwr(`availability/${serviceId}`, () => wixApi.getServiceAvailability(serviceId));
 };
 
