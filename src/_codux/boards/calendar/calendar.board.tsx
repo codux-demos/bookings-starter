@@ -8,12 +8,12 @@ export default createBoard({
     name: 'Calendar',
     Board: () => {
         const today = new Date();
-        const [selectedDate, setSelectedDate] = useState(today);
-        const availableDates = ['29/05/2024', '30/05/2024'];
+        const [selectedDate, onDateSlected] = useState<Date>(today);
+        const availableDates = [new Date('2024-05-31'), new Date('2024-05-30')];
         return (
             <Calendar
                 selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                onDateSlected={onDateSlected}
                 availableDates={availableDates}
             />
         );

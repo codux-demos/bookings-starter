@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+
 }
 
 .available:after {
@@ -17,22 +18,25 @@
     height: 5px;
     background-color: $orange-red;
     border-radius: 50%;
-    
 }
 
 .available {
     color: $orange-red;
 }
 
-.available:hover{
-    background-color: rgba(255, 91, 43, 0.2) !important;
+.available:hover {
+    background-color: rgba($orange-red, 0.2) !important;
 }
 
 .selected:hover {
-    background-color: rgba(255, 91, 43, 0.8) !important;
+    background-color: rgba($orange-red, 0.8) !important;
 }
 
-.dayPassed {
+.available:hover {
+    background-color: rgba($orange-red, 0.2) !important;
+}
+
+.dayInPast {
     color: grey;
     pointer-events: none;
 }
@@ -42,6 +46,7 @@
     color: black;
 }
 
-.selected.available:after {
-    background-color: black; 
+.selected:after {
+    background-color: black;
 }
+

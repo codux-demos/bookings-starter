@@ -6,31 +6,20 @@ import styles from './calendar.module.scss';
 
 interface CalendarComponentProps {
     selectedDate: Date;
-    setSelectedDate: (date: Date) => void;
+    onDateSlected: (date: Date | undefined) => void;
     availableDates: Date[];
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
     selectedDate,
-    setSelectedDate,
+    onDateSlected,
     availableDates,
 }) => {
-    const adjustToLocalTime = (date: Date) => {
-        const offset = date.getTimezoneOffset();
-        const localDate = new Date(date.getTime() - offset * 60 * 1000);
-        return localDate;
-    };
-
-    const handleDateSelect = (date: Date | undefined) => {
-        if (date) {
-            const localDate = adjustToLocalTime(date);
-            setSelectedDate(localDate);
-        }
-    };
-
     const today = new Date();
+    today.setHours(0, 0, 0, 0); // Ensure the time is set to midnight for correct comparison
 
     const modifiers = {
+        container: true,
         available: (date: Date) => {
             return (
                 !isBefore(date, today) &&
@@ -38,20 +27,22 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
             );
         },
         selected: (date: Date) => isSameDay(date, selectedDate),
-        dayPassed: (date: Date) => isBefore(date, today),
+        dayInPast: (date: Date) => 
+            isBefore(date, today),
+        
     };
 
     const modifiersClassNames = {
         available: styles.available,
         selected: styles.selected,
-        dayPassed: styles.dayPassed,
+        dayInPast: styles.dayInPast,
     };
 
     return (
         <DayPicker
             mode="single"
             selected={selectedDate}
-            onSelect={handleDateSelect}
+            onSelect={onDateSlected}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
         />
