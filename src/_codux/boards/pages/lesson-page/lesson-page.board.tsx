@@ -5,18 +5,15 @@ import { useState } from 'react';
 
 export default createBoard({
     name: '8 - LessonPage',
-    Board: () => {
+    Board: () => (
         //in practice PageWrapperRealData with a path will render the correct page, but it is less convenient to use in a board
-        const [selectedDate, setSelectedDate] = useState(new Date());
 
-        return (
             <PageWrapperRealData path="/lesson/yin-yoga">
                 <ContentSlot>
                     <LessonPage />
                 </ContentSlot>
             </PageWrapperRealData>
-        );
-    },
+        ),
     environmentProps: {
         canvasWidth: 1034,
         canvasHeight: 792,
