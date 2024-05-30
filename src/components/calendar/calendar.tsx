@@ -7,7 +7,7 @@ import styles from './calendar.module.scss';
 interface CalendarComponentProps {
     selectedDate: Date;
     setSelectedDate: (date: Date) => void;
-    availableDates: string[];
+    availableDates: Date[];
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
@@ -32,8 +32,10 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
 
     const modifiers = {
         available: (date: Date) => {
-            const dateString = format(date, 'dd/MM/yyyy');
-            return availableDates.includes(dateString) && !isBefore(date, today);
+            return (
+                !isBefore(date, today) &&
+                availableDates.some((availableDate) => isSameDay(date, availableDate))
+            );
         },
         selected: (date: Date) => isSameDay(date, selectedDate),
         dayPassed: (date: Date) => isBefore(date, today),
