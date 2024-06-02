@@ -24,26 +24,31 @@ export const LessonPage: React.FC = () => {
 
     const typeOfClass = data?.name!;
 
-    const lessonsByDate: Map<Date, string[]> = new Map<Date, string[]>();
+    const lessonsByDate: Map<string, string[]> = new Map<string, string[]>();
+
+    const normalizeDate = (date: Date): string => {
+        return format(date, 'yyyy-MM-dd');
+    };
 
     const availableDates = availability?.availabilityEntries.reduce(
         (acc, entry) => {
             const currentDay: Date = new Date(entry?.slot?.startDate!);
+            const normalizedDay: string = normalizeDate(currentDay);
             const startHour: string = format(currentDay, 'HH:mm');
 
-            if (!acc.availableDates.includes(currentDay)) {
+            if (!acc.availableDates.some(date => normalizeDate(date) === normalizedDay)) {
                 acc.availableDates.push(currentDay);
             }
-            if (!lessonsByDate.has(currentDay)) {
-                lessonsByDate.set(currentDay, []);
-            }
 
-            lessonsByDate.get(currentDay)?.push(startHour);
+            if (!lessonsByDate.has(normalizedDay)) {
+                lessonsByDate.set(normalizedDay, []);
+            }
+            lessonsByDate.get(normalizedDay)?.push(startHour);
             return acc;
         },
         { availableDates: [] as Date[] },
     );
-
+    console.log(selectedHour)
     return (
         <div className={classNames(styles.root)}>
             <button className={classNames(commonStyles.secondaryButton, styles.backButton)}>
@@ -65,7 +70,7 @@ export const LessonPage: React.FC = () => {
                         />
                         <div className={styles.hourButtonsContainer}>
                             {lessonsByDate
-                                .get(selectedDate)
+                                .get(normalizeDate(selectedDate))
                                 ?.map((lessonHour: string, index: number) => (
                                     <button
                                         key={index}
