@@ -66,6 +66,7 @@ export const LessonPage: React.FC = () => {
                         <Calendar
                             selectedDate={selectedDate}
                             onDateSlected={onDateSlected}
+                            setSelectedHour = {setSelectedHour}
                             availableDates={availableDates?.availableDates || []}
                         />
                         <div className={styles.hourButtonsContainer}>

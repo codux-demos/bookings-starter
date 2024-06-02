@@ -8,16 +8,24 @@ interface CalendarComponentProps {
     selectedDate: Date;
     onDateSlected: (date: Date) => void;
     availableDates: Date[];
+    setSelectedHour: (hour: string) => void;
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
     selectedDate,
     onDateSlected,
     availableDates,
+    setSelectedHour,
 }) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Ensure the time is set to midnight for correct comparison
 
+    const handleSelectedDate = (date: Date | undefined) => {
+        if (date) {
+            setSelectedHour('');
+            onDateSlected(date);
+        }
+    };
     const modifiers = {
         container: true,
         available: (date: Date) => {
@@ -27,9 +35,7 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
             );
         },
         selected: (date: Date) => isSameDay(date, selectedDate),
-        dayInPast: (date: Date) => 
-            isBefore(date, today),
-        
+        dayInPast: (date: Date) => isBefore(date, today),
     };
 
     const modifiersClassNames = {
@@ -42,7 +48,7 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
         <DayPicker
             mode="single"
             selected={selectedDate}
-            onSelect={onDateSlected}
+            onSelect={handleSelectedDate}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
         />
