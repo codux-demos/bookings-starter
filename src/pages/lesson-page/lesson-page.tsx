@@ -11,30 +11,38 @@ import { Calendar } from '/src/components/calendar/calendar';
 import { LessonDetails } from '/src/components/lesson-details/lesson-details';
 import { RouteParams } from '/src/router/config';
 import { deduceDays } from '/src/utils/constants';
-import { Lesson } from '/src/utils/types';
-import { processAvailability } from '/src/utils/utils';
 
 export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
 
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-    const [selectedHour, setSelectedHour] = useState('');
+    const [selectedDate, onDateSlected] = useState<Date>(new Date());
+    const [selectedHour, setSelectedHour] = useState<string>('');
 
-    const formattedSelectedDate = format(selectedDate, 'dd/MM/yyyy');
+    const formattedSelectedDate: string = format(selectedDate, 'dd/MM/yyyy');
 
     const typeOfClass = data?.name!;
 
-    const { lessonsByDate, availableDates } = processAvailability(
-        availability?.availabilityEntries || [],
-    );
+    const lessonsByDate: Map<Date, string[]> = new Map<Date, string[]>();
 
-    useEffect(() => {
-        if (lessonsByDate[formattedSelectedDate]?.length > 0) {
-            setSelectedHour(lessonsByDate[formattedSelectedDate][0].startHour);
-        }
-    }, [formattedSelectedDate, lessonsByDate]);
+    const availableDates = availability?.availabilityEntries.reduce(
+        (acc, entry) => {
+            const currentDay: Date = new Date(entry?.slot?.startDate!);
+            const startHour: string = format(currentDay, 'HH:mm');
+
+            if (!acc.availableDates.includes(currentDay)) {
+                acc.availableDates.push(currentDay);
+            }
+            if (!lessonsByDate.has(currentDay)) {
+                lessonsByDate.set(currentDay, []);
+            }
+
+            lessonsByDate.get(currentDay)?.push(startHour);
+            return acc;
+        },
+        { availableDates: [] as Date[] },
+    );
 
     return (
         <div className={classNames(styles.root)}>
@@ -52,23 +60,27 @@ export const LessonPage: React.FC = () => {
                     <div className={styles.calendarWithDetails}>
                         <Calendar
                             selectedDate={selectedDate}
-                            setSelectedDate={setSelectedDate}
-                            availableDates={availableDates}
+                            onDateSlected={onDateSlected}
+                            availableDates={availableDates?.availableDates || []}
                         />
                         <div className={styles.hourButtonsContainer}>
-                            {lessonsByDate[formattedSelectedDate]?.map((lesson, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setSelectedHour(lesson.startHour)}
-                                    className={classNames(
-                                        CommonStyles_module.primaryButton,
-                                        styles.container,
-                                        { [styles.selectedHour]: selectedHour === lesson.startHour },
-                                    )}
-                                >
-                                    {lesson.startHour}
-                                </button>
-                            ))}
+                            {lessonsByDate
+                                .get(selectedDate)
+                                ?.map((lessonHour: string, index: number) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setSelectedHour(lessonHour)}
+                                        className={classNames(
+                                            CommonStyles_module.primaryButton,
+                                            styles.container,
+                                            {
+                                                [styles.selectedHour]: selectedHour === lessonHour,
+                                            },
+                                        )}
+                                    >
+                                        {lessonHour}
+                                    </button>
+                                ))}
                         </div>
                     </div>
                 </div>

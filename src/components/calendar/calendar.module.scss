@@ -32,10 +32,6 @@
     background-color: rgba($orange-red, 0.8) !important;
 }
 
-.available:hover {
-    background-color: rgba($orange-red, 0.2) !important;
-}
-
 .dayInPast {
     color: grey;
     pointer-events: none;
@@ -49,4 +45,3 @@
 .selected:after {
     background-color: black;
 }
-

@@ -6,7 +6,7 @@ import styles from './calendar.module.scss';
 
 interface CalendarComponentProps {
     selectedDate: Date;
-    onDateSlected: (date: Date | undefined) => void;
+    onDateSlected: (date: Date) => void;
     availableDates: Date[];
 }
 

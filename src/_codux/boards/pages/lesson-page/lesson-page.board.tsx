@@ -10,7 +10,7 @@ export default createBoard({
 
             <PageWrapperRealData path="/lesson/yin-yoga">
                 <ContentSlot>
-                    <LessonPage />
+                    <LessonPage />      
                 </ContentSlot>
             </PageWrapperRealData>
         ),
