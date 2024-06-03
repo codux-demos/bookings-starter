@@ -21,16 +21,13 @@ export const LessonPage = ({ className }: LessonPageProps) => {
     const { data: availability, isLoading } = useAvailability(data?._id!);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    
     if (!availability && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
 
-
-    return 
+    return;
     <div className={classNames(styles.root, className)}>
-        <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+        <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
     </div>;
 
     return (
