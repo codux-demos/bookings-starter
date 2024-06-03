@@ -6,13 +6,13 @@ import styles from './calendar.module.scss';
 
 interface CalendarComponentProps {
     selectedDate: Date;
-    handleSelectedDate: (date: Date) => void;
+    onDateSelected: (date: Date) => void;
     availableDates: Date[];
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
     selectedDate,
-    handleSelectedDate,
+    onDateSelected,
     availableDates,
 
 }) => {
@@ -41,7 +41,7 @@ export const Calendar: React.FC<CalendarComponentProps> = ({
         <DayPicker
             mode="single"
             selected={selectedDate}
-            onSelect={handleSelectedDate}
+            onSelect={onDateSelected}
             modifiers={modifiers}
             modifiersClassNames={modifiersClassNames}
         />

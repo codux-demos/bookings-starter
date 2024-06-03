@@ -4,26 +4,26 @@ import styles from './hour-buttons.module.scss'; // Create a corresponding SCSS 
 import commonStyles from '@styles/common-styles.module.scss';
 
 interface HourButtonsProps {
-    lessonHours: string[];
+    availableHours: string[];
     selectedHour: string;
-    setSelectedHour: (hour: string) => void;
+    onHourSelected: (hour: string) => void;
 }
 
-export const HourButtons: React.FC<HourButtonsProps> = ({ lessonHours, selectedHour, setSelectedHour }) => {
+export const HourButtons: React.FC<HourButtonsProps> = ({ availableHours, selectedHour, onHourSelected }) => {
     return (
         <div className={styles.hourButtonsContainer}>
-            {lessonHours.sort().map((lessonHour, index) => (
+            {availableHours.sort().map((time, index) => (
                 <button
                     key={index}
-                    onClick={() => setSelectedHour(lessonHour)}
+                    onClick={() => onHourSelected(time)}
                     className={classNames(
                         commonStyles.primaryButton,
                         {
-                            [styles.selectedHour]: selectedHour === lessonHour,
+                            [styles.selectedHour]: selectedHour === time,
                         },
                     )}
                 >
-                    {lessonHour}
+                    {time}
                 </button>
             ))}
         </div>

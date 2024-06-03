@@ -1,6 +1,4 @@
-import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import commonStyles from '@styles/common-styles.module.scss';
-import classNames from 'classnames';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -16,12 +14,12 @@ export const LessonPage: React.FC = () => {
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
 
-    const [selectedDate, onDateSelected] = useState<Date>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [selectedHour, setSelectedHour] = useState<string>('');
 
-    const handleSelectedDate = (date: Date | undefined) => {
+    const handledDateSelected = (date: Date | undefined) => {
         if (date) {
-            onDateSelected(date);
+            setSelectedDate(date);
             setSelectedHour('');
         }
     };
@@ -36,6 +34,7 @@ export const LessonPage: React.FC = () => {
         if (!acc.has(normalizedDay)) {
             acc.set(normalizedDay, []);
         }
+
         acc.get(normalizedDay)?.push(lessonStartingHour);
 
         return acc;
@@ -62,15 +61,15 @@ export const LessonPage: React.FC = () => {
                     <div className={styles.calendarWithDetails}>
                         <Calendar
                             selectedDate={selectedDate}
-                            handleSelectedDate={handleSelectedDate}
+                            onDateSelected={handledDateSelected}
                             availableDates={availableDates}
                         />
                         <HourButtons
-                            lessonHours={
+                            availableHours={
                                 datesToLessons?.get(format(selectedDate, 'yyyy-MM-dd')) || []
                             }
                             selectedHour={selectedHour}
-                            setSelectedHour={setSelectedHour}
+                            onHourSelected={setSelectedHour}
                         />
                     </div>
                 </div>
