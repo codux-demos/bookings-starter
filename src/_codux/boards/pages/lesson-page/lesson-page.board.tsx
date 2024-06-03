@@ -8,16 +8,16 @@ export default createBoard({
     Board: () => (
         //in practice PageWrapperRealData with a path will render the correct page, but it is less convenient to use in a board
 
-            <PageWrapperRealData path="/lesson/yin-yoga">
-                <ContentSlot>
-                    <LessonPage />      
-                </ContentSlot>
-            </PageWrapperRealData>
-        ),
+        <PageWrapperRealData path="/lesson/yin-yoga">
+            <ContentSlot>
+                <LessonPage />
+            </ContentSlot>
+        </PageWrapperRealData>
+    ),
     environmentProps: {
-        canvasWidth: 1034,
+        canvasWidth: 1162,
         canvasHeight: 792,
-        windowWidth: 1024,
-        windowHeight: 768,
+        windowWidth: 1014,
+        windowHeight: 667,
     },
 });

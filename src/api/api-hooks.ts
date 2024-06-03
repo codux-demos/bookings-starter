@@ -4,7 +4,7 @@ import { WixAPIContext } from './wix-api-context-provider';
 
 const getLessonKey = (slug: string) => `lesson/${slug}`;
 
-export const useWixApi = () => {
+const useWixApi = () => {
     return useContext(WixAPIContext);
 }
 

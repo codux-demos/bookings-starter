@@ -43,21 +43,3 @@
 .lessonDescription {
     font: $small-text;
 }
-
-.hourButtonsContainer {
-    width: 100%;
-    padding-top: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: start;
-}
-.hourButton {
-    margin: 0 0 1em 1em;
-}
-
-.selectedHour {
-    background-color: rgba(255, 91, 43, 0.1);
-    border: 1px solid $orange-red;
-    padding-left: 22px;
-    padding-right: 22px;
-}

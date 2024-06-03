@@ -24,10 +24,12 @@
     color: $orange-red;
 }
 
+// !important is necessary here because the react-day-picker component's default CSS overrides our styles otherwise.
 .available:hover {
     background-color: rgba($orange-red, 0.2) !important;
 }
 
+// !important is necessary here because the react-day-picker component's default CSS overrides our styles otherwise.
 .selected:hover {
     background-color: rgba($orange-red, 0.8) !important;
 }

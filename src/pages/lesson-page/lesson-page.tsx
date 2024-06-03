@@ -4,59 +4,55 @@ import classNames from 'classnames';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CommonStyles_module from '../../styles/common-styles.module.scss';
 import styles from './lesson-page.module.scss';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 import { Calendar } from '/src/components/calendar/calendar';
 import { LessonDetails } from '/src/components/lesson-details/lesson-details';
 import { RouteParams } from '/src/router/config';
+import { HourButtons } from '/src/components/hour-buttons/hour-buttons';
 
 export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
 
-    const [selectedDate, onDateSlected] = useState<Date>(new Date());
+    const [selectedDate, onDateSelected] = useState<Date>(new Date());
     const [selectedHour, setSelectedHour] = useState<string>('');
-    const normalizeDate = (date: Date): string => {
-        return format(date, 'yyyy-MM-dd');
+
+    const handleSelectedDate = (date: Date | undefined) => {
+        if (date) {
+            onDateSelected(date);
+            setSelectedHour('');
+        }
     };
 
-    const typeOfClass = data?.name!;
-    const normalizedDatesSet = new Set<string>();
-    const lessonsByDate: Map<string, string[]> = new Map<string, string[]>();
+    const typeOfLesson = data?.name!;
 
-    const availableDates = availability?.availabilityEntries.reduce(
-        (acc, entry) => {
-            const currentDay: Date = new Date(entry?.slot?.startDate!);
-            const normalizedDay: string = normalizeDate(currentDay);
-            const startHour: string = format(currentDay, 'HH:mm:aa');
+    const datesToLessons = availability?.availabilityEntries?.reduce((acc, entry) => {
+        const currentDay = new Date(entry?.slot?.startDate!);
+        const normalizedDay = format(currentDay, 'yyyy-MM-dd');
+        const lessonStartingHour = format(currentDay, 'HH:mm aa');
 
-            if (!normalizedDatesSet.has(normalizedDay)) {
-                acc.availableDates.push(currentDay);
-                normalizedDatesSet.add(normalizedDay);
-            }
+        if (!acc.has(normalizedDay)) {
+            acc.set(normalizedDay, []);
+        }
+        acc.get(normalizedDay)?.push(lessonStartingHour);
 
-            if (!lessonsByDate.has(normalizedDay)) {
-                lessonsByDate.set(normalizedDay, []);
-            }
-            lessonsByDate.get(normalizedDay)?.push(startHour);
-            return acc;
-        },
-        { availableDates: [] as Date[] },
-    );
+        return acc;
+    }, new Map<string, string[]>());
 
-    if (!availableDates && isLoading) {
+    const availableDates = datesToLessons
+        ? Array.from(datesToLessons.keys()).map((dateStr) => new Date(dateStr))
+        : [];
+
+    if (!datesToLessons && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
 
     return (
         <>
-            <button className={classNames(commonStyles.secondaryButton, styles.backButton)}>
-                <ChevronLeftIcon /> Back
-            </button>
             <div className={styles.headerSection}>
-                <h1 className={styles.typeOfClass}> {typeOfClass}</h1>
+                <h1 className={styles.typeOfClass}> {typeOfLesson}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
             </div>
             <div className={styles.calendarWithDetails}>
@@ -66,34 +62,20 @@ export const LessonPage: React.FC = () => {
                     <div className={styles.calendarWithDetails}>
                         <Calendar
                             selectedDate={selectedDate}
-                            onDateSlected={onDateSlected}
-                            setSelectedHour={setSelectedHour}
-                            availableDates={availableDates?.availableDates || []}
+                            handleSelectedDate={handleSelectedDate}
+                            availableDates={availableDates}
                         />
-                        <div className={styles.hourButtonsContainer}>
-                            {lessonsByDate
-                                .get(normalizeDate(selectedDate))?.sort()
-                                ?.map((lessonHour: string, index: number) => (
-
-                                    <button
-                                        key={index}
-                                        onClick={() => setSelectedHour(lessonHour)}
-                                        className={classNames(
-                                            CommonStyles_module.primaryButton,
-                                            styles.hourButton,
-                                            {
-                                                [styles.selectedHour]: selectedHour === lessonHour,
-                                            },
-                                        )}
-                                    >
-                                        {lessonHour}
-                                    </button>
-                                ))}
-                        </div>
+                        <HourButtons
+                            lessonHours={
+                                datesToLessons?.get(format(selectedDate, 'yyyy-MM-dd')) || []
+                            }
+                            selectedHour={selectedHour}
+                            setSelectedHour={setSelectedHour}
+                        />
                     </div>
                 </div>
                 <LessonDetails
-                    title={typeOfClass}
+                    title={typeOfLesson}
                     startDate={`${selectedDate.toDateString()}  ${selectedHour}`}
                     location={availability?.availabilityEntries[0].slot?.location?.name!}
                     duration={'1 hr'}

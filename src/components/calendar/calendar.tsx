@@ -6,26 +6,19 @@ import styles from './calendar.module.scss';
 
 interface CalendarComponentProps {
     selectedDate: Date;
-    onDateSlected: (date: Date) => void;
+    handleSelectedDate: (date: Date) => void;
     availableDates: Date[];
-    setSelectedHour: (hour: string) => void;
 }
 
 export const Calendar: React.FC<CalendarComponentProps> = ({
     selectedDate,
-    onDateSlected,
+    handleSelectedDate,
     availableDates,
-    setSelectedHour,
+
 }) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Ensure the time is set to midnight for correct comparison
 
-    const handleSelectedDate = (date: Date | undefined) => {
-        if (date) {
-            setSelectedHour('');
-            onDateSlected(date);
-        }
-    };
     const modifiers = {
         container: true,
         available: (date: Date) => {
