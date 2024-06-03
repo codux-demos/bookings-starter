@@ -7,7 +7,7 @@ export default createBoard({
         <ContentSlot>
             <LessonDetails
                 title="pump it up"
-                startDate="May 6, 2024 at 12:00"
+                startDate="May 6, 2024"
                 location="San Fransisco"
                 duration="1 hr"
                 price="$15"

@@ -25,7 +25,12 @@ export const LessonDetails = ({
 }: LessonDetailsProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <Accordion.Root className={styles.AccordionRoot} type="single" defaultValue="item-1" collapsible>
+            <Accordion.Root
+                className={styles.AccordionRoot}
+                type="single"
+                defaultValue="item-1"
+                collapsible
+            >
                 <Accordion.Item className={styles.AccordionItem} value="item-1">
                     <AccordionTrigger>Service Details</AccordionTrigger>
                     <AccordionContent>
@@ -34,10 +39,10 @@ export const LessonDetails = ({
                         <h4>{location}</h4>
                         <h4>{duration}</h4>
                         <h4>{price}</h4>
-                        <Separator.Root className={styles.Separator} />
-                        <button className={styles.nextButton}>Next</button>
                     </AccordionContent>
                 </Accordion.Item>
+                <Separator.Root className={styles.Separator} />
+                <button className={styles.nextButton}>Next</button>
             </Accordion.Root>
         </div>
     );

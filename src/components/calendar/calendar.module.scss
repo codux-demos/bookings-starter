@@ -6,15 +6,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     border-radius: 50%;
-    position: relative;
+
 }
 
 .available:after {
     content: '';
     position: absolute;
-    top: 25px;
+    top: 30px;
     width: 5px;
     height: 5px;
     background-color: $orange-red;
@@ -25,8 +24,14 @@
     color: $orange-red;
 }
 
+// !important is necessary here because the react-day-picker component's default CSS overrides our styles otherwise.
 .available:hover {
-    background-color: rgba($orange-red, 0.2);
+    background-color: rgba($orange-red, 0.2) !important;
+}
+
+// !important is necessary here because the react-day-picker component's default CSS overrides our styles otherwise.
+.selected:hover {
+    background-color: rgba($orange-red, 0.8) !important;
 }
 
 .dayInPast {
@@ -40,12 +45,5 @@
 }
 
 .selected:after {
-    background-color: black; 
+    background-color: black;
 }
-
-.selected:hover {
-    background-color: red;
-    color: black;
-}
-
-

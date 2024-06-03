@@ -1,0 +1,13 @@
+@import '@styles/theme.module.scss';
+
+.hourButtonsContainer {
+    width: 100%;
+    padding-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+}
+.selectedHour {
+    background-color: rgba($orange-red, 0.1);
+    border: 1px solid $orange-red;
+}
