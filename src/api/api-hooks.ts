@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import useSwr, { useSWRConfig } from 'swr';
 import { WixAPIContext } from './wix-api-context-provider';
+import { extendedBookings } from '@wix/bookings';
 
 const getLessonKey = (slug: string) => `lesson/${slug}`;
 
@@ -53,4 +54,11 @@ export const useBookingHistory = () => {
 export const useMyProfile = () => {
     const wixApi = useWixApi();
     return useSwr('my-profile', wixApi.getMyProfile);
+};
+
+export const useCancelBooking = () => {
+    const wixApi = useWixApi();
+    return (booking: extendedBookings.Booking) => {
+        wixApi.cancelBooking({ _id: booking._id, revision: booking.revision });
+    };
 };

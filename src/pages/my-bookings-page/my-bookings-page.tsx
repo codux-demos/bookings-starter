@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './my-bookings-page.module.scss';
-import { useBookingHistory, useUpcomingBookings } from '../../api/api-hooks';
+import { useBookingHistory, useUpcomingBookings, useCancelBooking } from '../../api/api-hooks';
 import commonStyles from '../../styles/common-styles.module.scss';
 import { TabItem, Tabs } from '/src/components/tabs/tabs';
 import { format, getDate } from 'date-fns';
@@ -51,11 +51,12 @@ const Booking = ({ booking, onCancel }: BookingProps) => {
 export const MyBookingsPage = ({ className }: MyBookingsPageProps) => {
     const { data: myUpcomingBookings, isLoading: isUpcomingBookingsLoading } = useUpcomingBookings();
     const { data: bookingHistory, isLoading: isBookingHistoryLoading } = useBookingHistory();
-    // const wixApi = useWixApi();
+    const cancelBooking = useCancelBooking();
+
 
     const handleCancel = (booking: extendedBookings.Booking) => {
         if (!booking) return;
-        // wixApi.cancelBooking({ _id: booking._id, revision: booking.revision });
+        cancelBooking(booking);
     };
 
     if (!myUpcomingBookings && isUpcomingBookingsLoading) {
