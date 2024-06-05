@@ -1,5 +1,5 @@
 import commonStyles from '@styles/common-styles.module.scss';
-import { format, setHours, toDate } from 'date-fns';
+import { format, isSameDay, setHours, toDate } from 'date-fns';
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './lesson-page.module.scss';
@@ -19,7 +19,13 @@ export const LessonPage: React.FC = () => {
 
     const handledDateSelected = (date: Date | null) => {
         if (date) {
+            if (selectedDate && isSameDay(date, selectedDate))
+                setSelectedDate(null)
             setSelectedDate(date);
+            setSelectedHour('');
+        }
+        else {
+            setSelectedDate(null);
             setSelectedHour('');
         }
     };
