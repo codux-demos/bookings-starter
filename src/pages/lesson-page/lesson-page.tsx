@@ -1,6 +1,6 @@
 import commonStyles from '@styles/common-styles.module.scss';
-import { format } from 'date-fns';
-import { useState } from 'react';
+import { format, setHours, toDate } from 'date-fns';
+import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './lesson-page.module.scss';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
@@ -14,10 +14,10 @@ export const LessonPage: React.FC = () => {
     const { data } = useLessonBySlug(slug);
     const { data: availability, isLoading } = useAvailability(data?._id!);
 
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [selectedHour, setSelectedHour] = useState<string>('');
 
-    const handledDateSelected = (date: Date | undefined) => {
+    const handledDateSelected = (date: Date | null) => {
         if (date) {
             setSelectedDate(date);
             setSelectedHour('');
@@ -26,28 +26,27 @@ export const LessonPage: React.FC = () => {
 
     const typeOfLesson = data?.name!;
 
-    const datesToLessons = availability?.availabilityEntries?.reduce((acc, entry) => {
-        const currentDay = new Date(entry?.slot?.startDate!);
-        const normalizedDay = format(currentDay, 'yyyy-MM-dd');
-        const lessonStartingHour = format(currentDay, 'HH:mm aa');
+    const datesToLessons = useMemo(() => {
+        return availability?.availabilityEntries?.reduce((acc, entry) => {
+            const currentDay = new Date(entry?.slot?.startDate!);
+            const normalizedDay = new Date(currentDay);
+            normalizedDay.setHours(0, 0, 0, 0); // Normalize to the start of the day
+            const lessonStartingHour = format(currentDay, 'HH:mm:aa');
 
-        if (!acc.has(normalizedDay)) {
-            acc.set(normalizedDay, []);
-        }
+            if (!acc.has(normalizedDay)) {
+                acc.set(normalizedDay, []);
+            }
+            acc.get(normalizedDay)?.push(lessonStartingHour);
+            return acc;
+        }, new Map<Date, string[]>());
+    }, [availability?.availabilityEntries]);
 
-        acc.get(normalizedDay)?.push(lessonStartingHour);
-
-        return acc;
-    }, new Map<string, string[]>());
-
-    const availableDates = datesToLessons
-        ? Array.from(datesToLessons.keys()).map((dateStr) => new Date(dateStr))
-        : [];
+    const availableDates = datesToLessons ? Array.from(datesToLessons?.keys()) : [];
 
     if (!datesToLessons && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
-
+    console.log(`The selected date is ${selectedDate}`)
     return (
         <>
             <div className={styles.headerSection}>
@@ -65,22 +64,20 @@ export const LessonPage: React.FC = () => {
                             availableDates={availableDates}
                         />
                         <HourButtons
-                            availableHours={
-                                datesToLessons?.get(format(selectedDate, 'yyyy-MM-dd')) || []
-                            }
+                            availableHours={selectedDate && datesToLessons?.get(selectedDate) || []}
                             selectedHour={selectedHour}
                             onHourSelected={setSelectedHour}
                         />
                     </div>
                 </div>
-                <LessonDetails
+                {selectedDate && <LessonDetails
                     title={typeOfLesson}
                     startDate={`${selectedDate.toDateString()}  ${selectedHour}`}
                     location={availability?.availabilityEntries[0].slot?.location?.name!}
                     duration={'1 hr'}
                     price={data?.payment?.fixed?.price?.value!}
                 />
-            </div>
+                }</div>
         </>
     );
 };
