@@ -13,9 +13,4 @@ export default createBoard({
             </ContentSlot>
         </PageWrapperRealData>
     ),
-    environmentProps: {
-        canvasWidth: 1271.3333333333333,
-        windowWidth: 1159,
-        windowHeight: 816,
-    },
 });

@@ -24,8 +24,8 @@
 }
 
 .lessonTitle {
-    text-transform: capitalize;
-    font: $large-title;
+    font: $small-text;
+    align-self: end;
 }
 
 .seperator {
@@ -38,4 +38,8 @@
 
 .lessonDescription {
     font: $small-text;
+}
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
 }

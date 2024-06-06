@@ -36,7 +36,6 @@ export const LessonPage: React.FC = () => {
         return availability?.availabilityEntries?.reduce((acc, entry) => {
             const currentDay = new Date(entry?.slot?.startDate!);
             const lessonStartingHour = format(currentDay, 'HH:mm:aa');
-            console.log(currentDay)
 
             if (!acc.has(currentDay)) {
                 acc.set(currentDay, []);
@@ -52,18 +51,19 @@ export const LessonPage: React.FC = () => {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
 
-    datesToLessons ? datesToLessons.set(new Date, ["15:30"]) : null;
-
     return (
         <>
             <div className={styles.headerSection}>
                 <h1 className={styles.typeOfClass}> {typeOfLesson}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
             </div>
+            <div className={styles.titleContainer}>
+                <h2 className={styles.secondTitle}>Select a Date and time</h2>
+                <h2 className={styles.lessonTitle}>Service Details</h2>
+            </div>
+            <hr className={styles.seperator} />
             <div className={styles.calendarWithDetails}>
                 <div className={styles.schedulingContainer}>
-                    <h2 className={styles.secondTitle}>Select a Date and time</h2>
-                    <hr className={styles.seperator} />
                     <div className={styles.calendarWithDetails}>
                         <Calendar
                             selectedDate={selectedDate}
@@ -82,7 +82,7 @@ export const LessonPage: React.FC = () => {
                 {selectedDate && (
                     <LessonDetails
                         title={typeOfLesson}
-                        startDate={`${selectedDate.toDateString()}  ${selectedHour}`}
+                        startDate={`${selectedDate?.toDateString()}  ${selectedHour}`}
                         location={availability?.availabilityEntries[0].slot?.location?.name!}
                         duration={'1 hr'}
                         price={data?.payment?.fixed?.price?.value!}
