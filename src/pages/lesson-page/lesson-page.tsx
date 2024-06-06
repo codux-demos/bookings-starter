@@ -19,12 +19,12 @@ export const LessonPage: React.FC = () => {
 
     const handledDateSelected = (date: Date | null) => {
         if (date) {
-            if (selectedDate && isSameDay(date, selectedDate))
-                setSelectedDate(null)
-            setSelectedDate(date);
-            setSelectedHour('');
-        }
-        else {
+            if (selectedDate && isSameDay(date, selectedDate)) setSelectedDate(null);
+            else {
+                setSelectedDate(date);
+                setSelectedHour('');
+            }
+        } else {
             setSelectedDate(null);
             setSelectedHour('');
         }
@@ -35,14 +35,13 @@ export const LessonPage: React.FC = () => {
     const datesToLessons = useMemo(() => {
         return availability?.availabilityEntries?.reduce((acc, entry) => {
             const currentDay = new Date(entry?.slot?.startDate!);
-            const normalizedDay = new Date(currentDay);
-            normalizedDay.setHours(0, 0, 0, 0); // Normalize to the start of the day
             const lessonStartingHour = format(currentDay, 'HH:mm:aa');
+            console.log(currentDay)
 
-            if (!acc.has(normalizedDay)) {
-                acc.set(normalizedDay, []);
+            if (!acc.has(currentDay)) {
+                acc.set(currentDay, []);
             }
-            acc.get(normalizedDay)?.push(lessonStartingHour);
+            acc.get(currentDay)?.push(lessonStartingHour);
             return acc;
         }, new Map<Date, string[]>());
     }, [availability?.availabilityEntries]);
@@ -52,7 +51,9 @@ export const LessonPage: React.FC = () => {
     if (!datesToLessons && isLoading) {
         return <div className={commonStyles.loading}>Loading...</div>;
     }
-    console.log(`The selected date is ${selectedDate}`)
+
+    datesToLessons ? datesToLessons.set(new Date, ["15:30"]) : null;
+
     return (
         <>
             <div className={styles.headerSection}>
@@ -70,20 +71,24 @@ export const LessonPage: React.FC = () => {
                             availableDates={availableDates}
                         />
                         <HourButtons
-                            availableHours={selectedDate && datesToLessons?.get(selectedDate) || []}
+                            availableHours={
+                                (selectedDate && datesToLessons?.get(selectedDate)) || []
+                            }
                             selectedHour={selectedHour}
                             onHourSelected={setSelectedHour}
                         />
                     </div>
                 </div>
-                {selectedDate && <LessonDetails
-                    title={typeOfLesson}
-                    startDate={`${selectedDate.toDateString()}  ${selectedHour}`}
-                    location={availability?.availabilityEntries[0].slot?.location?.name!}
-                    duration={'1 hr'}
-                    price={data?.payment?.fixed?.price?.value!}
-                />
-                }</div>
+                {selectedDate && (
+                    <LessonDetails
+                        title={typeOfLesson}
+                        startDate={`${selectedDate.toDateString()}  ${selectedHour}`}
+                        location={availability?.availabilityEntries[0].slot?.location?.name!}
+                        duration={'1 hr'}
+                        price={data?.payment?.fixed?.price?.value!}
+                    />
+                )}
+            </div>
         </>
     );
 };

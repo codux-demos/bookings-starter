@@ -51,12 +51,11 @@ const Booking = ({ booking, onCancel }: BookingProps) => {
 export const MyBookingsPage = ({ className }: MyBookingsPageProps) => {
     const { data: myUpcomingBookings, isLoading: isUpcomingBookingsLoading } = useUpcomingBookings();
     const { data: bookingHistory, isLoading: isBookingHistoryLoading } = useBookingHistory();
-    const cancelBooking = useCancelBooking();
-
+    const cancelBooking = useCancelBooking()
 
     const handleCancel = (booking: extendedBookings.Booking) => {
         if (!booking) return;
-        cancelBooking(booking);
+        cancelBooking(booking)
     };
 
     if (!myUpcomingBookings && isUpcomingBookingsLoading) {
