@@ -24,8 +24,8 @@
 }
 
 .lessonTitle {
-    text-transform: capitalize;
-    font: $large-title;
+    font: $small-text;
+    align-self: end;
 }
 
 .seperator {
@@ -38,4 +38,24 @@
 
 .lessonDescription {
     font: $small-text;
+}
+.titlesContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nextButton {
+    background: $white;
+    color: $black;
+    width: 100%;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.nextButton:hover{
+    background-color: $orange-red;
 }

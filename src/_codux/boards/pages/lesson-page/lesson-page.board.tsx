@@ -13,6 +13,5 @@ export default createBoard({
             </ContentSlot>
         </PageWrapperRealData>
     ),
-    isSnippet: true,
-
+    isSnippet: false,
 });
