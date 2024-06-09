@@ -1,11 +1,10 @@
 import commonStyles from '@styles/common-styles.module.scss';
-import { format, isSameDay, setHours, toDate } from 'date-fns';
+import { format } from 'date-fns';
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './lesson-page.module.scss';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 import { Calendar } from '/src/components/calendar/calendar';
-import { LessonDetails } from '/src/components/lesson-details/lesson-details';
 import { RouteParams } from '/src/router/config';
 import { HourButtons } from '/src/components/hour-buttons/hour-buttons';
 
@@ -19,11 +18,8 @@ export const LessonPage: React.FC = () => {
 
     const handledDateSelected = (date: Date | null) => {
         if (date) {
-            if (selectedDate && isSameDay(date, selectedDate)) setSelectedDate(null);
-            else {
-                setSelectedDate(date);
-                setSelectedHour('');
-            }
+            setSelectedDate(date);
+            setSelectedHour('');
         } else {
             setSelectedDate(null);
             setSelectedHour('');
@@ -35,12 +31,14 @@ export const LessonPage: React.FC = () => {
     const datesToLessons = useMemo(() => {
         return availability?.availabilityEntries?.reduce((acc, entry) => {
             const currentDay = new Date(entry?.slot?.startDate!);
+            const normalizedDay = new Date(currentDay);
+            normalizedDay.setHours(0, 0, 0, 0); // Normalize to the start of the day
             const lessonStartingHour = format(currentDay, 'HH:mm:aa');
 
-            if (!acc.has(currentDay)) {
-                acc.set(currentDay, []);
+            if (!acc.has(normalizedDay)) {
+                acc.set(normalizedDay, []);
             }
-            acc.get(currentDay)?.push(lessonStartingHour);
+            acc.get(normalizedDay)?.push(lessonStartingHour);
             return acc;
         }, new Map<Date, string[]>());
     }, [availability?.availabilityEntries]);
@@ -57,7 +55,7 @@ export const LessonPage: React.FC = () => {
                 <h1 className={styles.typeOfClass}> {typeOfLesson}</h1>
                 <h2>Check out our availability and book the date and time that works for you</h2>
             </div>
-            <div className={styles.titleContainer}>
+            <div className={styles.titlesContainer}>
                 <h2 className={styles.secondTitle}>Select a Date and time</h2>
                 <h2 className={styles.lessonTitle}>Service Details</h2>
             </div>
@@ -80,13 +78,18 @@ export const LessonPage: React.FC = () => {
                     </div>
                 </div>
                 {selectedDate && (
-                    <LessonDetails
-                        title={typeOfLesson}
-                        startDate={`${selectedDate?.toDateString()}  ${selectedHour}`}
-                        location={availability?.availabilityEntries[0].slot?.location?.name!}
-                        duration={'1 hr'}
-                        price={data?.payment?.fixed?.price?.value!}
-                    />
+                    <div>
+                        <div className={styles.content}>
+                            <h2>{typeOfLesson}</h2>
+                            <h2>{`${selectedDate?.toDateString()}  ${selectedHour}`}</h2>
+                            <h4>{availability?.availabilityEntries[0].slot?.location?.name!}</h4>
+                            <h4>{'1 hr'}</h4>
+                            <h4>{data?.payment?.fixed?.price?.value!}</h4>
+                        </div>
+
+                        <hr className={styles.seperator} />
+                        <button className={styles.nextButton}>Next</button>
+                    </div>
                 )}
             </div>
         </>
