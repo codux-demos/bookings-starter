@@ -14,9 +14,4 @@ export default createBoard({
         </PageWrapperRealData>
     ),
     isSnippet: false,
-    environmentProps: {
-        canvasWidth: 1276,
-        windowWidth: 1024,
-        windowHeight: 768,
-    },
 });
