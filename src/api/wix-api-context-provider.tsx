@@ -5,6 +5,9 @@ import { redirects } from '@wix/redirects';
 import React, { FC, useMemo } from 'react';
 import { SWRConfig } from 'swr';
 
+
+
+
 export const WIX_SESSION_TOKEN = 'wix_refreshToken';
 
 function getWixClient() {
@@ -107,6 +110,35 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             return { success: true, url: '' };
         },
         getMyProfile: async () => await wixClient.members.getCurrentMember(),
+        initiateLogin: async () => {
+            const loginRequestData = wixClient.auth.generateOAuthData(
+                "http://localhost:5173",
+            )
+            localStorage.setItem('outhData', JSON.stringify(loginRequestData));
+            const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
+            window.location.href = authUrl;
+
+        },
+        handleLoginCallback: async () => {
+            const oauthData = JSON.parse(localStorage.getItem('oauthData') || '{}');
+            const returnedOAuthData = wixClient.auth.parseFromUrl();
+            if (returnedOAuthData.error) {
+                alert(`Error: ${returnedOAuthData.errorDescription}`);
+                return;
+            }
+            const memberTokens = await wixClient.auth.getMemberTokens(
+                returnedOAuthData.code,
+                returnedOAuthData.state,
+                oauthData,
+            );
+            wixClient.auth.setTokens(memberTokens);
+
+        },
+
+        logout: async () => {
+            const { logoutUrl } = await wixClient.auth.logout(window.location.href);
+            window.location.href = logoutUrl;
+        },
     };
 }
 

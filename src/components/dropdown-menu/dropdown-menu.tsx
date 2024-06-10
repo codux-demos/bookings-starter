@@ -1,18 +1,12 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AccountSvg from '../../assets/svg/account.svg';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 import styles from './dropdown-menu.module.scss';
+import { WixAPIContext } from '/src/api/wix-api-context-provider';
 
-function login() {
-    // TODO: once login is implemented, use it instead of this function.
-}
-
-function logout() {
-    // TODO: once logout is implemented, use it instead of this function.
-}
-
+//TODO - Implement the logout function.
 interface DropdownMenuItem {
     title: string;
     redirectTo: string;
@@ -26,11 +20,13 @@ export interface DropdownMenuProps {
 
 export const DropdownMenu = ({ dropdownMenuItems, username, className }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const wixApi = useContext(WixAPIContext);
+
 
     return (
         <div className={classNames(styles.root, className)}>
             <button
-                onClick={() => (username ? setIsOpen(!isOpen) : login())}
+                onClick={() => (username ? setIsOpen(!isOpen) : wixApi.initiateLogin())}
                 className={classNames(CommonStyles_module.secondaryButton, styles['menu-button'])}
             >
                 <span>{username ?? 'Log In'}</span>
@@ -45,7 +41,7 @@ export const DropdownMenu = ({ dropdownMenuItems, username, className }: Dropdow
                             </li>
                         ))}
                         <li className={styles['menu-item']}>
-                            <span onClick={logout}>Log Out</span>
+                            <span >Log Out</span>
                         </li>
                     </ul>
                 </nav>
