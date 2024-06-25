@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AccountSvg from '../../assets/svg/account.svg';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
@@ -18,15 +18,32 @@ export interface DropdownMenuProps {
     className?: string;
 }
 
-export const DropdownMenu = ({ dropdownMenuItems, username, className }: DropdownMenuProps) => {
+export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const wixApi = useContext(WixAPIContext);
+    const [username, setUsername] = useState<string | null>(null);
 
+    const onLoginClick = async () => {
+        if (username) {
+            await wixApi.logout();
+            setUsername(null);
+        } else {
+            await wixApi.initiateLogin();
+        }
+    };
+
+    useEffect(() => {
+        wixApi.getLoggedinUserAndTokens().then((response) => {
+            if (response) {
+                setUsername(response?.user?.member?.profile?.nickname || "");
+            }
+        });
+    }, [])
 
     return (
         <div className={classNames(styles.root, className)}>
             <button
-                onClick={() => (username ? setIsOpen(!isOpen) : wixApi.initiateLogin())}
+                onClick={onLoginClick}
                 className={classNames(CommonStyles_module.secondaryButton, styles['menu-button'])}
             >
                 <span>{username ?? 'Log In'}</span>
