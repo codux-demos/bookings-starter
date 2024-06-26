@@ -1,10 +1,11 @@
-import { OAuthStrategy, createClient } from '@wix/sdk';
-import { members } from '@wix/members';
 import { availabilityCalendar, bookings, extendedBookings, services } from '@wix/bookings';
-import { redirects } from '@wix/redirects';
-import React, { FC, useMemo } from 'react';
-import { SWRConfig } from 'swr';
+import { members } from '@wix/members';
 import { GetMyMemberResponse, GetMyMemberResponseNonNullableFields } from '@wix/members_members/build/cjs/src/members-v1-member-members.universal';
+import { redirects } from '@wix/redirects';
+import { OAuthStrategy, createClient } from '@wix/sdk';
+import { log } from 'console';
+import React, { FC } from 'react';
+import { SWRConfig } from 'swr';
 
 
 
@@ -128,11 +129,16 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getLoggedinUserAndTokens: async () => {
             if (!userLoginState.loginCheck) {
                 userLoginState.loginCheck = new Promise((res) => {
-                    if (wixClient.auth.loggedIn()) {
+                    const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
+                    if (wixTokens) {
+                        wixClient.auth.setTokens(wixTokens);
+                        wixApi.getMyProfile().then((profile) => {
+                            res({ user: profile });
+                        });
+                    } else if (wixClient.auth.loggedIn()) {
                         return wixApi.getMyProfile().then((profile) => {
                             res({ user: profile });
-                        }
-                        );
+                        });
                     } else {
                         const { code, state, error, errorDescription } = wixClient.auth.parseFromUrl();
                         if (code && state) {
@@ -143,6 +149,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                             }
                             wixClient.auth.getMemberTokens(code, state, oauthData).then((memberTokens) => {
                                 wixClient.auth.setTokens(memberTokens);
+                                localStorage.setItem('wixTokens', JSON.stringify(memberTokens));
                                 wixApi.getMyProfile().then((profile) => {
                                     res({ user: profile });
                                 });
