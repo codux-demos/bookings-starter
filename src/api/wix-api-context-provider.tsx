@@ -124,49 +124,48 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
             window.location.href = authUrl;
         },
-        getLoggedinUserAndTokens: async () => {
-            if (!userAuthPromise) {
-                userAuthPromise = new Promise((res) => {
-                    const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
-                    if (wixTokens) {
-                        wixClient.auth.setTokens(wixTokens);
-                        wixApi.getMyProfile().then((profile) => {
-                            res({ user: profile });
-                        });
-                    } else if (wixClient.auth.loggedIn()) {
-                        return wixApi.getMyProfile().then((profile) => {
-                            res({ user: profile });
-                        });
-                    } else {
-                        const { code, state, error, errorDescription } = wixClient.auth.parseFromUrl();
-                        if (code && state) {
-                            const oauthData = JSON.parse(localStorage.getItem('oauthData') || 'null');
-                            if (!oauthData) {
-                                alert('oauthData not found');
-                                return;
-                            }
-                            wixClient.auth.getMemberTokens(code, state, oauthData).then((memberTokens) => {
-                                wixClient.auth.setTokens(memberTokens);
-                                localStorage.setItem('wixTokens', JSON.stringify(memberTokens));
-                                wixApi.getMyProfile().then((profile) => {
-                                    res({ user: profile });
-                                });
-                            });
-                        } else if (error) {
-                            alert(`Error: ${errorDescription}`);
-
-                        } else {
-                            return null;
-                        }
-                    }
-                })
+        fetchUserAuthData: async () => {
+            const setUserProfile = () => {
+                wixApi.getMyProfile().then((profile) => {
+                    return profile;
+                });
             }
+            userAuthPromise = new Promise((res) => {
+                const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
+                if (wixTokens) {
+                    wixClient.auth.setTokens(wixTokens);
+                    setUserProfile();
+                } else if (wixClient.auth.loggedIn()) {
+                    setUserProfile();
+                } else {
+                    const { code, state, error, errorDescription } = wixClient.auth.parseFromUrl();
+                    if (code && state) {
+                        const oauthData = JSON.parse(localStorage.getItem('oauthData') || 'null');
+                        if (!oauthData) {
+                            alert('oauthData not found');
+                            return;
+                        }
+                        wixClient.auth.getMemberTokens(code, state, oauthData).then((memberTokens) => {
+                            wixClient.auth.setTokens(memberTokens);
+                            localStorage.setItem('wixTokens', JSON.stringify(memberTokens));
+                            setUserProfile();
+                        });
+                    } else if (error) {
+                        alert(`Error: ${errorDescription}`);
+
+                    } else {
+                        return null;
+                    }
+                }
+            })
             return userAuthPromise;
+
         },
 
         logout: async () => {
-            const { logoutUrl } = await wixClient.auth.logout(window.location.href);
-            window.location.href = logoutUrl;
+            localStorage.removeItem('wixTokens');
+            userAuthPromise = null;
+            wixClient.auth.logout(window.location.href);
         },
     };
 }

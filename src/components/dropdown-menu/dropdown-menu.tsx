@@ -33,7 +33,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
     };
 
     useEffect(() => {
-        wixApi.getLoggedinUserAndTokens().then((response) => {
+        wixApi.fetchUserAuthData().then((response) => {
             if (response) {
                 setUsername(response?.user?.member?.profile?.nickname || "");
             }
