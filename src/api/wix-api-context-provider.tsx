@@ -29,9 +29,7 @@ function getWixClient() {
 }
 
 function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
-    const userLoginState = {
-        loginCheck: null as Promise<{ user: GetMyMemberResponse & GetMyMemberResponseNonNullableFields | null }> | null,
-    };
+    let userAuthPromise: Promise<{ user: GetMyMemberResponse & GetMyMemberResponseNonNullableFields | null }> | null = null;
 
     return {
         getAllLessons: async () => {
@@ -113,7 +111,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             //     },
             // });
             // return { success: true, url: redirectSession?.fullUrl };
-            // return { success: true, url: '' };
+            return { success: true, url: '' };
         },
         getMyProfile: async () => await wixClient.members.getCurrentMember({}),
         initiateLogin: async () => {
@@ -127,8 +125,8 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             window.location.href = authUrl;
         },
         getLoggedinUserAndTokens: async () => {
-            if (!userLoginState.loginCheck) {
-                userLoginState.loginCheck = new Promise((res) => {
+            if (!userAuthPromise) {
+                userAuthPromise = new Promise((res) => {
                     const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
                     if (wixTokens) {
                         wixClient.auth.setTokens(wixTokens);
@@ -163,7 +161,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                     }
                 })
             }
-            return userLoginState.loginCheck;
+            return userAuthPromise;
         },
 
         logout: async () => {
