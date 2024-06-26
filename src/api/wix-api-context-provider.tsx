@@ -125,18 +125,17 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             window.location.href = authUrl;
         },
         fetchUserAuthData: async () => {
-            const setUserProfile = () => {
-                wixApi.getMyProfile().then((profile) => {
-                    return profile;
-                });
-            }
             userAuthPromise = new Promise((res) => {
                 const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
                 if (wixTokens) {
                     wixClient.auth.setTokens(wixTokens);
-                    setUserProfile();
+                    wixApi.getMyProfile().then((profile) => {
+                        res({ user: profile });
+                    });
                 } else if (wixClient.auth.loggedIn()) {
-                    setUserProfile();
+                    return wixApi.getMyProfile().then((profile) => {
+                        res({ user: profile });
+                    });
                 } else {
                     const { code, state, error, errorDescription } = wixClient.auth.parseFromUrl();
                     if (code && state) {
@@ -148,7 +147,9 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                         wixClient.auth.getMemberTokens(code, state, oauthData).then((memberTokens) => {
                             wixClient.auth.setTokens(memberTokens);
                             localStorage.setItem('wixTokens', JSON.stringify(memberTokens));
-                            setUserProfile();
+                            wixApi.getMyProfile().then((profile) => {
+                                res({ user: profile });
+                            });
                         });
                     } else if (error) {
                         alert(`Error: ${errorDescription}`);
