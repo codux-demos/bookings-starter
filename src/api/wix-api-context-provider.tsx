@@ -3,7 +3,6 @@ import { members } from '@wix/members';
 import { GetMyMemberResponse, GetMyMemberResponseNonNullableFields } from '@wix/members_members/build/cjs/src/members-v1-member-members.universal';
 import { redirects } from '@wix/redirects';
 import { OAuthStrategy, createClient } from '@wix/sdk';
-import { log } from 'console';
 import React, { FC } from 'react';
 import { SWRConfig } from 'swr';
 
@@ -116,9 +115,9 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getMyProfile: async () => await wixClient.members.getCurrentMember({}),
         initiateLogin: async () => {
             const loginRequestData = wixClient.auth.generateOAuthData(
+                // Add your redirect URI here
                 "http://localhost:5173",
                 window.location.href
-
             )
             localStorage.setItem('oauthData', JSON.stringify(loginRequestData));
             const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
