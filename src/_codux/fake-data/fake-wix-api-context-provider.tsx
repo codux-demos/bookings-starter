@@ -49,6 +49,16 @@ function getWixApi(settings?: Settings): WixAPI {
         getServiceAvailability: (lessonId: string) => {
             return Promise.resolve(createLessonAvailability(lessonId));
         },
+        initiateLogin: async () => {
+            alert('Initiate login');
+        },
+        fetchUserAuthData: async () => {
+            return Promise.resolve({ user: { member: { profile: { nickname: 'John Doe' } } } });
+        },
+        logout: async () => {
+            alert('Logout');
+        },
+
     };
 
     return api;

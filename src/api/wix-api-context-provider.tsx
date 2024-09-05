@@ -159,14 +159,15 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 }
             })
             return userAuthPromise;
-
         },
-
         logout: async () => {
             localStorage.removeItem('wixTokens');
             userAuthPromise = null;
             wixClient.auth.logout(window.location.href);
         },
+        isUserLoggedIn: async () => {
+            return wixClient.auth.loggedIn();
+        }
     };
 }
 

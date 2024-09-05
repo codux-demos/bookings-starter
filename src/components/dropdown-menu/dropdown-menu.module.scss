@@ -1,36 +1,93 @@
 @import '@styles/theme.module.scss';
 
 .root {
-    cursor: pointer;
     z-index: 1;
+    position: relative; // Ensure the dropdown is positioned correctly
 }
 
 .menu-button {
     display: flex;
+    align-items: center;
     gap: 14px;
+    background-color: transparent;
+    border: none;
+
+    img {
+        margin-right: 8px;
+    }
 }
 
-.menu {
+.dropdownContainer {
     display: flex;
     align-items: center;
+    gap: 10px;
+}
+
+.userImage {
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+
+.username {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: $charcoal-black;
+    border: 1px solid $snow-white-40;
+    border-radius: 3px;
+    padding: 10px;
     flex-direction: column;
+    align-items: end;
+    width: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &.open {
+        display: flex;
+        align-items: start;
+    }
 }
 
 .menu-list {
     display: flex;
     flex-direction: column;
     align-items: end;
-    position: absolute;
     background-color: $charcoal-black;
     margin-top: 5px;
     border-radius: 3px;
     border: 1px solid $snow-white-40;
 }
 
-.menu-item {
-    padding: 10px 20px;
+.dropdownItem {
+    color: $snow-white;
+}
 
+.logoutButton {
+    background: none;
+    border: none;
+    color: $snow-white;
+    text-align: left;
+    cursor: pointer;
     &:hover {
         color: $orange-red;
     }
+}
+
+.itemTitle {
+    cursor: pointer;
+    &:hover {
+        color: $orange-red;
+    }
+}
+
+.divider {
+    color: white;
 }
