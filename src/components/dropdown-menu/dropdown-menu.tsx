@@ -43,7 +43,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
     }, []);
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <>
             {!username ? (
                 <button
                     onClick={onLoginClick}
@@ -56,7 +56,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                 </button>
             ) : (
                 <div
-                    className={classNames(styles.dropdownContainer)}
+                    className={classNames(styles.dropdownContainer, styles.root)}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <img src={userImage as string} className={styles.userImage} />
@@ -77,6 +77,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 };

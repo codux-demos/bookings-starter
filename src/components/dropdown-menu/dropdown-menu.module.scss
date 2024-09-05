@@ -1,33 +1,16 @@
 @import '@styles/theme.module.scss';
 
-.root {
-    z-index: 1;
-    position: relative; // Ensure the dropdown is positioned correctly
-}
-
-.menu-button {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background-color: transparent;
-    border: none;
-
-    img {
-        margin-right: 8px;
-    }
-}
-
 .dropdownContainer {
     display: flex;
     align-items: center;
-    gap: 10px;
+    z-index: 1;
+    position: relative; // Ensure the dropdown is positioned correctly
 }
 
 .userImage {
     width: 30px;
     height: 30px;
-    margin-top: 8px;
-    border-radius: 30%;
+    border-radius: 40%;
     cursor: pointer;
 }
 
