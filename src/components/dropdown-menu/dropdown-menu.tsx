@@ -1,11 +1,10 @@
 import classNames from 'classnames';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 import styles from './dropdown-menu.module.scss';
 import { WixAPIContext } from '/src/api/wix-api-context-provider';
 
-//TODO - Implement the logout function.
 interface DropdownMenuItem {
     title: string;
     redirectTo: string;
@@ -19,9 +18,24 @@ export interface DropdownMenuProps {
 
 export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const dropDownRef = useRef<HTMLDivElement>(null);
     const wixApi = useContext(WixAPIContext);
     const [username, setUsername] = useState<string | null>(null);
     const [userImage, setUserImage] = useState<string | null>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropDownRef.current && !dropDownRef.current.contains(event.target as Node)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const onLoginClick = async () => {
         if (username) {
@@ -56,6 +70,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                 </button>
             ) : (
                 <div
+                    ref={dropDownRef} // Attach the ref to the dropdown container
                     className={classNames(styles.dropdownContainer, styles.root)}
                     onClick={() => setIsOpen(!isOpen)}
                 >
