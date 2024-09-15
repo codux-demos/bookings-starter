@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import CommonStyles_module from '../../styles/common-styles.module.scss';
 import styles from './dropdown-menu.module.scss';
 import { WixAPIContext } from '/src/api/wix-api-context-provider';
-
+import downArrow from '/src/assets/svg/down-arrow.svg';
+import orangeDownArrow from '/src/assets/svg/orange-down-arrow.svg';
 interface DropdownMenuItem {
     title: string;
     redirectTo: string;
@@ -70,11 +71,19 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                 </button>
             ) : (
                 <div
-                    ref={dropDownRef} // Attach the ref to the dropdown container
+                    ref={dropDownRef}
                     className={classNames(styles.dropdownContainer, styles.root)}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <img src={userImage as string} className={styles.userImage} />
+                    <p className={styles.userName}>{username}</p>
+                    <img
+                        src={downArrow}
+                        className={classNames(styles.downArrow, styles.defaultArrow)}
+                    />
+                    <img
+                        src={orangeDownArrow}
+                        className={classNames(styles.downArrow, styles.hoverArrow)}
+                    />
                     <div className={classNames(styles.dropdown, { [styles.open]: isOpen })}>
                         {dropdownMenuItems.map((item, index) => (
                             <Link
@@ -86,7 +95,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                             </Link>
                         ))}
                         <hr className={styles.divider} />
-                        <button onClick={onLoginClick} className={styles.logoutButton}>
+                        <button onClick={onLoginClick} className={styles.title}>
                             Log Out
                         </button>
                     </div>

@@ -4,7 +4,8 @@
     display: flex;
     align-items: center;
     z-index: 1;
-    position: relative; // Ensure the dropdown is positioned correctly
+    cursor: pointer;
+    position: relative;
 }
 
 .userImage {
@@ -53,24 +54,44 @@
     color: $snow-white;
 }
 
-.logoutButton {
-    background: none;
-    border: none;
-    color: $snow-white;
-    text-align: left;
-    cursor: pointer;
-    &:hover {
-        color: $orange-red;
-    }
-}
-
-.itemTitle {
-    cursor: pointer;
-    &:hover {
-        color: $orange-red;
-    }
+.itemTitle:hover {
+    color: $orange-red;
 }
 
 .divider {
-    color: white;
+    height: 1px;
+    width: 100%;
+    background-color: white;
+    margin: 5px 0px;
+    opacity:40%
+
+}
+
+.downArrow {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 4px;
+    margin-left: 9px;
+}
+
+.defaultArrow {
+    display: inline-block;
+    margin-bottom: 4px;
+    margin-left: 9px;
+}
+
+.hoverArrow {
+    display: none;
+}
+
+.dropdownContainer:hover .defaultArrow {
+    display: none;
+}
+
+.dropdownContainer:hover .userName {
+    color: $orange-red;
+}
+
+.dropdownContainer:hover .hoverArrow {
+    display: inline-block;
 }
