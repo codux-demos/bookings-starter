@@ -22,7 +22,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
     const dropDownRef = useRef<HTMLDivElement>(null);
     const wixApi = useContext(WixAPIContext);
     const [username, setUsername] = useState<string | null>(null);
-    const [userImage, setUserImage] = useState<string | null>(null);
 
     const handleClickOutside = (event: MouseEvent) => {
         if (dropDownRef.current && !dropDownRef.current.contains(event.target as Node)) {
@@ -42,7 +41,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
         if (username) {
             await wixApi.logout();
             setUsername(null);
-            setUserImage(null);
         } else {
             await wixApi.initiateLogin();
         }
@@ -52,7 +50,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
         wixApi.fetchUserAuthData().then((response) => {
             if (response) {
                 setUsername(response?.user?.member?.profile?.nickname || '');
-                setUserImage(response?.user?.member?.profile?.photo?.url || '');
             }
         });
     }, []);
