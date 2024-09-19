@@ -115,7 +115,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getMyProfile: async () => await wixClient.members.getCurrentMember({}),
         initiateLogin: async () => {
             const loginRequestData = wixClient.auth.generateOAuthData(
-                // Add your redirect URI here
+                // Add your redirect URI here after adding to the "Allowed redirect domains in settings"
                 "http://localhost:5173",
                 window.location.href
             )
