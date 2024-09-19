@@ -6,9 +6,6 @@ import { OAuthStrategy, createClient } from '@wix/sdk';
 import React, { FC } from 'react';
 import { SWRConfig } from 'swr';
 
-
-
-
 export const WIX_SESSION_TOKEN = 'wix_refreshToken';
 
 function getWixClient() {
