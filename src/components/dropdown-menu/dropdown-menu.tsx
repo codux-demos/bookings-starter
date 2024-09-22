@@ -14,9 +14,10 @@ interface menuItem {
 export interface DropdownMenuProps {
     menuItems: menuItem[];
     username?: string;
+    className?: string;
 }
 
-export const DropdownMenu = ({ menuItems }: DropdownMenuProps) => {
+export const DropdownMenu = ({ menuItems, className }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
     const wixApi = useContext(WixAPIContext);
@@ -53,7 +54,7 @@ export const DropdownMenu = ({ menuItems }: DropdownMenuProps) => {
     }, []);
 
     return (
-        <>
+        <div className={classNames(styles.root, className)}>
             {!username ? (
                 <button
                     onClick={onLoginClick}
@@ -96,6 +97,6 @@ export const DropdownMenu = ({ menuItems }: DropdownMenuProps) => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };

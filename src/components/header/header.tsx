@@ -47,6 +47,7 @@ export const Header = ({ className }: HeaderProps) => {
                             redirectTo: ROUTES.myBookings.to(),
                         }
                     ]}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                     username={myProfile?.member?.contact?.firstName ?? undefined}
                 />
             </div>
