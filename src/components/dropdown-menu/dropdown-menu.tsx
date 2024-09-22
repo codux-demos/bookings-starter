@@ -6,7 +6,6 @@ import CommonStyles_module from '../../styles/common-styles.module.scss';
 import styles from './dropdown-menu.module.scss';
 import { WixAPIContext } from '/src/api/wix-api-context-provider';
 
-//TODO - Implement the logout function.
 interface DropdownMenuItem {
     title: string;
     redirectTo: string;
@@ -35,7 +34,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
     useEffect(() => {
         wixApi.fetchUserAuthData().then((response) => {
             if (response) {
-                setUsername(response?.user?.member?.profile?.nickname || "");
+                setUsername(response?.user?.member?.profile?.nickname || username);
             }
         });
     }, [])
