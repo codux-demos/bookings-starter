@@ -1,8 +1,12 @@
-import { OAuthStrategy, createClient } from '@wix/sdk';
-import { members } from '@wix/members';
 import { availabilityCalendar, bookings, extendedBookings, services } from '@wix/bookings';
+import { members } from '@wix/members';
+import {
+    GetMyMemberResponse,
+    GetMyMemberResponseNonNullableFields,
+} from '@wix/members_members/build/cjs/src/members-v1-member-members.universal';
 import { redirects } from '@wix/redirects';
-import React, { FC, useMemo } from 'react';
+import { OAuthStrategy, createClient } from '@wix/sdk';
+import React, { FC } from 'react';
 import { SWRConfig } from 'swr';
 
 export const WIX_SESSION_TOKEN = 'wix_refreshToken';
@@ -24,6 +28,10 @@ function getWixClient() {
 }
 
 function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
+    let userAuthPromise: Promise<{
+        user: (GetMyMemberResponse & GetMyMemberResponseNonNullableFields) | null;
+    }> | null = null;
+
     return {
         getAllLessons: async () => {
             return (await wixClient.services.queryServices().find()).items;
@@ -53,7 +61,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                     ],
                     cursorPaging: { limit: 20 },
                 },
-                { withBookingAllowedActions: true }
+                { withBookingAllowedActions: true },
             ),
         getMyBookingHistory: async () =>
             await wixClient!.bookings.queryExtendedBookings(
@@ -67,7 +75,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                     ],
                     cursorPaging: { limit: 20 },
                 },
-                { withBookingAllowedActions: true }
+                { withBookingAllowedActions: true },
             ),
         cancelBooking: ({ _id, revision }: Pick<extendedBookings.Booking, '_id' | 'revision'>) =>
             wixClient!.bookingsActions.cancelBooking(_id!, {
@@ -76,7 +84,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getServiceAvailability: (serviceId: string) => {
             const startDate = new Date().toISOString();
             const endDate = new Date(
-                new Date(startDate).setMonth(new Date(startDate).getMonth() + 2)
+                new Date(startDate).setMonth(new Date(startDate).getMonth() + 2),
             ).toISOString();
             return wixClient.availabilityCalendar.queryAvailability({
                 filter: {
@@ -106,25 +114,71 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             // return { success: true, url: redirectSession?.fullUrl };
             return { success: true, url: '' };
         },
-        getMyProfile: async () => await wixClient.members.getCurrentMember(),
+        getMyProfile: async () => await wixClient.members.getCurrentMember({}),
+        initiateLogin: async () => {
+            const loginRequestData = wixClient.auth.generateOAuthData(
+                // Add your redirect URI here after adding to the "Allowed redirect domains in settings"
+                "http://localhost:5173",
+                window.location.href
+            );
+            localStorage.setItem('oauthData', JSON.stringify(loginRequestData));
+            const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
+            window.location.href = authUrl;
+        },
+        fetchUserAuthData: async () => {
+            userAuthPromise = new Promise((res) => {
+                const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
+                if (wixTokens) {
+                    wixClient.auth.setTokens(wixTokens);
+                    wixApi.getMyProfile().then((profile) => {
+                        res({ user: profile });
+                    });
+                } else {
+                    const { code, state, error, errorDescription } = wixClient.auth.parseFromUrl();
+                    if (code && state) {
+                        const oauthData = JSON.parse(localStorage.getItem('oauthData') || 'null');
+                        if (!oauthData) {
+                            alert('oauthData not found');
+                            return;
+                        }
+                        wixClient.auth
+                            .getMemberTokens(code, state, oauthData)
+                            .then((memberTokens) => {
+                                wixClient.auth.setTokens(memberTokens);
+                                localStorage.setItem('wixTokens', JSON.stringify(memberTokens));
+                                wixApi.getMyProfile().then((profile) => {
+                                    res({ user: profile });
+                                });
+                            });
+                    } else if (error) {
+                        alert(`Error: ${errorDescription}`);
+                    } else {
+                        return null;
+                    }
+                }
+            });
+            return userAuthPromise;
+        },
+
+        logout: async () => {
+            localStorage.removeItem('wixTokens');
+            userAuthPromise = null;
+            wixClient.auth.logout(window.location.href);
+        },
     };
 }
 
 export type WixAPI = ReturnType<typeof getWixApi>;
 
 export const WixAPIContext = React.createContext<ReturnType<typeof getWixApi>>(
-    {} as ReturnType<typeof getWixApi>
+    {} as ReturnType<typeof getWixApi>,
 );
+
+const wixClient = getWixClient();
+const wixApi = getWixApi(wixClient);
+
 const MINUTE = 60000;
 export const WixAPIContextProvider: FC<{ children: React.ReactElement }> = ({ children }) => {
-    const wixClient = useMemo(() => {
-        return getWixClient();
-    }, []);
-
-    const api = useMemo(() => {
-        return getWixApi(wixClient);
-    }, [wixClient]);
-
     return (
         <SWRConfig
             value={{
@@ -135,7 +189,7 @@ export const WixAPIContextProvider: FC<{ children: React.ReactElement }> = ({ ch
                 keepPreviousData: true,
             }}
         >
-            <WixAPIContext.Provider value={api}>{children}</WixAPIContext.Provider>
+            <WixAPIContext.Provider value={wixApi}>{children}</WixAPIContext.Provider>
         </SWRConfig>
     );
 };
