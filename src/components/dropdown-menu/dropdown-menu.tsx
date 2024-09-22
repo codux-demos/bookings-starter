@@ -6,18 +6,17 @@ import styles from './dropdown-menu.module.scss';
 import { WixAPIContext } from '/src/api/wix-api-context-provider';
 import downArrow from '/src/assets/svg/down-arrow.svg';
 import orangeDownArrow from '/src/assets/svg/orange-down-arrow.svg';
-interface DropdownMenuItem {
+interface menuItem {
     title: string;
     redirectTo: string;
 }
 
 export interface DropdownMenuProps {
-    dropdownMenuItems: DropdownMenuItem[];
+    menuItems: menuItem[];
     username?: string;
-    className?: string;
 }
 
-export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps) => {
+export const DropdownMenu = ({ menuItems }: DropdownMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
     const wixApi = useContext(WixAPIContext);
@@ -31,7 +30,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -61,7 +59,6 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                     onClick={onLoginClick}
                     className={classNames(
                         CommonStyles_module.secondaryButton,
-                        styles['menu-button'],
                     )}
                 >
                     Log In
@@ -82,7 +79,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                         className={classNames(styles.downArrow, styles.hoverArrow)}
                     />
                     <div className={classNames(styles.dropdown, { [styles.open]: isOpen })}>
-                        {dropdownMenuItems.map((item, index) => (
+                        {menuItems.map((item, index) => (
                             <Link
                                 key={index}
                                 to={item.redirectTo}
@@ -92,7 +89,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
                             </Link>
                         ))}
                         <hr className={styles.divider} />
-                        <button onClick={onLoginClick} className={styles.title}>
+                        <button onClick={onLoginClick} className={styles.itemTitle}>
                             Log Out
                         </button>
                     </div>

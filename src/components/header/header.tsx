@@ -37,7 +37,7 @@ export const Header = ({ className }: HeaderProps) => {
                     About
                 </Link>
                 <DropdownMenu
-                    dropdownMenuItems={[
+                    menuItems={[
                         {
                             title: 'My Profile',
                             redirectTo: ROUTES.myProfile.to(),

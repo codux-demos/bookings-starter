@@ -9,7 +9,7 @@ export default createBoard({
             <ContentSlot>
                 <DropdownMenu
                     username="John Doe"
-                    dropdownMenuItems={[
+                    menuItems={[
                         {
                             title: 'My Account',
                             redirectTo: '',
