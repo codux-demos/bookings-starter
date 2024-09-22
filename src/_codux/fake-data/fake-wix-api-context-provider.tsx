@@ -43,6 +43,9 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
+        isUserLoggedIn: () => {
+            return Promise.resolve(true);
+        },
         getMyProfile: async () => {
             return Promise.resolve(createUserData());
         },
@@ -50,13 +53,11 @@ function getWixApi(settings?: Settings): WixAPI {
             return Promise.resolve(createLessonAvailability(lessonId));
         },
         initiateLogin: async () => {
-            alert('Initiate login');
         },
         fetchUserAuthData: async () => {
-            return Promise.resolve({ user: { member: { profile: { nickname: 'John Doe' } } } });
+            return { user: null };
         },
         logout: async () => {
-            alert('Logout');
         },
 
     };

@@ -23,13 +23,16 @@ export const DropdownMenu = ({ menuItems, className }: DropdownMenuProps) => {
     const wixApi = useContext(WixAPIContext);
     const [username, setUsername] = useState<string | null>(null);
 
-    const handleClickOutside = (event: MouseEvent) => {
-        if (dropDownRef.current && !dropDownRef.current.contains(event.target as Node)) {
-            setIsOpen(false);
-        }
-    };
-
     useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropDownRef.current &&
+                event.target instanceof Node &&
+                !dropDownRef.current.contains(event.target)
+            ) {
+                setIsOpen(false);
+            }
+        };
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
