@@ -67,17 +67,18 @@ export const DropdownMenu = ({ menuItems }: DropdownMenuProps) => {
                 <div
                     ref={dropDownRef}
                     className={classNames(styles.dropdownContainer, styles.root)}
-                    onClick={() => setIsOpen(!isOpen)}
                 >
-                    <p className={styles.userName}>{username}</p>
-                    <img
-                        src={downArrow}
-                        className={classNames(styles.downArrow, styles.defaultArrow)}
-                    />
-                    <img
-                        src={orangeDownArrow}
-                        className={classNames(styles.downArrow, styles.hoverArrow)}
-                    />
+                    <div className={classNames(styles.userMenuWrapper)} onClick={() => setIsOpen(!isOpen)}>
+                        <p className={styles.userName}>{username}</p>
+                        <img
+                            src={downArrow}
+                            className={classNames(styles.downArrow, styles.defaultArrow)}
+                        />
+                        <img
+                            src={orangeDownArrow}
+                            className={classNames(styles.downArrow, styles.hoverArrow)}
+                        />
+                    </div>
                     <div className={classNames(styles.dropdown, { [styles.open]: isOpen })}>
                         {menuItems.map((item, index) => (
                             <Link

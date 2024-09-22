@@ -2,16 +2,13 @@
 
 .dropdownContainer {
     display: flex;
-    align-items: center;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
-.userImage {
-    width: 30px;
-    height: 30px;
-    border-radius: 40%;
-    cursor: pointer;
+.userMenuWrapper {
+    display: flex;
+    align-items: center;
 }
 
 .username {
@@ -19,7 +16,23 @@
     margin-right: 5px;
 }
 
+.downArrow {
+    width: 14px;
+    height: 14px;
+    margin-left: 9px;
+}
+
+.defaultArrow {
+    display: inline;
+
+}
+
+.hoverArrow {
+    display: none;
+}
+
 .dropdown {
+    display: none;
     position: absolute;
     top: 100%;
     right: 0;
@@ -27,27 +40,15 @@
     border: 1px solid $snow-white-40;
     border-radius: 3px;
     padding: 10px;
-    flex-direction: column;
-    align-items: end;
     width: 120px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     &.open {
         display: flex;
+        flex-direction: column;
         align-items: start;
     }
 }
-
-.menu-list {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    background-color: $charcoal-black;
-    margin-top: 5px;
-    border-radius: 3px;
-    border: 1px solid $snow-white-40;
-}
-
 
 .itemTitle:hover {
     color: $orange-red;
@@ -62,29 +63,19 @@
     opacity: 40%;
 }
 
-.downArrow {
-    width: 14px;
-    height: 14px;
-    margin-left: 9px;
+.userMenuWrapper:hover{
+    cursor: pointer;
 }
 
-.defaultArrow {
-    display: inline-block;
-    margin-left: 9px;
+.userMenuWrapper:hover .hoverArrow {
+    display: inline;
 }
 
-.hoverArrow {
+.userMenuWrapper:hover .defaultArrow {
     display: none;
 }
 
-.dropdownContainer:hover .defaultArrow {
-    display: none;
-}
-
-.dropdownContainer:hover .userName {
+.userMenuWrapper:hover .userName {
     color: $orange-red;
-}
-
-.dropdownContainer:hover .hoverArrow {
-    display: inline-block;
+    cursor: pointer;
 }
