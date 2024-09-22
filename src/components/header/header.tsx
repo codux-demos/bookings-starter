@@ -20,19 +20,19 @@ export const Header = ({ className }: HeaderProps) => {
             <div className={styles.menu}>
                 <Link
                     to="/"
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     Home
                 </Link>
                 <Link
                     to={ROUTES.lessons.to()}
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     Lessons
                 </Link>
                 <Link
                     to={ROUTES.about.to()}
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     About
                 </Link>
