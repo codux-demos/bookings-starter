@@ -43,12 +43,23 @@ function getWixApi(settings?: Settings): WixAPI {
             alert('Checkout');
             return Promise.resolve({ success: true, url: '' });
         },
+        isUserLoggedIn: () => {
+            return Promise.resolve(true);
+        },
         getMyProfile: async () => {
             return Promise.resolve(createUserData());
         },
         getServiceAvailability: (lessonId: string) => {
             return Promise.resolve(createLessonAvailability(lessonId));
         },
+        initiateLogin: async () => {
+        },
+        fetchUserAuthData: async () => {
+            return { user: null };
+        },
+        logout: async () => {
+        },
+
     };
 
     return api;

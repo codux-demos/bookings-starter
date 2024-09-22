@@ -8,17 +8,13 @@
     font: $small-text;
     padding-top: 0;
     padding-bottom: 0;
+    width: 100%;
 }
 
 .menu {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-}
-
-.menuButton {
-    padding-right: 22px;
-    padding-left: 22px;
+    align-items: center;
 }
 
 .logo {

@@ -20,35 +20,34 @@ export const Header = ({ className }: HeaderProps) => {
             <div className={styles.menu}>
                 <Link
                     to="/"
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     Home
                 </Link>
                 <Link
                     to={ROUTES.lessons.to()}
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     Lessons
                 </Link>
                 <Link
-                    to={ROUTES.myBookings.to()}
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
-                >
-                    My bookings
-                </Link>
-                <Link
                     to={ROUTES.about.to()}
-                    className={classNames(CommonStyles_module.secondaryButton, styles.menuButton)}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                 >
                     About
                 </Link>
                 <DropdownMenu
-                    dropdownMenuItems={[
+                    menuItems={[
                         {
                             title: 'My Profile',
                             redirectTo: ROUTES.myProfile.to(),
                         },
+                        {
+                            title: 'My Bookings',
+                            redirectTo: ROUTES.myBookings.to(),
+                        }
                     ]}
+                    className={classNames(CommonStyles_module.secondaryButton)}
                     username={myProfile?.member?.contact?.firstName ?? undefined}
                 />
             </div>

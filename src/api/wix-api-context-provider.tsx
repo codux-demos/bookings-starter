@@ -1,9 +1,6 @@
 import { availabilityCalendar, bookings, extendedBookings, services } from '@wix/bookings';
 import { members } from '@wix/members';
-import {
-    GetMyMemberResponse,
-    GetMyMemberResponseNonNullableFields,
-} from '@wix/members_members/build/cjs/src/members-v1-member-members.universal';
+import { GetMyMemberResponse, GetMyMemberResponseNonNullableFields, } from '@wix/members_members/build/cjs/src/members-v1-member-members.universal';
 import { redirects } from '@wix/redirects';
 import { OAuthStrategy, createClient } from '@wix/sdk';
 import React, { FC } from 'react';
@@ -125,7 +122,9 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
             window.location.href = authUrl;
         },
-        fetchUserAuthData: async () => {
+        fetchUserAuthData: async (): Promise<{
+            user: (GetMyMemberResponse & GetMyMemberResponseNonNullableFields) | null;
+        }> => {
             userAuthPromise = new Promise((res) => {
                 const wixTokens = JSON.parse(localStorage.getItem('wixTokens') || 'null');
                 if (wixTokens) {
@@ -159,12 +158,14 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
             });
             return userAuthPromise;
         },
-
         logout: async () => {
             localStorage.removeItem('wixTokens');
             userAuthPromise = null;
             wixClient.auth.logout(window.location.href);
         },
+        isUserLoggedIn: async () => {
+            return wixClient.auth.loggedIn();
+        }
     };
 }
 
