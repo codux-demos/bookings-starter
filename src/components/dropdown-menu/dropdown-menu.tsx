@@ -54,7 +54,7 @@ export const DropdownMenu = ({ menuItems, className }: DropdownMenuProps) => {
     }, []);
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={classNames(styles.root)}>
             {!username ? (
                 <button
                     onClick={onLoginClick}
@@ -67,7 +67,7 @@ export const DropdownMenu = ({ menuItems, className }: DropdownMenuProps) => {
             ) : (
                 <div
                     ref={dropDownRef}
-                    className={classNames(styles.dropdownContainer, styles.root)}
+                    className={classNames(styles.dropdownContainer)}
                 >
                     <div className={classNames(styles.userMenuWrapper)} onClick={() => setIsOpen(!isOpen)}>
                         <p className={styles.userName}>{username}</p>
