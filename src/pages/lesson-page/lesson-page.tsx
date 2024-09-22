@@ -1,11 +1,10 @@
 import commonStyles from '@styles/common-styles.module.scss';
-import { format, isSameDay, setHours, toDate } from 'date-fns';
+import { format } from 'date-fns';
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './lesson-page.module.scss';
 import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
 import { Calendar } from '/src/components/calendar/calendar';
-import { LessonDetails } from '/src/components/lesson-details/lesson-details';
 import { RouteParams } from '/src/router/config';
 import { HourButtons } from '/src/components/hour-buttons/hour-buttons';
 
@@ -79,13 +78,18 @@ export const LessonPage: React.FC = () => {
                     </div>
                 </div>
                 {selectedDate && (
-                    <LessonDetails
-                        title={typeOfLesson}
-                        startDate={`${selectedDate?.toDateString()}  ${selectedHour}`}
-                        location={availability?.availabilityEntries[0].slot?.location?.name!}
-                        duration={'1 hr'}
-                        price={data?.payment?.fixed?.price?.value!}
-                    />
+                    <div>
+                        <div className={styles.content}>
+                            <h2>{typeOfLesson}</h2>
+                            <h2>{`${selectedDate?.toDateString()}  ${selectedHour}`}</h2>
+                            <h4>{availability?.availabilityEntries[0].slot?.location?.name!}</h4>
+                            <h4>{'1 hr'}</h4>
+                            <h4>{data?.payment?.fixed?.price?.value!}</h4>
+                        </div>
+
+                        <hr className={styles.seperator} />
+                        <button className={styles.nextButton}>Next</button>
+                    </div>
                 )}
             </div>
         </>

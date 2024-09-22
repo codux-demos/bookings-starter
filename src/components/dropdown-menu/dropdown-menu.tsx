@@ -49,7 +49,7 @@ export const DropdownMenu = ({ dropdownMenuItems, className }: DropdownMenuProps
     useEffect(() => {
         wixApi.fetchUserAuthData().then((response) => {
             if (response) {
-                setUsername(response?.user?.member?.profile?.nickname || '');
+                setUsername(response?.user?.member?.profile?.nickname || username);
             }
         });
     }, []);
