@@ -1,6 +1,6 @@
-import { CustomerDetailsPreview } from '../../../components/customer-details-preview/customer-details-preview';
+import { CustomerDetailsPreview } from '~/components/customer-details-preview/customer-details-preview';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
+import { ComponentWrapper } from '../../board-wrappers/component-wrapper';
 
 export default createBoard({
     name: 'CustomerDetailsPreview',

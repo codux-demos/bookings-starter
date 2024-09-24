@@ -1,7 +1,6 @@
 import { HomePage } from '~/pages/home-page/home-page';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { PageWrapperRealData } from '../../../board-wrappers/page-wrapper-real-data';
-import { waitForProductImage } from '../../../board-wrappers/wait-for-helpers';
 
 export default createBoard({
     name: '1 - Home Page',

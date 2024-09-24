@@ -1,6 +1,6 @@
-import { LessonsList } from '../../../components/lessons-list/lessons-list';
+import { LessonsList } from '~/components/lessons-list/lessons-list';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
+import { ComponentWrapper } from '../../board-wrappers/component-wrapper';
 
 export default createBoard({
     name: 'Lessons List',

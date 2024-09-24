@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import commonStyles from '../../../styles/common-styles.module.scss';
+import commonStyles from '~/styles/common-styles.module.scss';
 import boardStyle from './documentation.module.scss';
 
 export default createBoard({
@@ -17,13 +17,4 @@ export default createBoard({
         </div>
     ),
     isSnippet: false,
-    environmentProps: {
-        canvasHeight: 52,
-        canvasMargin: {
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-        },
-    },
 });

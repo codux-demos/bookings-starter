@@ -1,6 +1,6 @@
-import { HourButtons } from '../../../components/hour-buttons/hour-buttons';
+import { HourButtons } from '~/components/hour-buttons/hour-buttons';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { ComponentWrapper } from '/src/_codux/board-wrappers/component-wrapper';
+import { ComponentWrapper } from '../../board-wrappers/component-wrapper';
 import React, { useState } from 'react';
 
 export default createBoard({

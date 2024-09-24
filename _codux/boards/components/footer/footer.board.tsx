@@ -1,4 +1,4 @@
-import { Footer } from '../../../../components/site-footer/site-footer';
+import { Footer } from '~/components/site-footer/site-footer';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
 
 export default createBoard({

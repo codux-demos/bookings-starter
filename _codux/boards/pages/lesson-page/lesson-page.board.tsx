@@ -1,4 +1,4 @@
-import { LessonPage } from '~pages/lesson-page/lesson-page';
+import { LessonPage } from '~/pages/lesson-page/lesson-page';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
 import { PageWrapperRealData } from '../../../board-wrappers/page-wrapper-real-data';
 
