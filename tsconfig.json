@@ -16,8 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
-    "paths": { "/*": ["./*"] }
+    "paths": { 
+      "~/*": ["./src/*"],
+  }
   },
-  "include": ["src"],
+  "include": ["src", "_codux"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+
+
+
+

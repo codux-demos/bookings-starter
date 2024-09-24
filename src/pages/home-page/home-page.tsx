@@ -3,7 +3,7 @@ import styles from './home-page.module.scss';
 import { HeroImage } from './hero-image/hero-image';
 import { ROUTES } from '../../router/config';
 import { useNavigate } from 'react-router-dom';
-import { LessonsList } from '../../components/lessons-list/lessons-list';
+import { LessonsList } from '~/components/lessons-list/lessons-list';
 
 export interface HomePageProps {
     className?: string;

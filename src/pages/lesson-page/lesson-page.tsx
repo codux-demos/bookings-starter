@@ -3,10 +3,10 @@ import { format } from 'date-fns';
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './lesson-page.module.scss';
-import { useAvailability, useLessonBySlug } from '/src/api/api-hooks';
-import { Calendar } from '/src/components/calendar/calendar';
-import { RouteParams } from '/src/router/config';
-import { HourButtons } from '/src/components/hour-buttons/hour-buttons';
+import { useAvailability, useLessonBySlug } from '../../api/api-hooks';
+import { Calendar } from '../../components/calendar/calendar';
+import { RouteParams } from '../../router/config';
+import { HourButtons } from '../../components/hour-buttons/hour-buttons';
 
 export const LessonPage: React.FC = () => {
     const { slug } = useParams<RouteParams['/lesson/:slug']>();
