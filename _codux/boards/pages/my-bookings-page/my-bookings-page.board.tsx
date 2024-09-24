@@ -1,6 +1,6 @@
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { PageWrapper } from '/src/_codux/board-wrappers/page-wrapper';
-import { MyBookingsPage } from '../../../../pages/my-bookings-page/my-bookings-page';
+import { PageWrapper } from '../../../board-wrappers/page-wrapper';
+import { MyBookingsPage } from '~pages/my-bookings-page/my-bookings-page';
 
 export default createBoard({
     name: '7 - My Bookings',

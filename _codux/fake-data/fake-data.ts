@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { services } from '@wix/bookings';
-import { WixAPI } from '../../api/wix-api-context-provider';
+import { WixAPI } from '~/api/wix-api-context-provider';
 import {
     FAKE_IMAGES,
     FAKE_IMAGES_FOLDER,

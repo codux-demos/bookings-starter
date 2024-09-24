@@ -1,6 +1,6 @@
-import { ThankYouPage } from '../../../../components/thank-you-page/thank-you-page';
+import { ThankYouPage } from '~/components/thank-you-page/thank-you-page';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { PageWrapper } from '/src/_codux/board-wrappers/page-wrapper';
+import { PageWrapper } from '../../../board-wrappers/page-wrapper';
 
 export default createBoard({
     name: '6 - Thank You Page',

@@ -1,7 +1,7 @@
-import { HomePage } from '../../../../pages/home-page/home-page';
+import { HomePage } from '~/pages/home-page/home-page';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { PageWrapperRealData } from '/src/_codux/board-wrappers/page-wrapper-real-data';
-import { waitForProductImage } from '/src/_codux/board-wrappers/wait-for-helpers';
+import { PageWrapperRealData } from '../../../board-wrappers/page-wrapper-real-data';
+import { waitForProductImage } from '../../../board-wrappers/wait-for-helpers';
 
 export default createBoard({
     name: '1 - Home Page',
@@ -15,5 +15,4 @@ export default createBoard({
     ),
     isSnippet: false,
     environmentProps: { windowWidth: 1920, windowHeight: 1080 },
-    readyToSnapshot: waitForProductImage,
 });

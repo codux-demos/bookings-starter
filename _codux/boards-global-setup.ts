@@ -1,4 +1,4 @@
-import '../styles/index.module.scss';
+import '@styles/index.module.scss';
 //@ts-ignore
 import env from 'raw-loader!/.env';
 const lines = env.split('\n');

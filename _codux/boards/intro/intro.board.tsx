@@ -1,7 +1,7 @@
 import { createBoard } from '@wixc3/react-board';
 import styles from './intro.module.scss';
 import Classnames from 'classnames';
-import CommonStyles_module from '../../../styles/common-styles.module.scss';
+// import CommonStyles_module from '~/styles/common-styles.module.scss';
 
 export default createBoard({
     name: '🌱 Intro',

@@ -1,8 +1,6 @@
-import { Calendar } from '../../../components/calendar/calendar';
-import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { PageWrapper } from '/src/_codux/board-wrappers/page-wrapper';
+import { Calendar } from '~/components/calendar/calendar';
+import { createBoard } from '@wixc3/react-board';
 import { useState } from 'react';
-import { format } from 'date-fns';
 
 export default createBoard({
     name: 'Calendar',

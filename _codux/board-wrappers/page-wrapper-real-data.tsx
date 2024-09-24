@@ -1,7 +1,8 @@
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
-import { WixAPIContextProvider } from '../../api/wix-api-context-provider';
-import { getRoutes } from '../../router/routes';
+import { WixAPIContextProvider } from '../../src/api/wix-api-context-provider';
+import { getRoutes } from '../../src/router/routes';
 import { replaceRouteWithChildren } from './set-children-to-route';
+import React from 'react';
 
 type Props = {
     children?: React.ReactNode;

@@ -3,7 +3,7 @@ import {
     FakeWixAPIContextProvider,
     FakeDataSettings,
 } from '../fake-data/fake-wix-api-context-provider';
-import { getRoutes } from '../../router/routes';
+import { getRoutes } from '~/router/routes';
 import { replaceRouteWithChildren } from './set-children-to-route';
 
 type Props = {

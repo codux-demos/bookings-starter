@@ -1,16 +1,16 @@
 {
   "$schema": "https://wixplosives.github.io/codux-config-schema/codux.config.schema.json",
-  "boardGlobalSetup": "./src/_codux/boards-global-setup.ts",
+  "boardGlobalSetup": "_codux/boards-global-setup.ts",
   "componentsDiscovery": {
     "include": ["src/**"],
-    "exclude": ["src/_codux/component-templates/**"]
+    "exclude": ["_codux/component-templates/**"]
   },
   "newComponent": {
     "componentsPath": "src/components",
-    "templatesPath": "src/_codux/component-templates"
+    "templatesPath": "_codux/component-templates"
   },
   "newBoard": {
-    "templatesPath": "src/_codux/board-templates"
+    "templatesPath": "_codux/board-templates"
   },
   "safeRender": {
     "maxInstancesPerComponent": 1000
@@ -33,7 +33,8 @@
     "alias": {
       "@styles": "./src/styles",
       "@styles/*": "./src/styles/*",
-      "/*": "./*"
+      "/*": "./*",
+      "~/*": "./src/*"
     }
   },
   "svgLoader": "both"

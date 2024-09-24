@@ -1,7 +1,7 @@
-import { LessonsPage } from '../../../../pages/lessons-page/lessons-page';
 import { ContentSlot, createBoard } from '@wixc3/react-board';
-import { PageWrapper } from '/src/_codux/board-wrappers/page-wrapper';
-import { waitForProductImage } from '/src/_codux/board-wrappers/wait-for-helpers';
+import { PageWrapper } from '../../../../_codux/board-wrappers/page-wrapper';
+import { waitForProductImage } from '../../../board-wrappers/wait-for-helpers';
+import { LessonsPage } from '~/pages/lessons-page/lessons-page';
 
 export default createBoard({
     name: 'Test Lessons Page',

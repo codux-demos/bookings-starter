@@ -8,7 +8,7 @@ import {
     createLessonAvailability,
     createUserData,
 } from './fake-data';
-import { WixAPI, WixAPIContext } from '../../api/wix-api-context-provider';
+import { WixAPI, WixAPIContext } from '~/api/wix-api-context-provider';
 import { faker } from '@faker-js/faker';
 import { SWRConfig } from 'swr';
 
