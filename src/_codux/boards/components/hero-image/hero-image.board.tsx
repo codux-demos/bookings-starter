@@ -13,5 +13,4 @@ export default createBoard({
             />
         </ContentSlot>
     ),
-    isSnippet: true,
 });
