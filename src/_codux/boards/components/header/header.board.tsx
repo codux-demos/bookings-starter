@@ -11,12 +11,4 @@ export default createBoard({
             </ContentSlot>
         </ComponentWrapper>
     ),
-    isSnippet: true,
-    environmentProps: {
-        canvasMargin: {
-            top: 1,
-            right: 0,
-            left: 0,
-        },
-    },
 });
